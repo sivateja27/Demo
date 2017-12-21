@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_18994369</developerName>
+        <masterLabel>Stages</masterLabel>
+        <nullTreatment>z</nullTreatment>
+        <sourceColumnName>STAGE_NAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>S8- Closed/Won</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PO Received</sourceValue>
+            </sourceValues>
+            <value>Won or PO Received</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>S9- Closed/Lost</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Closed Lost</sourceValue>
+            </sourceValues>
+            <value>Lost</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>S1 Consult</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S2 Audit</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S2 Evaluate</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S3 Solve</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S4 Negotiate</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S1- Prospecting</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S2- Qualifying</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S3- Discovery</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S4- Solution Generation</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S5- Validation</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S6- Quoting</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S7- Negotiating</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S10- Abandon</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S11- Nurture</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S5 Close</sourceValue>
+            </sourceValues>
+            <value>Open</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <aggregate>Sum</aggregate>
+            <axisBinding>y</axisBinding>
+            <column>AMOUNT</column>
+        </chartSummaries>
+        <chartType>HorizontalBar</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>OPPORTUNITY_NAME</groupingColumn>
+        <location>CHART_TOP</location>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>Opportunity.GE_LGT_Oppty_Lead_Qualifier__c</field>
+    </columns>
+    <columns>
+        <field>TYPE</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_ID</field>
+    </columns>
+    <columns>
+        <field>LEAD_SOURCE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>EXP_AMOUNT</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>NEXT_STEP</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>PROBABILITY</field>
+    </columns>
+    <columns>
+        <field>FISCAL_QUARTER</field>
+    </columns>
+    <columns>
+        <field>AGE</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>ROLLUP_DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <currency>USD</currency>
+    <description>For Jen&apos;s 20160711 report. Data / tool won&apos;t let us get full number, this catches (some/many/most) But Blakely could be counted as OB, too.</description>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity.GE_LGT_Oppty_Lead_Qualifier__c</column>
+            <operator>contains</operator>
+            <value>karnes,blakely</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_18994369</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>CREATED_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>OPPORTUNITY_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Opps created from IB - GB - Ballpark</name>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <roleHierarchyFilter>Application_Administrator</roleHierarchyFilter>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Report$Name</field>
+    </columns>
+    <columns>
+        <field>Report$Owner</field>
+    </columns>
+    <columns>
+        <field>Report$LastRunDate</field>
+    </columns>
+    <columns>
+        <field>Report$CreatedBy</field>
+    </columns>
+    <columns>
+        <field>Report.DashboardComponents$Dashboard</field>
+    </columns>
+    <columns>
+        <field>Report.DashboardComponents$DashboardColumn</field>
+    </columns>
+    <columns>
+        <field>Report.DashboardComponents$CreatedBy</field>
+    </columns>
+    <columns>
+        <field>Report.DashboardComponents$LastModifiedBy</field>
+    </columns>
+    <currency>USD</currency>
+    <description>This report pulls the report names along with the dashboard in which they are being referenced</description>
+    <format>Tabular</format>
+    <name>Reports Used By Dashboards</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Reports_With_Dashboard_Names__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Report.DashboardComponents$Dashboard</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Report$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

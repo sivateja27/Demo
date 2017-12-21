@@ -1,0 +1,97 @@
+<aura:component access="public"  controller="geinsights.HubGEAccountTeamController">	      
+    
+    <aura:attribute name="items" access="private" type="Object[]" description="List of opportunities"/>
+    <aura:attribute name="id" type="String" access="global" description="Commercial Entity id"/>
+    <aura:attribute name="oppId" type="String" access="global" description="Opportunity record id"/>
+    <aura:attribute name="tier2" type="String" access="global" description="Tier2 business"/>
+    <aura:attribute name="fromclosedt" type="date" access="public" description="Selected From Close date."/>   
+    <aura:attribute name="toclosedt" type="date" access="public" description="Selected To Close date."/>   
+    <aura:attribute type="string" name="optyrange" access="public" description="Selected Opportunity amount range."/>
+    <aura:attribute type="string" name="stage" access="public" description="Selected Opportunity stagename."/>
+    
+    <aura:attribute name="tier1" type="String" access="global" description="Tier1 business"/>
+    <aura:attribute name="salesRep" type="String" access="global" description="Contains the Sales Representative record"/>
+    <aura:attribute name="isAccountTeam" type="String" access="global" description="Boolean to determine Account Owners or Opportunity owners component"/>
+    <aura:attribute name="isowner" type="boolean" access="global" description="Boolean to display only the accounts with role as Account Owner"/>
+    <aura:attribute name="role" type="String" access="global" description="String to display only the accounts with given role"/>
+    
+    <aura:attribute name="country" type="String" access="global" description="Design attribute used to filter by country"/>
+    <aura:attribute name="business" type="String" access="global" description="Design attribute that specifies the Tier 1 Business to display Top Opportunity Owners of that Business"/>
+    <aura:attribute name="searchAccId" type="String" access="global" description="Used to display the list of records searched by Account"/>
+    
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>    
+    <aura:registerEvent name="backtoOptyOwners" type="geinsights:GE_Back_Button" description="Event to go back to the Opportunity owners component"/>    
+    <aura:handler name="applyFilters" event="geinsights:applyOpportunityFilters" action="{!c.applyfilters}" />    
+    <aura:attribute name="spinner" type="boolean" access="private"
+        default="false" description="Boolean value to show Spinner "/>        
+    
+    <lightning:card iconName="standard:opportunity">
+        <aura:set attribute="title">
+            Opportunity Details
+        </aura:set>
+        <aura:set attribute="footer">
+            
+        </aura:set>
+        <aura:set attribute="actions">
+            <lightning:button variant="brand" label="Back" onclick="{! c.gotoOptyOwners }" />            
+        </aura:set>
+        <div class="slds-card__body"> 
+            <geinsights:Hub_GE_Opportunity_Filters /> 
+            <table class="slds-table slds-table--bordered slds-max-medium-table--stacked slds-table--fixed-layout">
+                <thead>
+                    <tr class="slds-text-title--caps">
+                        <th scope="col"> 
+                            <div class="slds-truncate" title="Industry Group">Tier 1 Business</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Business Segment">Tier 2 Business</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Name">GE Sales Name</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Account Name">Account Name</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Opportunity Name">Opportunity Name</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Stage">Stage</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Probability">Probability</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Amount">Amount</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Close Date">Close Date</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Click to get Details">Details</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--loading spinner start..-->
+                    <aura:if isTrue="{!v.spinner}">
+                        <tr>
+                            <td colspan="10">
+                                <geinsights:hubGESpinner />
+                            </td>
+                        </tr>
+                        <aura:set attribute="else">
+                            <aura:iteration items="{!v.items}" var="item">
+                                <geinsights:hubGEOppDetails item="{!item}" entityid="{!v.id}"/>
+                            </aura:iteration>
+                        </aura:set>
+                    </aura:if>
+                    <!-- Loading spinner end-->
+                    
+                    
+                </tbody>
+            </table>
+        </div>
+    </lightning:card>    
+    
+</aura:component>

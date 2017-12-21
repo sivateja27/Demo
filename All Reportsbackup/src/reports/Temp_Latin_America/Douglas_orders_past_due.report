@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Order$OrderNumber</field>
+    </columns>
+    <columns>
+        <field>Order$Forecast__c</field>
+    </columns>
+    <columns>
+        <field>Order$EffectiveDate</field>
+    </columns>
+    <columns>
+        <field>Order$Opportunity.Name</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Order$Opportunity.Owner</column>
+            <operator>contains</operator>
+            <value>douglas santos</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Order$Opportunity.StageName</column>
+            <operator>notEqual</operator>
+            <value>PO Received</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Order$Opportunity.StageName</column>
+            <operator>notEqual</operator>
+            <value>Closed Lost</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Order$Forecast__c</column>
+            <operator>equals</operator>
+            <value>Commitment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Order$EffectiveDate</column>
+            <operator>lessThan</operator>
+            <value>TODAY</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Douglas&apos; orders past due</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Orders_with_Opportunity_Information__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Order$EffectiveDate</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Order$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

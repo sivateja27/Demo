@@ -1,0 +1,72 @@
+<aura:component controller="geinsights.HubGELookupController">
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+    <aura:attribute name="clientServer" type="String" required="true" description="client or server" default="Server" access="global"/>
+    <aura:attribute name="startsWith" type="Boolean" default="true" description="true is starts with, false is contains" access="global"/>
+    <aura:attribute name="objectName" type="String" required="true" description="object to search" default="User" access="global"/>
+    <aura:attribute name="searchField" type="String" required="true" description="field to search" default="Name" access="global"/>
+    <aura:attribute name="placeHolderText" type="String"  description="Placeholder Text" default="Search" access="global"/>
+    <aura:attribute name="selectFields" type="String" required="true" description="Comma seperated fields to display" default="Name" access="global"/>
+    <aura:attribute name="lookupVal" type="String" description="matched Id" access="global"/>
+    <aura:attribute name="lookupLabel" type="String" description="matched Label" access="private"/>
+    <aura:attribute name="showPanel" type="boolean" access="private" description="Show or hide panel" default="false" />
+    <aura:attribute name="filterBy" type="Object[]" access="global"  description="Javascript object containing field and value to filter" />
+     <aura:attribute name="fieldLabel" type="String" description="matched Label"/>
+   
+    <aura:registerEvent name="filterChange" type="geinsights:HUB_GE_Filter_Change"/>
+    <!-- all available records -->
+    <aura:attribute name="allRecords" type="Object[]" access="private"/>
+    
+    <!-- records matching typeahead text -->
+    <aura:attribute name="matchedRecords" type="Object[]" access="private"/>
+    
+    <aura:attribute name="recordChosen" type="Boolean"/>
+    <aura:method name="clearValues" action="{!c.clearSearch}" /> 
+    
+    
+    
+    <div class="slds-form-element">
+        <label class="slds-form-element__label" for="combobox-unique-id">{!v.fieldLabel}</label>
+        <div class="slds-form-element__control">
+            <div class="slds-combobox_container slds-has-inline-listbox">
+                <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open" 
+                     aria-expanded="{!v.showPanel?'true':'false'}" aria-haspopup="listbox" role="combobox">
+                    <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right">
+                        <input type="text" aura:id="searchInput" onkeyup="{!c.doSearch}" 
+                               class="slds-input slds-combobox__input" id="combobox-unique-id" 
+                               aria-activedescendant="listbox-option-unique-id-01" 
+                               aria-autocomplete="list" aria-controls="listbox-unique-id" 
+                               autocomplete="off" role="textbox" 
+                               placeholder="{!v.placeHolderText}" value="{!v.lookupLabel}" readonly="{!v.recordChosen?'true':'false'}">
+                        </input>
+                        <aura:if isTrue="{!v.recordChosen}">
+                            <lightning:buttonIcon class="slds-input__icon slds-input__icon_right" iconName="utility:close" variant="bare" onclick="{! c.clearSearch }" alternativeText="Close window." />
+                        </aura:if>
+                    </div>
+                    <aura:if isTrue="{!v.matchedRecords.length == 0 ? false : true}">
+                        <div id="listbox-unique-id" role="listbox">
+                            <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid" role="presentation">
+                                <aura:iteration var="record" items="{!v.matchedRecords}">
+                                    <li role="presentation" class="slds-listbox__item" onclick="{!c.chooseItem}" data-recid="{!record[0]}" data-reclabel="{!record[1]}">
+                                        <span id="listbox-option-unique-id-01" class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta slds-has-focus" role="option">
+                                            <span class="slds-media__figure">
+                                                <span class="slds-icon_container slds-icon-standard-account" title="Description of icon when needed">
+                                                    <lightning:icon iconName="standard:account" size="small"/>
+                                                    <span class="slds-assistive-text">Account</span>
+                                                </span>
+                                            </span>
+                                            <span class="slds-media__body">
+                                                <span class="slds-listbox__option-text slds-listbox__option-text_entity">{!record[1]}</span>
+                                                <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">{!record[2]} {!and(record[2]!= '',record[3]!=null) ?' • ':'' } {!record[3]}</span>
+                                            </span>
+                                        </span>
+                                    </li>
+                                </aura:iteration>
+                                
+                            </ul>
+                        </div>
+                    </aura:if>
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

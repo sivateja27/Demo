@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Opportunity$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Orders$OrderNumber</field>
+    </columns>
+    <columns>
+        <field>Opportunity$GE_LGT_GE_Opportunity_Id__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Amount.CONVERT</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Orders$EffectiveDate</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Orders$Forecast__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Orders$Order_Amount__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Orders$Order_Amount__c.CONVERT</field>
+    </columns>
+    <currency>USD</currency>
+    <format>Tabular</format>
+    <name>ACH Opportunity Forecast Q416</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Ops_with_Orders__c</reportType>
+    <scope>user</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Opportunity.Orders$EffectiveDate</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,9 @@
+<aura:documentation>
+	<aura:description>
+        This component loads a map with all legal and prospect accounts associated with the commericalentity in the context. 
+        It marks the account with open opportunities in green color and size of the marker is propoprtional to the amount. 
+        Accounts with no open opportunities are marked in red color. 
+        
+        <p>This component can not be used independently. It has to be used with HubEntitiesListcomponent.</p>
+    </aura:description>	
+</aura:documentation>

@@ -1,0 +1,79 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="geinsights.HubGEAccountTeamController">	      
+    <aura:attribute name="item" type="Object" description="Opportunity Record"/>
+    <aura:attribute name="entityid" type="String" access="global" description="Commercial Entity id"/>
+    <aura:attribute name="showthis" type="boolean" default="false" description="Boolean value to show the record on click"/> 
+    <aura:attribute name="showOptyDetail" type="boolean" default="false" description="Boolean value to show Opportunity details"/> 
+    
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:attribute name="spinner" type="boolean" access="private" default="false" description="Boolean value to show spinner when clicked on an event"/>
+    <!-- create 2 aura handler with waiting and donewaiting events--> 
+   
+    <!-- <aura:registerEvent name="showOptyDetails" type="c:GE_RefreshOptyComponent1" /> -->
+    <tr class="slds-hint-parent"> 
+        <td>
+            <div class="slds-truncate">
+                <ui:outputText value="{#v.item.industryGroup}"/>
+            </div>
+        </td>
+        <td>
+            <div class="slds-truncate">
+                <ui:outputText value="{#v.item.businessSegment}"/>
+            </div>
+        </td>
+        <td>
+            <div class="slds-truncate">
+                <ui:outputText value="{#v.item.geSalesrepFullName}"/>
+            </div>
+        </td>
+        <td>
+            <div class="slds-truncate">
+                <ui:outputText value="{#v.item.accountName}"/>
+            </div>
+        </td>
+        <td>
+            <div class="slds-truncate">
+                <ui:outputText value="{#v.item.name}"/>
+            </div>
+        </td>
+        <td>
+            <div class="slds-truncate">
+                <ui:outputText value="{#v.item.stageName}"/>
+            </div>
+        </td>
+        <td>
+            <div class="slds-truncate">
+                <ui:outputText value="{#v.item.probability}"/>
+            </div>
+        </td>
+        <td>
+            <div class="slds-truncate">
+                <ui:outputCurrency value="{#v.item.amount}" currencyCode="{#v.item.currencyCode +' '}"/>
+            </div>
+        </td>
+        <td>
+            <div class="slds-truncate">
+                <ui:outputDate value="{#v.item.closeDate}"/>
+            </div>
+        </td>
+        <td>
+            <div class="slds-truncate">
+                <h2 class="slds-text-align--center textfontsize">
+                    <a class="slds-text-heading--small textfontsize" id="clickme" style="margin-bottom: 10px;" onclick="{!c.slidewidget}">
+                        <aura:if isTrue="{!v.showthis ==false}">   
+                            +</aura:if>
+                        <aura:if isTrue="{!v.showthis}">   
+                            -</aura:if>
+                    </a></h2>
+            </div>
+        </td>
+    </tr>
+    <aura:if isTrue="{!v.showOptyDetail}">        
+        <tr>
+            <td colspan ="10">
+                <geinsights:hubGEOppurtunityDetails entityid="{!v.entityid}" optyId="{!v.item.Id}" />
+            </td>            
+        </tr>
+        
+    </aura:if>
+    
+</aura:component>

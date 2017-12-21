@@ -1,0 +1,73 @@
+<aura:component controller="geinsights.HubGEAccountTeamController" implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global">
+    <aura:attribute name="commercialEntityId" type="String" description="The Id of the commercial entity associated with the context account."/>
+    <aura:attribute name="country" type="String" description="Filters based on country."/>
+    <aura:attribute name="expandFilter" type="boolean" default="true" description="Boolean to expand and collapse country and account components."/>
+    
+    <!--
+    <aura:attribute name="countryList" type="String[]"/>
+  -->
+    <aura:attribute type="geinsights.Countries[]" name="countryList" access="global" description="List of countries."/>
+    <!--
+    <aura:attribute name="businessList" type="String[]"/>
+-->
+    <aura:attribute name="selValue" type="String" description="Selected country filter value."/>
+    <aura:attribute name="selAccValue" type="String" description="Seleted Account filter value."/>
+    
+    <aura:attribute name="filterBy" type="Object[]"/>
+    
+    <aura:registerEvent name="filterChange" type="geinsights:HUB_GE_Filter_Change" description="Fire event whenever country or account values are changed."/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <div class="slds-panel__section slds-has-divider--top">
+        <div class="slds-grid">
+            <!--expand and collapse country and account components -->
+            <a onclick="{!c.toggleFilter}">
+                <span>
+                    <span class="slds-text-link--reset slds-truncate">Filter</span>
+                    <aura:if isTrue="{!v.expandFilter}">
+                        <span class="slds-icon_container slds-icon-utility-down slds-m-left--x-small slds-button__icon">
+                            <lightning:icon iconName="utility:chevrondown" size="xx-small" alternativeText="Expand"/></span>
+                    </aura:if>
+                    <aura:if isTrue="{!not(v.expandFilter)}">
+                        <span class="slds-icon_container slds-icon-utility-up slds-m-left--x-small slds-button__icon">
+                            <lightning:icon iconName="utility:chevronright" size="xx-small" alternativeText="Collapse"/></span>
+                    </aura:if>
+                </span></a>
+            <!--Reset Link -->
+            <a href="javascript:void(0);" onclick="{!c.resetFilter}" class="slds-col--bump-left">Reset All</a>
+            
+        </div>
+        <div aura:id="filterPanel" class="slds-show">
+            <!--country Picklist value -->
+            <lightning:layout horizontalAlign="spread" multipleRows="true">
+                <lightning:layoutItem flexibility="auto" padding="around-small" size="12" largeDeviceSize="6" mediumDeviceSize="6" smallDeviceSize="12">
+                    
+                    <lightning:select aura:id="countryselect" name="Country" label="Country" onchange="{!c.applyFilter}" value="{!v.selValue}">
+                        <aura:iteration items="{!v.countryList}" var="item" >
+                            <ui:inputSelectOption text="{!item.alpha2Code}" label="{!item.fullName}"  value="{!equals(v.selValue,item.alpha2Code)?true:false}"/>
+                            <!-- <option value="{!item}">{!item}</option> -->
+                        </aura:iteration>
+                    </lightning:select>
+                    
+                </lightning:layoutItem>
+                <!--Account autocomplete  -->
+                <lightning:layoutItem flexibility="auto" padding="around-small" size="12" largeDeviceSize="6" mediumDeviceSize="6" smallDeviceSize="12">
+                    
+                    <geinsights:hubGEAutoComplete aura:id="accFilter" startsWith="false" objectName="Account__x" searchField="Name__c,BillingCity__c,Site__c,BillingState__c,BillingStreet__c,GE_HQ_Domestic_Ultimate_DUNS_c__c,GE_HQ_Domestic_Ultimate_Name_c__c,GE_HQ_DUNS_Number_c__c,GE_HQ_GE_Global_DUNS_c__c,GE_HQ_Global_Ultimate_Business_Name_c__c,GE_HQ_Global_Ultimate_DUNS_c__c,ShippingCity__c,ShippingCountry__c,ShippingState__c,ShippingStreet__c,ShippingPostalCode__c,Sic__c,Source_Domestic_Ultimate_DUNS_c__c,Source_DUNS_Number_c__c,BillingPostalCode__c, BillingCountry__c"  fieldLabel="Legal Entity"
+                                         selectFields="Name__c,ShippingPostalCode__c,ShippingCountry__c"
+                                         filterBy="{!v.filterBy}" lookupVal="{!v.selAccValue}"></geinsights:hubGEAutoComplete>
+                    
+                </lightning:layoutItem>
+                <!-- <lightning:layoutItem flexibility="auto" padding="around-small" size="12" largeDeviceSize="6" mediumDeviceSize="6" smallDeviceSize="12">
+
+                    <lightning:select name="Business" label="Business" onchange="{!c.applyFilter}">
+                        <aura:iteration items="{!v.businessList}" var="item" >
+                            <option value="{!item}">{!item}</option>
+                        </aura:iteration>
+                    </lightning:select>
+
+                </lightning:layoutItem> -->
+            </lightning:layout>
+        </div>
+    </div>
+</aura:component>

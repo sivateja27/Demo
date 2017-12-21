@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Opportunity.Orders$Opportunity</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Initial_Proposal_Submitted__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity$Account.RecordType</column>
+            <operator>equals</operator>
+            <value>Account.SAP_Account_Strategic,Account.Daintree_Reseller,Account.GE_LGT_Distributor,Account.GE_LGT_End_User</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Type</column>
+            <operator>equals</operator>
+            <value>Intelligent Environments,Standard,Daintree</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Owner.IsActive</column>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Owner.GE_LGT_Business_Division__c</column>
+            <operator>equals</operator>
+            <value>Latin America</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Initial_Proposal_Submitted__c</column>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity$Owner</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>QMI 2-Proposal Delivery Qty</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Ops_with_Orders__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Opportunity$Initial_Proposal_Submitted__c</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
+    </timeFrameFilter>
+</Report>

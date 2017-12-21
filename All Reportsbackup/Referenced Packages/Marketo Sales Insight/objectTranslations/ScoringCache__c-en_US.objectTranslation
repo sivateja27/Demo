@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ScoringCache</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ScoringCache</value>
+    </caseValues>
+    <fields>
+        <label><!-- AccountLinkName --></label>
+        <name>AccountLinkName__c</name>
+    </fields>
+    <fields>
+        <label><!-- AccountLink --></label>
+        <name>AccountLink__c</name>
+    </fields>
+    <fields>
+        <label><!-- ActivityDT --></label>
+        <name>ActivityDT__c</name>
+    </fields>
+    <fields>
+        <label><!-- Campaign --></label>
+        <name>Campaign__c</name>
+    </fields>
+    <fields>
+        <label><!-- ContactLinkName --></label>
+        <name>ContactLinkName__c</name>
+    </fields>
+    <fields>
+        <label><!-- ContactLink --></label>
+        <name>ContactLink__c</name>
+    </fields>
+    <fields>
+        <label><!-- Id --></label>
+        <name>Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- NewValue --></label>
+        <name>NewValue__c</name>
+    </fields>
+    <fields>
+        <label><!-- OldValue --></label>
+        <name>OldValue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reason --></label>
+        <name>Reason__c</name>
+    </fields>
+    <fields>
+        <label><!-- RowNum --></label>
+        <name>RowNum__c</name>
+    </fields>
+    <fields>
+        <label><!-- ScoreName --></label>
+        <name>ScoreName__c</name>
+    </fields>
+    <fields>
+        <label><!-- TotalCount --></label>
+        <name>TotalCount__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

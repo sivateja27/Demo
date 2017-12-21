@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_80414767</developerName>
+        <masterLabel>Opportunity Type</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Opportunity$Type</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Standard</sourceValue>
+            </sourceValues>
+            <value>Standard and Standard Flow</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Daintree</sourceValue>
+            </sourceValues>
+            <value>Daintree</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intelligent Environments</sourceValue>
+            </sourceValues>
+            <value>Intelligent Environment</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_63296231</developerName>
+        <masterLabel>Standard and Flow</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Opportunity$Type</sourceColumnName>
+        <useOther>false</useOther>
+    </buckets>
+    <columns>
+        <field>Opportunity.Orders$Account</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Account.Owner</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Account.GE_LGT_Sales_Office__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Account.RecordType</field>
+    </columns>
+    <columns>
+        <field>BucketField_80414767</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Type</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Intelligent_Environments_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Orders$Forecast__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity$StageName</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Account.SAP_Strategic_Sales_Group__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Orders$OrderNumber</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Orders$EffectiveDate</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Orders$Order_Amount__c.CONVERT</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>((( 1 AND 2 AND 3 AND ((4 AND 7) OR 9 )AND 5 AND 6) AND 8))</booleanFilter>
+        <criteriaItems>
+            <column>Opportunity.Orders$RecordType</column>
+            <operator>equals</operator>
+            <value>Order.Estimated_PO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Account.RecordType</column>
+            <operator>equals</operator>
+            <value>Account.SAP_Account_Strategic,Account.Daintree_Reseller,Account.GE_LGT_End_User,Account.GE_LGT_Distributor,Account.GE_LGT_EM_Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$StageName</column>
+            <operator>equals</operator>
+            <value>S1 Consult,S2 Evaluate,S3 Solve,S4 Negotiate,S5 Close</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Type</column>
+            <operator>equals</operator>
+            <value>Intelligent Environments</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Owner.GE_LGT_Business_Division__c</column>
+            <operator>equals</operator>
+            <value>North America,Europe,Latin America</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Orders$PO_Received_Formula__c</column>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Intelligent_Environments_Segment__c</column>
+            <operator>equals</operator>
+            <value>Energy Management,Intelligent Enterprises</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Owner.Sales_Leader__c</column>
+            <operator>equals</operator>
+            <value>Digital Sales</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Type</column>
+            <operator>equals</operator>
+            <value>Daintree</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity$Owner</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Digital Pipe - Clean up</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Ops_with_Orders__c</reportType>
+    <roleHierarchyFilter>GE_Lighting_CEO</roleHierarchyFilter>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Opportunity$Type</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Opportunity$CloseDate</dateColumn>
+        <interval>INTERVAL_CURNEXTFY</interval>
+    </timeFrameFilter>
+</Report>

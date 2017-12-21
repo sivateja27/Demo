@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>GE_LGT_EM_ErrorLog__c.GE_LGT_EM_ComplaintNo__c</field>
+    </columns>
+    <columns>
+        <field>GE_LGT_EM_ErrorLog__c.GE_LGT_EM_SAPInvoiceNumber__c</field>
+    </columns>
+    <columns>
+        <field>GE_LGT_EM_ErrorLog__c.GE_LGT_EM_IntegrationStatus__c</field>
+    </columns>
+    <columns>
+        <field>CUST_CREATED_NAME</field>
+    </columns>
+    <currency>USD</currency>
+    <description>These complaints were sent to PY in the past 24h</description>
+    <filter>
+        <criteriaItems>
+            <column>GE_LGT_EM_ErrorLog__c.GE_LGT_EM_ComplaintNo__c</column>
+            <operator>greaterThan</operator>
+            <value>1</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>PY Integration</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$GE_LGT_EM_ErrorLog__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>GE_LGT_EM_ErrorLog__c.GE_LGT_EM_ComplaintNo__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_YESTERDAY</interval>
+    </timeFrameFilter>
+</Report>

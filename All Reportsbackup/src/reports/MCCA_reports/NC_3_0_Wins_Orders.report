@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_67488572</developerName>
+        <masterLabel>Strategic Vertical</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Opportunity$GE_LGT_Vertical__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Government / Public Administration</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Govrnmnt/Public Admn</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Utility</sourceValue>
+            </sourceValues>
+            <value>Roadway</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Industria/Manufactl</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Manufacturing / Industrial</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Whlsale/Distribution</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Wholesale/Distribution</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Transportation &amp; Warehousing / Storage</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Transprt&amp;Whs/Storage</sourceValue>
+            </sourceValues>
+            <value>Industrial</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Admin/Support Srv</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Administrative &amp; Support Services</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arts, Entertainment &amp; Recreation</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arts/Entertn/Recreat</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Commercial Property Mgmt/Office Bldg</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Construction</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Education</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Finance &amp; Insurance</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Finance and Insurance</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Health Care &amp; Social Assistance</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Healthcare&amp;Social</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hosp/Accom&amp;Food srv</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hospitality, Accommodation &amp; Food Service</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Information &amp; Comm</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Information &amp; Communication</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Prof/Scientific/Tech</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Professional, Scientific &amp; Technical Services</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Real Est/Rent/Lease</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Real Estate &amp; Rental &amp; Leasing</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Retail</sourceValue>
+            </sourceValues>
+            <value>Retail &amp; Office</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Opportunity.Orders$Opportunity</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Orders$EffectiveDate</field>
+    </columns>
+    <columns>
+        <field>Opportunity$GE_LGT_Closed_Status_Date__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$CloseDate</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Orders$Order_Amount__c.CONVERT</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity$Owner.IsActive</column>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Account.RecordType</column>
+            <operator>equals</operator>
+            <value>Account.GE_LGT_End_User,Account.GE_LGT_Contractor_ESCO,Account.GE_LGT_Distributor,Account.GE_LGT_OEM,Account.SAP_Account_Strategic</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Owner.GE_LGT_Business_Division__c</column>
+            <operator>equals</operator>
+            <value>Latin America</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$StageName</column>
+            <operator>equals</operator>
+            <value>PO Received</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Owner.GE_LGT_Region__c</column>
+            <operator>equals</operator>
+            <value>North Cone</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity$Owner</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>NC 3.0 Wins (Orders)</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Ops_with_Orders__c</reportType>
+    <roleHierarchyFilter>GE_Lighting_CEO</roleHierarchyFilter>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Opportunity.Orders$EffectiveDate</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
+    </timeFrameFilter>
+</Report>

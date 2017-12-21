@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>Masquer la date</label>
+        <name>HideDate__c</name>
+    </fields>
+    <fields>
+        <label>Date dernier moment significatif</label>
+        <name>Last_Interesting_Moment_Date__c</name>
+    </fields>
+    <fields>
+        <label>Description dernier moment significatif</label>
+        <name>Last_Interesting_Moment_Desc__c</name>
+    </fields>
+    <fields>
+        <label>Source dernier moment significatif</label>
+        <name>Last_Interesting_Moment_Source__c</name>
+    </fields>
+    <fields>
+        <label>Type dernier moment significatif</label>
+        <name>Last_Interesting_Moment_Type__c</name>
+    </fields>
+    <fields>
+        <label>Dernier moment significatif</label>
+        <name>Last_Interesting_Moment__c</name>
+    </fields>
+    <fields>
+        <label>Priorité</label>
+        <name>Priority__c</name>
+    </fields>
+    <fields>
+        <label>Valeur d&apos;évaluation relative</label>
+        <name>Relative_Score_Value__c</name>
+    </fields>
+    <fields>
+        <label>Évaluation relative</label>
+        <name>Relative_Score__c</name>
+    </fields>
+    <fields>
+        <label>Sales Insight</label>
+        <name>Sales_Insight__c</name>
+    </fields>
+    <fields>
+        <label>Valeur d&apos;urgence</label>
+        <name>Urgency_Value__c</name>
+    </fields>
+    <fields>
+        <label>Urgence</label>
+        <name>Urgency__c</name>
+    </fields>
+    <fields>
+        <label>Afficher dans Marketo</label>
+        <name>View_in_Marketo__c</name>
+    </fields>
+    <webLinks>
+        <label>Ajouter à la campagne Marketo</label>
+        <name>Add_to_Marketo_Campaign</name>
+    </webLinks>
+    <webLinks>
+        <label>Ajouter à la liste de surveillance</label>
+        <name>Add_to_Watch_List</name>
+    </webLinks>
+    <webLinks>
+        <label>Envoyer l&apos;e-mail Marketo</label>
+        <name>Send_Marketo_Email</name>
+    </webLinks>
+</CustomObjectTranslation>

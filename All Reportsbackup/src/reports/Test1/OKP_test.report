@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>CDT_Opportunity_Key_Player__c.Account__c</field>
+    </columns>
+    <columns>
+        <field>CDT_Opportunity_Key_Player__c.CDT_Opportunity_Name__c</field>
+    </columns>
+    <columns>
+        <field>CDT_Opportunity_Key_Player__c.Key_Role__c</field>
+    </columns>
+    <columns>
+        <field>CDT_Opportunity_Key_Player__c.Key_Role_Auto__c</field>
+    </columns>
+    <currency>USD</currency>
+    <format>Tabular</format>
+    <name>OKP test</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$CDT_Opportunity_Key_Player__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>CDT_Opportunity_Key_Player__c.Account__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CDT_Opportunity_Key_Player__c.Date_of_Quote_Submission__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,293 @@
+<aura:component controller="geinsights.HubGEAccountTeamController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >  
+    
+    <aura:attribute name="optyId" type="String" access="global" description="Opporutnity record id"/>
+    <aura:attribute name="entityid" type="String" access="global" description="Commercial Entity id"/>
+    <aura:attribute name="navigateTo" type="boolean" access="global" description="" default="false"/>    
+    
+    <aura:attribute name="next" type="boolean" default="false" access="private" description="Boolean value for pagination used to fetch next records"/>
+    <aura:attribute name="prev" type="boolean" default="false" access="private" description="Boolean value for pagination used to fetch previous records"/>
+    <aura:attribute name="numOfRecords" type="Integer" access="global" default="3" description="Determines the number of records to be displayed on the snapshot"/>
+    <aura:attribute name="offset" type="Integer" default="0" access="private" description="Integer value used for pagination to fetch the records from a particular point"/>
+    <aura:attribute name="totalRecords" type="Integer" access="private" description="Integer value to determine number of records"/>
+    <aura:attribute name="oppRec" type="Opportunity__x" access="private" description="Opportunity Record"/>
+    <aura:attribute name="salesRepRec" type="GE_Sales_Rep_c__x" access="private" description="Sales Rep Record"/>
+    <aura:attribute name="oppProdRec" type="Opportunity_Product_c__x[]" access="private" description="Opportunity Product"/>
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" description=""/>    
+    <aura:attribute name="spinner1" type="boolean" default="false" access="private" description="Boolean value to show spinner when an event is clicked"/>
+    <aura:attribute name="spinner2" type="boolean" default="false" access="private" description="Boolean value to show spinner when an next or previous is clicked"/>
+    <aura:attribute name="emailString" type="String" access="global" description="Email String"/>
+    <!-- create 2 aura handler with waiting and donewaiting events--> 
+    <aura:if isTrue="{!not(v.navigateTo)}">
+        <lightning:card iconName="standard:opportunity">
+            <aura:set attribute="title">
+                Opportunity Details 
+            </aura:set>
+            
+            <aura:set attribute="footer">
+                
+            </aura:set>
+            <aura:set attribute="actions">
+                <a class="slds-button slds-button_brand slds-float--right" href = "{!v.emailString}">Email Opportunity Owner</a>
+            </aura:set>
+            
+            <div class="slds-card__body"> 
+                <aura:if isTrue="{!v.spinner1}">
+                    <geinsights:hubGESpinner /> 
+                    <aura:set attribute="else">
+                        <lightning:layout >            
+                            <lightning:layoutItem padding="around-small" size="6">
+                                <ul class="slds-border_right">
+                                    <li class="slds-form-element slds-hint-parent">
+                                        <span class="slds-form-element__label" style="font-weight:bold;">GE Sales Rep Name</span>
+                                        <!--<div class="slds-form-element__control prewrap">-->
+                                        <span style="margin-left: 0.5rem;" class="slds-form-element__static"><a  id="clickme" style="margin-bottom: 10px;" onclick="{!c.navigateToSalesRep}">{!v.oppRec.geSalesrepFullName}</a></span>
+                                        <!--</div>-->
+                                    </li>
+                                    <li class="slds-form-element slds-hint-parent ">
+                                        <span class="slds-form-element__label "><b>Account Name</b></span>
+                                        <span class="slds-form-element__static slds-p-left_x-large">{!v.oppRec.accountName}</span>
+                                        <!--</div>-->
+                                    </li>
+                                    <li class="slds-form-element slds-hint-parent slds-grid">
+                                        <span class="slds-form-element__label" style="font-weight:bold;">Opportunity Name</span>
+                                        <span style="margin-left: -0.3rem;" class="slds-p-left_small prewrap">{!v.oppRec.name}</span>
+                                    </li>
+                                    <li class="slds-form-element slds-hint-parent ">
+                                        <span class="slds-form-element__label" style="font-weight:bold;">Stage</span>
+                                        <!--<div class="slds-form-element__control prewrap">-->
+                                        <span style="margin-left: 5.3rem;" class="slds-form-element__static">{!v.oppRec.stageName}</span>
+                                        <!--</div>-->
+                                    </li>
+                                    <li class="slds-form-element slds-hint-parent ">
+                                        <span class="slds-form-element__label" style="font-weight:bold;">Probability</span>
+                                        <!--<div class="slds-form-element__control prewrap">-->
+                                        <span style="margin-left: 3.4rem;" class="slds-form-element__static">{!v.oppRec.probability}</span>
+                                        <!--</div>-->
+                                    </li>
+                                    <li class="slds-form-element slds-hint-parent ">
+                                        <span class="slds-form-element__label" style="font-weight:bold;">Amount</span>
+                                        <!--<div class="slds-form-element__control prewrap">-->
+                                        <span style="margin-left: 4.3rem;" class="slds-form-element__static"><ui:outputCurrency value="{!v.oppRec.amount}" currencySymbol="{!v.oppRec.currencyCode+' '}"/></span>
+                                        <!--</div>-->
+                                    </li>
+                                    <li class="slds-form-element slds-hint-parent ">
+                                        <span class="slds-form-element__label" style="font-weight:bold;">Closed Date</span>
+                                        <!--<div class="slds-form-element__control prewrap">-->
+                                        <span style="margin-left: 2.9rem;" class="slds-form-element__static slds-text-longform"><ui:outputDate value="{!v.oppRec.closeDate}"/>
+                                        </span>
+                                        <!--</div>-->
+                                    </li>
+                                    
+                                    
+                                </ul >
+                            </lightning:layoutItem>
+                            
+                            <lightning:layoutItem padding="around-small" size="6">
+                                <ul>
+                                    <li class="slds-form-element slds-hint-parent ">
+                                        <span class="slds-form-element__label " style="font-weight:bold;">Classification</span>
+                                        <!--<div class="slds-form-element__control">-->
+                                        <span style="margin-left: 2.2rem;" class="slds-form-element__static">{!v.oppRec.classification}</span>
+                                        <!--</div>-->
+                                    </li>
+                                    <li class="slds-form-element slds-hint-parent "> 
+                                        <span class="slds-form-element__label" style="font-weight:bold;">End User</span>
+                                        <!--<div class="slds-form-element__control prewrap">-->
+                                        <span style="margin-left: 3.8rem;" class="slds-form-element__static">{!v.oppRec.endCustomerName}</span>
+                                        <!--</div>-->
+                                    </li>
+                                    
+                                    <li class="slds-form-element slds-hint-parent ">
+                                        <span class="slds-form-element__label " style="font-weight:bold;">Install Country</span>
+                                        <!--<div class="slds-form-element__control prewrap">-->
+                                        <span style="margin-left: 1.5rem;" class="slds-form-element__static">{!v.oppRec.installedCountry} </span>
+                                        <!--</div>-->
+                                    </li>
+                                    <li class="slds-form-element slds-hint-parent ">
+                                        <span class="slds-form-element__label" style="font-weight:bold;">Requires Financing</span>
+                                        <!--<div class="slds-form-element__control prewrap">-->
+                                        <span style="margin-left: 0.1rem;" class="slds-form-element__static">{!v.oppRec.requireFinancing}</span>
+                                        <!--</div>-->
+                                    </li>
+                                    
+                                    <li class="slds-form-element slds-hint-parent ">
+                                        <span class="slds-form-element__label" style="font-weight:bold;">Confidential</span>
+                                        <!--<div class="slds-form-element__control prewrap">-->
+                                        <span style="margin-left: 2.5rem;" class="slds-form-element__static">{!v.oppRec.confidential}</span>
+                                        <!--</div>-->
+                                    </li>
+                                    <li class="slds-form-element slds-hint-parent "> 
+                                        <span class="slds-form-element__label" style="font-weight:bold;">Currency</span>
+                                        <!--<div class="slds-form-element__control prewrap">-->
+                                        <span style="margin-left: 3.7rem;" class="slds-form-element__static">{!v.oppRec.currencyCode}</span>
+                                        <!--</div>-->
+                                    </li>                    
+                                </ul>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                        
+                        <h3 class="slds-text-heading_small slds-m-bottom_medium">Opportunity Product Details </h3>
+                        <lightning:layout >
+                            <lightning:layoutItem padding="around-small" size="12">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">
+                                                <div class="slds-truncate" title="Product Name">Product Name</div>
+                                            </th>                            
+                                            <th scope="col">
+                                                <div class="slds-truncate" title="Unit Price">Unit Price</div>
+                                            </th>
+                                            <th scope="col">
+                                                <div class="slds-truncate" title="Quantity">Quantity</div>
+                                            </th>
+                                            <th scope="col">
+                                                <div class="slds-truncate" title="Total Amount">Total Amount</div>
+                                            </th>                            
+                                        </tr>
+                                    </thead>
+                                    <aura:if isTrue="{!v.spinner2}">
+                                        <tr >
+                                            <td colspan = "4">
+                                                <geinsights:hubGESpinner /> 
+                                            </td>
+                                        </tr>
+                                        <aura:set attribute="else">
+                                            <aura:iteration items="{!v.oppProdRec}" var="item">
+                                                <tr >
+                                                    <td class="slds-form-element slds-hint-parent ">
+                                                        <div class="slds-form-element__control prewrap">
+                                                            <span class="slds-form-element__static">{!item.name}</span>
+                                                        </div>   
+                                                    </td>                                                        
+                                                    <td class="slds-form-element slds-hint-parent ">
+                                                        <div class="slds-form-element__control prewrap">
+                                                            <ui:outputCurrency value="{!item.sharedSalesPrice}"  currencySymbol="{!item.currencyCode +' '}"/>                                    
+                                                        </div>   
+                                                    </td>
+                                                    <td class="slds-form-element slds-hint-parent ">
+                                                        <div class="slds-form-element__control prewrap">
+                                                            <span class="slds-form-element__static"> X {!item.quantity}</span>
+                                                        </div>   
+                                                    </td>
+                                                    <td class="slds-form-element slds-hint-parent ">
+                                                        <div class="slds-form-element__control prewrap">
+                                                            <ui:outputCurrency value="{!item.sharedTotalPrice}" currencySymbol="{!item.currencyCode +' '}"/>                                    
+                                                        </div>   
+                                                    </td>
+                                                </tr>
+                                            </aura:iteration>
+                                        </aura:set>
+                                    </aura:if>
+                                </table>                
+                                <div style="float:right;">
+                                    <lightning:buttonIcon iconName="utility:chevronleft" variant="bare" onclick="{! c.handlePrevious }" alternativeText="Prev Page" disabled="{!v.prev}"/>
+                                    <lightning:buttonIcon iconName="utility:chevronright" variant="bare" onclick="{! c.handleNext }" alternativeText="Next Page" disabled="{!v.next}"/>                 
+                                </div>
+                                
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                        
+                    </aura:set>
+                </aura:if>
+                
+            </div>
+        </lightning:card>
+    </aura:if>
+    <aura:if isTrue="{!v.navigateTo}">
+        <lightning:card iconName="standard:opportunity">
+            <aura:set attribute="title">
+                SalesRep Details 
+            </aura:set>
+            
+            <aura:set attribute="actions">
+                <lightning:button variant="brand" label="Back" onclick="{! c.navigateToOppDetails}" />
+            </aura:set>
+            
+            <div class="slds-card__body"> 
+                <aura:if isTrue="{!v.spinner1}">
+                    <geinsights:hubGESpinner /> 
+                    <aura:set attribute="else">
+                        <lightning:layout >            
+                            <lightning:layoutItem padding="around-small" size="6">
+                                <ul class="slds-border_right">
+                                    <li class="slds-form-element slds-hint-parent">
+                                        <span class="slds-form-element__label">GE Sales Rep</span>
+                                        <!--<div class="slds-form-element__control prewrap">-->
+                                        <span style="margin-left: 1.0rem;" class="slds-form-element__static"><ui:outputText value="{!v.salesRepRec.geinsights__Full_Name_c__c}"/></span>
+                                        <!--</div>-->
+                                    </li>
+                                    <li class="slds-form-element slds-hint-parent ">
+                                        <span class="slds-form-element__label ">Email</span>
+                                        <!--<div class="slds-form-element__control prewrap">-->
+                                        <span style="margin-left: 3.5rem;" class="slds-form-element__static"><ui:outputEmail value="{!v.salesRepRec.geinsights__Email_c__c}"/></span>
+                                        <!--</div>-->
+                                    </li>
+                                    <li class="slds-form-element slds-hint-parent ">
+                                        <span class="slds-form-element__label">Mobile Phone</span>
+                                        <!--<div class="slds-form-element__control prewrap">-->
+                                        <span style="margin-left: 0.3rem;" class="slds-form-element__static"><ui:outputPhone value="{!v.salesRepRec.geinsights__Mobile_Phone_c__c }"/></span>
+                                        <!--</div>-->
+                                    </li>
+                                    <li class="slds-form-element slds-hint-parent ">
+                                        <span class="slds-form-element__label">Work Phone</span>
+                                        <!--<div class="slds-form-element__control prewrap">-->
+                                        <span style="margin-left: 0.9rem;" class="slds-form-element__static"><ui:outputPhone value="{!v.salesRepRec.geinsights__Work_Phone_c__c }"/></span>
+                                        <!--</div>-->
+                                    </li>
+                                    <li class="slds-form-element slds-hint-parent">
+                                        <span class="slds-form-element__label">Tier1 Business</span>
+                                        <!--<div class="slds-form-element__control prewrap">-->
+                                        <span style="margin-left: 0.3rem;" class="slds-form-element__static"><ui:outputText value="{!v.salesRepRec.geinsights__Industry_Group_c__c}"/></span>
+                                        <!--</div>-->
+                                    </li>
+                                    <li class="slds-form-element slds-hint-parent ">
+                                        <span class="slds-form-element__label ">Tier2 Business</span>
+                                        <!--<div class="slds-form-element__control prewrap">-->
+                                        <span style="margin-left: 0.3rem;" class="slds-form-element__static"><ui:outputText value="{!v.salesRepRec.geinsights__Business_Segment_c__c}"/></span>
+                                        <!--</div>-->
+                                    </li>
+                                </ul >
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small" size="6">
+                                <ul >
+                                    <li class="slds-form-element slds-hint-parent ">
+                                        <span class="slds-form-element__label ">Address</span>
+                                        <!--<div class="slds-form-element__control prewrap">-->
+                                        <span style="margin-left: 1.0rem;" class="slds-form-element__static"><ui:outputText value="{!v.salesRepRec.geinsights__Address_Line_1_c__c}"/></span>
+                                        <!--</div>-->
+                                    </li>
+                                    <li class="slds-form-element slds-hint-parent ">
+                                        <span class="slds-form-element__label ">City</span>
+                                        <!--<div class="slds-form-element__control prewrap">-->
+                                        <span style="margin-left: 2.5rem;" class="slds-form-element__static"><ui:outputText value="{!v.salesRepRec.geinsights__City_c__c}"/></span>
+                                        <!--</div>-->
+                                    </li>
+                                    <li class="slds-form-element slds-hint-parent ">
+                                        <span class="slds-form-element__label ">State</span>
+                                        <!--<div class="slds-form-element__control prewrap">-->
+                                        <span style="margin-left: 2.0rem;" class="slds-form-element__static"><ui:outputText value="{!v.salesRepRec.geinsights__State_c__c}"/></span>
+                                        <!--</div>-->
+                                    </li>
+                                    <li class="slds-form-element slds-hint-parent ">
+                                        <span class="slds-form-element__label">Zip Code</span>
+                                        <!--<div class="slds-form-element__control prewrap">-->
+                                        <span style="margin-left: 0.6rem;" class="slds-form-element__static"><ui:outputText value="{!v.salesRepRec.geinsights__Zip_Code_c__c}"/></span>
+                                        <!--</div>-->
+                                    </li>
+                                    <li class="slds-form-element slds-hint-parent ">
+                                        <span class="slds-form-element__label">Country</span>
+                                        <!--<div class="slds-form-element__control prewrap">-->
+                                        <span style="margin-left: 0.9rem;" class="slds-form-element__static"><ui:outputText value="{!v.salesRepRec.geinsights__Country_c__c}"/></span>
+                                        <!--</div>-->
+                                    </li>
+                                </ul >
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                    </aura:set>
+                </aura:if>                
+            </div>
+        </lightning:card>
+    </aura:if>
+    
+</aura:component>

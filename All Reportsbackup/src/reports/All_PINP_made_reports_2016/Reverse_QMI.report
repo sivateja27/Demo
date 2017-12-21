@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Opportunity$GE_LGT_GE_Opportunity_Id__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Activities$Subject</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Activities$Owner</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Activities$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Activities$ActivityDate</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Activities$Status</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Activities$Priority</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Activities$IsTask</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity.Activities$CreatedBy</column>
+            <operator>equals</operator>
+            <value>Ágnes Kerek</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Reverse QMI</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Ops_With_Activities__c</reportType>
+    <roleHierarchyFilter>EMEA_Operations</roleHierarchyFilter>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Opportunity$GE_LGT_Approval_Date_for_Deal_Lane__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

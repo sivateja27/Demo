@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>SAP_Quote__c.Quote_Number__c</field>
+    </columns>
+    <columns>
+        <field>SAP_Quote__c.Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>SAP_Quote__c.Strategic_SAPUniqueId__c</field>
+    </columns>
+    <columns>
+        <field>SAP_Quote__c.Strategic_Partner_Name__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>SAP_Quote__c.Strategic_SAPUniqueId__c</column>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>All SAPQuotes-ZSTG Accounts</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$SAP_Quote__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>SAP_Quote__c.Expiration_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Opportunity$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Orders$OrderNumber</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Orders$RecordType</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Deal_Manager__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Project_Management_For_Ex__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$First_Customer_Expected_Ship_Date__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Last_Customer_Expected_Ship_Date__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Project_Management_Level__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity$StageName</column>
+            <operator>equals</operator>
+            <value>S2 Evaluate,S3 Solve,S4 Negotiate,S5 Close</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Orders$BillingCountry</column>
+            <operator>equals</operator>
+            <value>USA,US,United States</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Multiple PO Data Migration Upload</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Ops_with_Orders__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Opportunity$GE_LGT_Approval_Date_for_Deal_Lane__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

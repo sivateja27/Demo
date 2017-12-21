@@ -1,0 +1,6 @@
+<aura:documentation>
+	<aura:description>This component is used to just call HUBCOmmercialEntitySnapshot component with the current account id. 
+	<p>This example shows how to display hubInsights by providing account Id as accountId attribute. Here v.id is id of account in spoke. <code>geinsights:hubInsights</code>.</p>
+    <pre>&lt;geinsights:hubInsights id="{!v.id}"/&gt;</pre>
+        </aura:description>
+</aura:documentation>

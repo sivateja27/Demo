@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>WON:SUM/(CLOSED:SUM + WON:SUM)</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>$Won/(Won + Lost + Cancelled )</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>WON:SUM</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA3</developerName>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Won</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>CLOSED:SUM</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA5</developerName>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>TOTAL</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_93889981</developerName>
+        <masterLabel>Closed</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>STAGE_NAME</sourceColumnName>
+        <useOther>false</useOther>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_41092270</developerName>
+        <masterLabel>Closed Lost</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>STAGE_NAME</sourceColumnName>
+        <useOther>false</useOther>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_34416244</developerName>
+        <masterLabel>Won</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>STAGE_NAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <value>PO Received</value>
+        </values>
+        <values>
+            <value>Closed</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>S1 Consult</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S2 Audit</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S2 Evaluate</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S3 Solve</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S4 Negotiate</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S5 Close</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S1- Prospecting</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S2- Qualifying</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S3- Discovery</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S4- Solution Generation</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S5- Validation</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S6- Quoting</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S7- Negotiating</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S8- Closed/Won</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S9- Closed/Lost</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S10- Abandon</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S11- Nurture</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Closed Lost</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PO Received</sourceValue>
+            </sourceValues>
+            <value>In Progress</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>User.Sales_Team__c</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AMOUNT.CONVERT</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <operator>equals</operator>
+            <value>Closed Lost</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>TYPE</column>
+            <operator>equals</operator>
+            <value>Standard</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.GE_LGT_Business_Division__c</column>
+            <operator>equals</operator>
+            <value>North America</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CLOSE_DATE</column>
+            <operator>greaterOrEqual</operator>
+            <value>10/1/2016</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>User.Sales_Leader__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Sales Teams Closed Lost Ops Q4 &apos;16</name>
+    <params>
+        <name>open</name>
+        <value>closed</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <sortColumn>OPPORTUNITY_NAME</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <endDate>2016-12-17</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2014-01-01</startDate>
+    </timeFrameFilter>
+</Report>

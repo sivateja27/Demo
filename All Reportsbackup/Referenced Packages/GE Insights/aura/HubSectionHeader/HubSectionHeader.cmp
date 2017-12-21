@@ -1,0 +1,29 @@
+<aura:component controller="geinsights.HubSectionHeader">
+    <aura:attribute type="String" name="secName" Default="New Section" description="Name of the section header." />
+    <aura:attribute type="geinsights.EntitiesMap[]" name="sectionData" description="List of parent or sub commercial entities" />
+    <aura:attribute type="Boolean" name="showDetails" default="true" description="Set to display the contents." />
+    <aura:registerEvent name="comAccountChange" type="geinsights:changeCommEntity" description="Indicates that the context commercial entity is changed"/>
+    
+    <a class="slds-text-link--reset" onclick="{!c.toggledetails}">
+        <div>
+            <aura:if isTrue="{!v.showDetails}">
+                <lightning:icon iconName="utility:down" size="x-small" alternativeText="Show details" />
+            </aura:if>
+            <aura:if isTrue="{!not(v.showDetails)}">
+                <lightning:icon iconName="utility:up" size="x-small" alternativeText="Hide details" />
+            </aura:if>
+            <span class="slds-text-title--caps slds-has-flexi-truncate" >{!v.secName}</span> 
+    	</div>
+    </a>
+    <aura:if isTrue="{!not(v.showDetails)}">
+        <div>
+            <ui:scrollerWrapper class="scrollable">
+                <ul class="slds-has-block-links marginscroll">
+                    <aura:iteration items="{!v.sectionData}" var="i">
+                        <li><ui:outputText value="{!i.entityName}" click="{!c.changeComEntity}" class="slds-text-link" /></li>
+                    </aura:iteration>
+                </ul>
+            </ui:scrollerWrapper>
+        </div>
+    </aura:if>
+</aura:component>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <acrossGroupingContext>STAGE_NAME</acrossGroupingContext>
+        <calculatedFormula>REVENUE_AMOUNT:SUM/PARENTGROUPVAL(REVENUE_AMOUNT:SUM, BucketField_36065743, COLUMN_GRAND_SUMMARY)</calculatedFormula>
+        <datatype>percent</datatype>
+        <developerName>FORMULA1</developerName>
+        <downGroupingContext>BucketField_36065743</downGroupingContext>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>% of Total</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_36065743</developerName>
+        <masterLabel>Product Bucket</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Product2.GE_LGT_Product_Segment__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Roadway LED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Roadway Non LED</sourceValue>
+            </sourceValues>
+            <value>Roadway</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Lamp / Ballast Non LED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Lamp LED</sourceValue>
+            </sourceValues>
+            <value>Lamp</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Rail</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Traffic</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>RDL</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Signage</sourceValue>
+            </sourceValues>
+            <value>Specialty</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Controls LED</sourceValue>
+            </sourceValues>
+            <value>Controls</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Indoor LED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Indoor Non LED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Outdoor (Non Roadway) LED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Outdoor (Non Roadway) Non LED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Outdoor LED</sourceValue>
+            </sourceValues>
+            <value>C&amp;I</value>
+        </values>
+    </buckets>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>REVENUE_AMOUNT.CONVERT</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>User.GE_LGT_Business_Division__c</column>
+            <operator>equals</operator>
+            <value>North America</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>STAGE_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_36065743</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>NA Pipeline by product and stage 2</name>
+    <params>
+        <name>open</name>
+        <value>open</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunitySchedule</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>REVENUE_DATE</dateColumn>
+        <endDate>2013-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2013-01-01</startDate>
+    </timeFrameFilter>
+</Report>

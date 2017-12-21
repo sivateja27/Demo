@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>REVENUE_AMOUNT.CONVERT</field>
+    </columns>
+    <currency>USD</currency>
+    <description>Adoption - Asia Open Pipeline Report</description>
+    <filter>
+        <criteriaItems>
+            <column>User.GE_LGT_Region__c</column>
+            <operator>notEqual</operator>
+            <value>Functional,Leadership</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.GE_LGT_Business_Division__c</column>
+            <operator>equals</operator>
+            <value>Asia</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.GE_LGT_Region__c</column>
+            <operator>notEqual</operator>
+            <value>Asia Functional</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <aggregateType>Sum</aggregateType>
+        <dateGranularity>Day</dateGranularity>
+        <field>User.GE_LGT_Region__c</field>
+        <sortByName>REVENUE_AMOUNT.CONVERT</sortByName>
+        <sortOrder>Desc</sortOrder>
+        <sortType>Aggregate</sortType>
+    </groupingsDown>
+    <name>Asia Open Pipeline</name>
+    <params>
+        <name>open</name>
+        <value>open</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunitySchedule</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Opportunity.GE_LGT_Expected_PO_Receipt_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

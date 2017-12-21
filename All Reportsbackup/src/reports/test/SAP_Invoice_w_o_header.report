@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>GE_LGT_EM_InvoiceLineItem__c.GE_LGT_EM_SAP_Invoice_Number__c</field>
+    </columns>
+    <columns>
+        <field>GE_LGT_EM_InvoiceLineItem__c.GE_LGT_EM_SAP_LineItemNumber__c</field>
+    </columns>
+    <columns>
+        <field>CUST_CREATED_DATE</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>GE_LGT_EM_InvoiceLineItem__c.GE_LGT_EM_InvoiceHeaderNumber__c</column>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>SAP Invoice w/o header</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$GE_LGT_EM_InvoiceLineItem__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>GE_LGT_EM_InvoiceLineItem__c.GE_LGT_EM_SAP_Invoice_Number__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>GE_LGT_EM_InvoiceLineItem__c.GE_LGT_EM_Invoice_Creation_Date__c</dateColumn>
+        <interval>INTERVAL_LAST90</interval>
+    </timeFrameFilter>
+</Report>

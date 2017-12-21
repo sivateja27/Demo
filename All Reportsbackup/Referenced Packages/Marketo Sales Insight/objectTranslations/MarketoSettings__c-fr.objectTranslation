@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Paramètres de Marketo</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Paramètres de Marketo</value>
+    </caseValues>
+    <fields>
+        <label><!-- Batch Size --></label>
+        <name>BatchSize__c</name>
+    </fields>
+    <fields>
+        <label><!-- CacheMinutesUntilExpired --></label>
+        <name>CacheMinutesUntilExpired__c</name>
+    </fields>
+    <fields>
+        <label><!-- CacheState --></label>
+        <name>CacheState__c</name>
+    </fields>
+    <fields>
+        <label><!-- MinutesToRefreshCache --></label>
+        <name>MinutesToRefreshCache__c</name>
+    </fields>
+    <fields>
+        <label><!-- MinutesToRefreshLeadFeed --></label>
+        <name>MinutesToRefreshLeadFeed__c</name>
+    </fields>
+    <fields>
+        <label><!-- UseCache --></label>
+        <name>UseCache__c</name>
+    </fields>
+    <gender>Masculine</gender>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

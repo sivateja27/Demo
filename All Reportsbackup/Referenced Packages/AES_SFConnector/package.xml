@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AES_SFConnector</fullName>
+    <apiAccessLevel>Unrestricted</apiAccessLevel>
+    <description>Installs apex classes, triggers and call center definition file.</description>
+    <namespacePrefix>AES_SFConnector</namespacePrefix>
+    <types>
+        <members>DataRetrieval</members>
+        <members>DataRetrievalUnitTest</members>
+        <members>ObjectDetailsRetrieval</members>
+        <members>ObjectDetailsRetrievalUnitTest</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>PolicyLookup</members>
+        <members>StoragePage</members>
+        <name>ApexPage</name>
+    </types>
+    <types>
+        <members>Activity.AgentType__c</members>
+        <members>Activity.CallReference__c</members>
+        <members>Activity.Called__c</members>
+        <members>Activity.Caller__c</members>
+        <members>Activity.UCID__c</members>
+        <members>Activity.UUI__c</members>
+        <name>CustomField</name>
+    </types>
+    <version>33.0</version>
+</Package>

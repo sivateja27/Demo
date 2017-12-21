@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>User.Opportunity$OwnerId$GE_LGT_Expected_Ship_Date__c</field>
+    </columns>
+    <columns>
+        <field>User.Opportunity$OwnerId.OpportunityLineItems$GE_LGT_Product_Line__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>User.Opportunity$OwnerId$StageName</column>
+            <operator>equals</operator>
+            <value>S5 Close</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.Opportunity$OwnerId.OpportunityLineItems$HasRevenueSchedule</column>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>User.Opportunity$OwnerId$StageName</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>User.Opportunity$OwnerId$Owner</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>User.Opportunity$OwnerId$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Opps in S5 w/o product schedule</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Oppty_Product__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>User.Opportunity$OwnerId.OpportunityLineItems$CreatedDate</dateColumn>
+        <interval>INTERVAL_PREVCURFY</interval>
+    </timeFrameFilter>
+</Report>

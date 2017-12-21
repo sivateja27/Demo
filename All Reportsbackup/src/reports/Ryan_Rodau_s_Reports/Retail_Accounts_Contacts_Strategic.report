@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account$Name</field>
+    </columns>
+    <columns>
+        <field>Account$Owner</field>
+    </columns>
+    <columns>
+        <field>Account$GE_LGT_Vertical__c</field>
+    </columns>
+    <columns>
+        <field>Account$GE_LGT_Sub_Vertical__c</field>
+    </columns>
+    <columns>
+        <field>Account.Contacts$Name</field>
+    </columns>
+    <columns>
+        <field>Account.Contacts$Email</field>
+    </columns>
+    <columns>
+        <field>Account.Contacts$Owner</field>
+    </columns>
+    <columns>
+        <field>Account.Contacts$LeadSource</field>
+    </columns>
+    <columns>
+        <field>Account.Contacts$GE_LGT_Lead_Source_Detail__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Account$Owner</column>
+            <operator>equals</operator>
+            <value>Tim McMahon,Victoria Garten,Lindsay Severson,Perry Slevin,Andrew Miller,Sandra Nosco,Cortlandt Armstrong,Paul Schooley,Brad Simcox,Bill Piontkowski</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Retail Accounts &amp; Contacts - Strategic</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Accounts_with_Contacts__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Account$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

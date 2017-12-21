@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.GE_LGT_EM_SAP_Customer_NoWTSalesOrg__c</field>
+    </columns>
+    <columns>
+        <field>Account.GE_LGT_EM_Sales_Org__c</field>
+    </columns>
+    <columns>
+        <field>Account.GE_LGT_EM_PF_Type__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <operator>equals</operator>
+            <value>Account.GE_LGT_EM_Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.GE_LGT_EM_Sales_Org__c</column>
+            <operator>startsWith</operator>
+            <value>1</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.GE_LGT_EM_Partner_Function__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Account with EMEA rec type</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>LAST_UPDATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

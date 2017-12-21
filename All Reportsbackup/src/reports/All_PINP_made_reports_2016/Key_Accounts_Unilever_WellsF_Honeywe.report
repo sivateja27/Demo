@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_10692579</developerName>
+        <masterLabel>Stages</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>STAGE_NAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>S8- Closed/Won</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PO Received</sourceValue>
+            </sourceValues>
+            <value>Won</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Closed Lost</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S9- Closed/Lost</sourceValue>
+            </sourceValues>
+            <value>Lost</value>
+        </values>
+        <values>
+            <value>Other</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>S5 Close</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S1 Consult</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S2 Audit</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S2 Evaluate</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S3 Solve</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S4 Negotiate</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S1- Prospecting</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S2- Qualifying</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S3- Discovery</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S4- Solution Generation</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S5- Validation</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S6- Quoting</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S7- Negotiating</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S10- Abandon</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S11- Nurture</sourceValue>
+            </sourceValues>
+            <value>Open</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>LEAD_SOURCE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>EXP_AMOUNT</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>PROBABILITY</field>
+    </columns>
+    <columns>
+        <field>AGE</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <operator>equals</operator>
+            <value>unilever,wells fargo,honeywell</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.GE_LGT_Business_Division__c</column>
+            <operator>notEqual</operator>
+            <value>Asia,Latin America,PSO,CFS</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ACCOUNT_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_10692579</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Key Accounts - Unilever, WellsF, Honeywe</name>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>EXP_AMOUNT</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CURY</interval>
+    </timeFrameFilter>
+</Report>

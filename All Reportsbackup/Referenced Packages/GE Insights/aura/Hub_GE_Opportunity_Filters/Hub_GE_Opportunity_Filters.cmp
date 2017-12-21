@@ -1,0 +1,74 @@
+<aura:component controller="geinsights.HubGEAccountTeamController" implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global">      
+    <aura:attribute name="expandFilter" type="boolean" default="true" description="Boolean to expand and collapse country and account components."/>        
+    <aura:attribute name="fromclosedate" type="date" access="private" description="From Close date."/>   
+    <aura:attribute name="toclosedate" type="date" access="private" description="To Close date."/>   
+    <aura:attribute type="string[]" name="optysize" access="private" description="List of tier1 values."
+                    default="All,$0,Greater than $1 and Less than $100K,Greater than 100K and Less than $1MM,Greater than $1MM and Less than $5MM,Greater than $5MM and Less than $50MM,Over $50MM"/>
+    <aura:attribute type="string[]" name="stagename" access="private" description="List of Opty stage values."/>
+    <aura:attribute type="string" name="selectedoptyrange" access="private" description="Selected opty range."/>                    
+    <aura:attribute type="string" name="selectedstagename" access="private" description="Selected Stage name."/>            
+    <aura:attribute type="boolean" name="showerrormsg" access="private" default="false" description="boolean to show error message."/>            
+    <aura:attribute type="string" name="errormsg" access="private" description="error message."/>            
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:registerEvent name="applyFilters" type="geinsights:applyOpportunityFilters"/>
+    <div class="slds-panel__section slds-has-divider--top">
+        <div class="slds-grid">
+            <!--expand and collapse Filter components -->
+            <a onclick="{!c.toggleFilter}">
+                <span>
+                    <span class="slds-text-link--reset slds-truncate">Filter</span>
+                    <aura:if isTrue="{!v.expandFilter}">
+                        <span class="slds-icon_container slds-icon-utility-down slds-m-left--x-small slds-button__icon">
+                            <lightning:icon iconName="utility:chevrondown" size="xx-small" alternativeText="Expand"/></span>
+                    </aura:if>
+                    <aura:if isTrue="{!not(v.expandFilter)}">
+                        <span class="slds-icon_container slds-icon-utility-up slds-m-left--x-small slds-button__icon">
+                            <lightning:icon iconName="utility:chevronright" size="xx-small" alternativeText="Collapse"/></span>
+                    </aura:if>
+                </span></a>
+            <!--Reset Link -->
+            <a href="javascript:void(0);" onclick="{!c.resetFilter}" class="slds-col--bump-left">Reset All</a>
+            
+        </div>
+        <div aura:id="filterPanel" class="slds-show">
+            <!--country Picklist value -->
+            <lightning:layout horizontalAlign="spread" multipleRows="true">
+                <lightning:layoutItem flexibility="auto" padding="around-small" size="12" largeDeviceSize="3" mediumDeviceSize="6" smallDeviceSize="12">                                                                                    
+                    <lightning:input type="date" label="From Close Date" name="date" value="{!v.fromclosedate}" onchange="{!c.onChangeFromDate}"/>
+                    
+                </lightning:layoutItem>                
+                <lightning:layoutItem flexibility="auto" padding="around-small" size="12" largeDeviceSize="3" mediumDeviceSize="6" smallDeviceSize="12">                    
+                    <lightning:input type="date" label="To Close Date" name="date" value="{!v.toclosedate}" onchange="{!c.onChangeToDate}"/>
+                </lightning:layoutItem> 
+                <lightning:layoutItem flexibility="auto" padding="around-small" size="12" largeDeviceSize="3" mediumDeviceSize="6" smallDeviceSize="12">                    
+                    <lightning:select aura:id="optyrange" name="Opportunity Range" label="Opportunity Range" onchange="{!c.onChangeOptyRange}" value="{!v.selectedoptyrange}">
+                        <aura:iteration items="{!v.optysize}" var="item" >
+                            <ui:inputSelectOption label="{!item}" /> 
+                        </aura:iteration>
+                    </lightning:select> 
+                </lightning:layoutItem> 
+                <lightning:layoutItem flexibility="auto" padding="around-small" size="12" largeDeviceSize="3" mediumDeviceSize="6" smallDeviceSize="12">                    
+                    <table>
+                        <tr>
+                            <td>
+                                <lightning:select aura:id="stage" name="Stage Name" label="Stage Name"  onchange="{!c.onChangeStagename}" value="{!v.selectedstagename}">                        
+                                    <aura:iteration items="{!v.stagename}" var="item" >
+                                        <ui:inputSelectOption label="{!item}" /> 
+                                    </aura:iteration>
+                                </lightning:select>
+                            </td>
+                            <td>
+                                <lightning:button aura:id="applyfilter" variant="brand" label="Apply" class="slds-cell-buffer_right margintop" onclick="{! c.applyFilterValues }" />
+                            </td>
+                        </tr>
+                    </table>                                        
+                </lightning:layoutItem> 
+                
+            </lightning:layout> 
+            <aura:if isTrue="{!v.showerrormsg}">
+            	<h1 style="color:red;">{!v.errormsg}</h1>
+            </aura:if>
+        </div>
+    </div>
+</aura:component>

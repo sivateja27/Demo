@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Opportunity$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Account</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity$Amount</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Opportunity_Support_Requests__r$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity$StageName</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Opportunity_Support_Requests__r$Competitors__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>Opportunities that are Closed Lost for FY 2016 having Pricing OSR with Competitors Acuity</description>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity.Opportunity_Support_Requests__r$Pricing_Request__c</column>
+            <operator>equals</operator>
+            <value>Pricing Request</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Opportunity_Support_Requests__r$Competitors__c</column>
+            <operator>equals</operator>
+            <value>Acuity</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Opportunities FY2016 with Pricing OSR</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity_with_Pricing_OSR__c</reportType>
+    <roleHierarchyFilter>GE_Lighting_CEO</roleHierarchyFilter>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Opportunity$CreatedDate</dateColumn>
+        <endDate>2016-07-14</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2015-08-14</startDate>
+    </timeFrameFilter>
+</Report>

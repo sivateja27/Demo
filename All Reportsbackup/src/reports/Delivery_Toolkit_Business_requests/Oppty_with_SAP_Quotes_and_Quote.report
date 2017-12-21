@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Opportunity$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity.SAP_Quotes__r$Converted_to_Quote__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.SAP_Quotes__r$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity$SyncedQuote.Name</field>
+    </columns>
+    <currency>USD</currency>
+    <description>how many Quotes are created to Opportunity and synced?</description>
+    <format>Tabular</format>
+    <name>Oppty with SAP Quotes and Quote</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Oppty_with_SAP_Quotes_and_Quote__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Opportunity$SyncedQuote.Name</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Opportunity.SAP_Quotes__r$Expiration_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-08-30</startDate>
+    </timeFrameFilter>
+</Report>

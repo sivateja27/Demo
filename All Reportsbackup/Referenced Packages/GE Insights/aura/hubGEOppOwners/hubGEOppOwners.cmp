@@ -1,0 +1,103 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" controller="geinsights.HubGEAccountTeamController">
+    <aura:dependency resource="geinsights:hubGEOppDetailsHeader" />
+    <aura:dependency resource="geinsights:HubGETier1DetailsHeader" />
+    <aura:dependency resource="geinsights:Hub_GE_Tier_Filters" />
+    <aura:attribute name="isAccountTeam" type="boolean" default="false" description="Boolean to determine Account Owners or Opportunity owners component"/>
+    <aura:attribute name="ownerOnly" type="boolean" default="false" description="Boolean to display only the accounts with role as Account Owner"/>
+    <aura:attribute name="id" type="String" access="global" description="Commercial Entity id used to pass get back to account(snapshot)"/>
+    <aura:attribute name="country" type="String" access="global" description="Design attribute used to filter by country" default="All"/>
+    <aura:attribute name="business" type="String" access="global" description="Design attribute that specifies the Tier 1 Business to display Top Opportunity Owners of that Business"/>
+    <aura:attribute name="searchAccId" type="String" access="global" description="Used to display the list of records searched by Account"/>
+    <aura:attribute name="showOptyOwnersByTiers" type="boolean" default="false" description="Boolean value to show opportunities header by tier1 business and tier2 business"/>
+    <aura:attribute name="emailString" type="String" access="global" description="Email String"/>
+    <aura:attribute name="tier1Value" type="String" access="global" default="All" description="selected value for Tier1."/>
+    <aura:attribute name="tier2Value" type="String" access="global" default="All" description="selected value for Tier2."/>
+    <aura:attribute name="errors" type="Object[]" access="private"/>
+    <aura:attribute name="showError" type="boolean" access="private" default="false"/>
+    <aura:attribute name="spinner" type="boolean" default="false" access="private"/>
+    <aura:attribute name="isAccCmp" type="boolean"  access="global" default="false"/>
+    
+    <aura:handler name="showOptyOwnersByTier" event="geinsights:GE_RefreshOptyComponent" action="{!c.getOptydetails}" description="Event handler to get the opportunity details when the component is refreshed"/>    
+    
+    <aura:attribute name="salesrepId" type="String" access="global" description="Contains sales representative id to pass to fetch the opportunities"/>
+    <aura:attribute name="salesrepRole" type="String" access="global" description="Contains sales representative Role to pass to fetch the opportunities"/>
+    <aura:attribute name="tier1name" type="String" access="global" description="Tier1 Business"/>
+    <aura:attribute name="tier2name" type="String" access="global" description="Tier2 Business"/>
+    <aura:attribute name="accId" type="String" access="global" description="Account Id"/>
+    <aura:attribute name="isOpen" type="boolean" default="false"/>
+    <aura:attribute name="hideEmail" type="boolean" default="false"/>
+    
+    
+    <aura:registerEvent name="backToSnapshot" type="geinsights:GE_Back_Button"  description="Event handler to go back to snapshot component"/>
+    <aura:handler name="backtoOptyOwners" event="geinsights:GE_Back_Button" action="{!c.refreshPage}" description="Event handler to go back to Opportunity owners component"/>
+    <aura:attribute name="navigateBackScreen" type="String" access="global" description="Used to navigate back to snapshot component"/>    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.tier1Value}" action="{!c.doInit}"/>
+    <aura:handler name="change" value="{!v.tier2Value}" action="{!c.doInit}"/>
+    
+    <aura:if isTrue="{!not(v.showOptyOwnersByTiers)}">
+        <article class="slds-card" aura:id="text">
+            
+            <lightning:card iconName="{!(v.isAccountTeam)?'standard:person_account':'standard:team_member'}">
+                <aura:set attribute="title">
+                    <aura:if isTrue="{!v.isAccountTeam}">
+                        Account Team
+                        <aura:set attribute="else">
+                            Opportunity Owners
+                        </aura:set>
+                    </aura:if>
+                </aura:set>
+                
+                <aura:set attribute="footer">
+                    
+                </aura:set>
+                <aura:set attribute="actions">
+                    <aura:if isTrue="{!not(v.hideEmail)}"><a class="slds-button slds-button_brand" href = "{!v.emailString}">Email All</a></aura:if>
+                    <lightning:button variant="brand" label="Back" onclick="{! c.gotoOptyOwners }" />
+                </aura:set>
+                <div class="slds-card__body"> 
+                    <geinsights:Hub_GE_Tier_Filters selectedTier1="{!v.tier1Value}" selectedTier2="{!v.tier2Value}" />
+                    <aura:if isTrue="{!v.spinner}">
+                        
+                        <geinsights:hubGESpinner />
+                        <aura:set attribute="else">
+                            <aura:if isTrue="{!v.isAccountTeam}">
+                                <aura:if isTrue="{!v.showError}">
+                                    <!-- Component to display errors-->
+                                    <geinsights:HUB_GE_Error errors="{!v.errors}"></geinsights:HUB_GE_Error>
+                                </aura:if>
+                                
+                                <lightning:tabset >
+                                    
+                                    <lightning:tab aura:id="accountTeam" label="Account Team"  onactive="{!c.showData}"  id="accountTeam">
+                                        <geinsights:HubGETier1DetailsHeader id="{!v.id}" country="{!v.country}" ownerOnly="false" 
+                                                                   business="{!v.business}" searchAccId="{!v.searchAccId}" 
+                                                                   isAccountTeam="{!v.isAccountTeam}" selectedTier1="{!v.tier1Value}" selectedTier2="{!v.tier2Value}"/></lightning:tab>
+                                    <lightning:tab aura:id="accountOwner" label="Account Owners" onactive="{!c.showData}"  id="accountOwner">
+                                        <geinsights:HubGETier1DetailsHeader id="{!v.id}" country="{!v.country}" ownerOnly="true" 
+                                                                   business="{!v.business}" searchAccId="{!v.searchAccId}" isAccountTeam="{!v.isAccountTeam}"
+                                                                   selectedTier1="{!v.tier1Value}" selectedTier2="{!v.tier2Value}"/></lightning:tab>
+                                    
+                                </lightning:tabset> 
+                                <aura:set attribute="else">
+                                    <geinsights:HubGETier1DetailsHeader id="{!v.id}" country="{!v.country}" ownerOnly="{!v.ownerOnly}" 
+                                                               business="{!v.business}" searchAccId="{!v.searchAccId}" isAccountTeam="{!v.isAccountTeam}"
+                                                               selectedTier1="{!v.tier1Value}" selectedTier2="{!v.tier2Value}"/>
+                                </aura:set>
+                                
+                            </aura:if>  
+                        </aura:set>
+                    </aura:if>
+                </div>
+            </lightning:card>
+        </article>
+    </aura:if>
+    
+    <aura:if isTrue="{!(v.showOptyOwnersByTiers)}">
+        <geinsights:hubGEOppDetailsHeader id="{!v.id}" tier1="{!v.tier1name}" tier2="{!v.tier2name}" 
+                                 salesRep="{!v.salesrepId}" country="{!v.country}" isowner="{!v.ownerOnly}" 
+                                 business="{!v.business}" searchAccId="{!v.searchAccId}" isAccountTeam="{!v.isAccountTeam}" role="{!v.salesrepRole}"/>        
+    </aura:if>
+    
+    <geinsights:Hub_User_feedback componentName="{!(v.isAccountTeam)?'Account Owners':'Opportunity Owners'}"/> 
+</aura:component>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_29760747</developerName>
+        <masterLabel>Release Name*</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Request__c.Release_Name__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>2017 AUG 31</sourceValue>
+            </sourceValues>
+            <value>2017 08 31</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>2017 AUG 24</sourceValue>
+            </sourceValues>
+            <value>2017 08 24</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>2017 AUG 22</sourceValue>
+            </sourceValues>
+            <value>2017 08 22</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>2017 AUG 17</sourceValue>
+            </sourceValues>
+            <value>2017 08 17</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>2017 SEPT 14</sourceValue>
+            </sourceValues>
+            <value>2017 09 14</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>2017 SEPT 07</sourceValue>
+            </sourceValues>
+            <value>2017 09 07</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>2017 AUG 10</sourceValue>
+            </sourceValues>
+            <value>2017 08 10</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Request__c.Request_No__c</field>
+    </columns>
+    <columns>
+        <field>Request__c.Project_Name__c</field>
+    </columns>
+    <columns>
+        <field>Request__c.Solution_Owner__c</field>
+    </columns>
+    <columns>
+        <field>Request__c.Request_Category__c</field>
+    </columns>
+    <columns>
+        <field>Request__c.Business_Value__c</field>
+    </columns>
+    <columns>
+        <field>Request__c.Level_of_Effort__c</field>
+    </columns>
+    <columns>
+        <field>Request__c.Release_Type__c</field>
+    </columns>
+    <columns>
+        <field>BucketField_29760747</field>
+    </columns>
+    <columns>
+        <field>Request__c.Request_Stage__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Request__c.Project_Name__c</column>
+            <operator>notContain</operator>
+            <value>Toolkit,Price Agreement</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Request__c.Request_Stage__c</column>
+            <operator>notEqual</operator>
+            <value>Closed,Drafting</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Request__c.Release_Name__c</column>
+            <operator>equals</operator>
+            <value>2017 AUG 22,2017 AUG 24,2017 AUG 31,2017 SEPT 07,2017 SEPT 14</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Request__c.Assigned_To__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Design Review - August 23, 2017</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Request__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>BucketField_29760747</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Request__c.Close_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

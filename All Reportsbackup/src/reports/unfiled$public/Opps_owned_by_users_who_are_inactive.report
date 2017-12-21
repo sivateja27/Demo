@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>User$Name</field>
+    </columns>
+    <columns>
+        <field>User.Opportunity$OwnerId$Name</field>
+    </columns>
+    <columns>
+        <field>User.Opportunity$OwnerId$Account</field>
+    </columns>
+    <currency>USD</currency>
+    <description>This report is ran “Weekly” sent to management and give them a week to resign. Closed lost ops if no response from management.</description>
+    <filter>
+        <criteriaItems>
+            <column>User$IsActive</column>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User*User$GE_LGT_Business_Division__c</column>
+            <operator>equals</operator>
+            <value>North America</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.Opportunity$OwnerId$StageName</column>
+            <operator>equals</operator>
+            <value>S1 Consult,S2 Audit,S2 Evaluate,S3 Solve,S4 Negotiate,S5 Close,S1- Prospecting,S2- Qualifying,S3- Discovery,S4- Solution Generation,S5- Validation,S6- Quoting,S7- Negotiating,S11- Nurture</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Opps owned by users who are inactive</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunities_with_Users__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>User$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

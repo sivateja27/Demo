@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CollaborationGroup$Name</field>
+    </columns>
+    <columns>
+        <field>CollaborationGroup.FeedItems$CreatedBy</field>
+    </columns>
+    <columns>
+        <field>CollaborationGroup.FeedItems$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>CollaborationGroup.FeedItems$Body</field>
+    </columns>
+    <columns>
+        <field>CollaborationGroup.FeedItems$LikeCount</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>CollaborationGroup$CollaborationType</column>
+            <operator>equals</operator>
+            <value>u</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CollaborationGroup.FeedItems$CreatedDate</column>
+            <operator>greaterOrEqual</operator>
+            <value>2/1/2014 12:00 AM</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CollaborationGroup.FeedItems$CommentCount</field>
+        <sortOrder>Desc</sortOrder>
+    </groupingsDown>
+    <name>Chatter Groups - Most Comments</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Chatter_Groups_with_Activities__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CollaborationGroup$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

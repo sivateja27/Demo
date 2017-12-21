@@ -1,0 +1,8 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+  	<aura:attribute name="id" type="String" access="global" description="Account Id of Account from spoke."/> 
+    <aura:attribute name="hubInsights" type="boolean" access="private" description="When true the HUBCommercialEntitySnapshot component is loaded."/> 
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" /> 
+    <aura:if isTrue="{!v.hubInsights}">
+        <geinsights:HUBCommercialEntitySnapshot recordId="{!v.id}"/> 
+    </aura:if>                          
+</aura:component>

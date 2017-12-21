@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Sales_Concession_Request__c.GE_LGT_Concession_Status__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Sales_Concession_Request__c.GE_LGT_Actual_Amount__c</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Sales_Concession_Request__c.GE_LGT_Requestor__c</field>
+    </columns>
+    <columns>
+        <field>Sales_Concession_Request__c.GE_LGT_Distributor__c</field>
+    </columns>
+    <columns>
+        <field>Sales_Concession_Request__c.GE_LGT_Fixture_Agency__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Sales_Concession_Request__c.GE_LGT_Concession_Status__c</column>
+            <operator>equals</operator>
+            <value>Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Sales_Concession_Request__c.GE_LGT_Actual_Amount__c</column>
+            <operator>greaterOrEqual</operator>
+            <value>USD 30000</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Sales_Concession_Request__c.Approver__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Sales Concession &gt;30K</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Sales_Concession_Request__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Sales_Concession_Request__c.GE_LGT_Date_Logged__c</dateColumn>
+        <interval>INTERVAL_CURFY</interval>
+    </timeFrameFilter>
+</Report>

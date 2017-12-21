@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>RECORDTYPE</field>
+    </columns>
+    <columns>
+        <field>TYPE</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <operator>equals</operator>
+            <value>Account.GE_LGT_End_User</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>USERS.NAME</column>
+            <operator>equals</operator>
+            <value>Rudy Calderon,George Filtsos,Ryan Holzhueter,Jimmy johnson,Adam Maggio,Albert Mikula,Chris Olson,Gene Taylor,Bryan Vogus,Derek Publicover,Logan Broadbent,kent Gicker,John Koster,Tyler Mctique,Sandy Nosco,Mary Pagano,Jeffrey Pawlak,Dallas Buchanan,Harry O&apos;Brian,Craig Hall,Sanjiv More,Jesse Nercession,Joshua Powell,Leigh Savage,Jay Thompson,Beth Zdrojewski,Tammy Salvatore,Julian Chatwin,Nabil Salem</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>End User Accts Owned By Strat Team- NA</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>ACCOUNT.NAME</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <endDate>2017-06-16</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2016-01-01</startDate>
+    </timeFrameFilter>
+</Report>

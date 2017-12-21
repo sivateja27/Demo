@@ -1,0 +1,112 @@
+<aura:component controller="geinsights.HubGEAccountTeamController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:dependency resource="geinsights:hubGEOppOwners" />
+    <aura:attribute name="independentComp" type="boolean" default="true" description="Boolean to indicate if the component is navigated from another component or not"/>
+    <aura:attribute name="errors" type="Object[]" access="private"/> 
+    <aura:attribute name="showError" type="boolean" access="private" default="false"/> 
+    <aura:attribute name="showFilter" type="boolean" access="global" default="true" description="Boolean to show Country and Account Filter or not "/> 
+    <aura:attribute name="legalEntityId" type="String" access="global" description="Top Account Owners belong to the commercial entity associated with this legal Entity Id "/>
+    <aura:attribute name="commercialEntityId" type="String" access="global" description="Top Account Owners belong to this commercial entity id "/>
+    <aura:attribute name="searchAccId" type="String" access="global" description="Top Account Owners belong to this Account Id "/>
+    <aura:attribute name="numOfRecords" type="Integer" access="global" default="5" description="Maximum number of Top Account Owners to be displayed"/>
+    <aura:attribute name="country" type="String" access="global" description="Specify the country to display Top Account Owners of that Country "/>
+    <aura:attribute name="business" type="String" access="global" description="Specify the Tier 1 Business to display Top Account Owners of that Business unit"/>
+    <aura:attribute name="showFullAccount" type="boolean" access="private" default="false"/>
+    
+    <aura:attribute name="accountowners" type="Integer" default="0" access="private"/> 
+    <aura:attribute name="items" type="geinsights.AccTeamOpptyWrapper[]" access="private"/>
+    
+    <aura:attribute name="isAccCmp" type="boolean"  access="global"/>
+    
+    <aura:registerEvent name="clearComponents" type="geinsights:ClearComponentsInSnapshot" description="This event is fired on click of View All button to display all account owners"/>
+    <aura:handler event="geinsights:ClearComponentsInSnapshot" action="{!c.toggleComps}" phase="capture" description="Takes the view to more detail data components."/>
+    <aura:handler name="backToSnapshot" event="geinsights:GE_Back_Button" action="{!c.refreshPage}" description="Handles back button event from all account owners component"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" /> 
+    <aura:attribute name="spinner" type="boolean" default="false" access="private"/>
+    
+    <aura:handler name="filterChange" event="geinsights:HUB_GE_Filter_Change"
+                  action="{!c.updateFilter}" description="Filters the Account owner component content based on changes in the filter component."/> 
+    
+    <aura:method name="refreshFilterChange" action="{!c.handleValueChange}" 
+                 description="Updates the filters in the Account owner component content based on changes in the filter component"> 
+    </aura:method>    
+    <aura:if isTrue="{!not(v.showFullAccount)}">
+        <!-- Loading spinner end-->  
+        <lightning:card iconName="standard:person_account">
+            <aura:set attribute="title">
+                Account Team ({!v.accountowners} people)
+            </aura:set>
+            <aura:if isTrue="{!v.showError}">
+                <!-- Component to display errors-->
+                <geinsights:HUB_GE_Error errors="{!v.errors}"></geinsights:HUB_GE_Error>
+            </aura:if>
+            
+            <aura:set attribute="footer">
+                <lightning:button variant="brand" label="View All" onclick="{!c.viewAllTeam}" />
+            </aura:set>
+            <aura:set attribute="actions">                    
+            </aura:set>
+            
+            
+            <aura:if isTrue="{!not(v.showError)}">
+                <aura:if isTrue="{!and(v.showFilter,v.commercialEntityId !=null)}">                       
+                    <geinsights:HUB_GE_Filter commercialEntityId="{!v.commercialEntityId}" selValue="{!v.country}" selAccValue="{!v.searchAccId}"/>
+                </aura:if>
+                <aura:if isTrue="{!v.spinner}">
+                    <geinsights:hubGESpinner /> 
+                    <aura:set attribute="else">
+                        
+                        <table class="slds-table slds-table--bordered slds-no-row-hover slds-max-medium-table--stacked slds-table--fixed-layout">
+                            <thead>
+                                <tr class="slds-text-title--caps slds-text-heading--label">
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="Business">Tier 1 Business</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="Business">GE Sales Rep</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="Business">Email</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="Business">Phone</div>
+                                    </th>
+                                </tr>
+                            </thead>                        
+                            <tbody>                                                           
+                                <aura:iteration items="{!v.items}" var="item" >
+                                    <tr class="slds-hint-parent">                                            
+                                        <td data-label="Tier 1 Business">
+                                            <div class="slds-truncate">
+                                                <ui:outputText value="{#item.industryGroup}"/>
+                                            </div>
+                                        </td>                                    
+                                        <td data-label="GE Sales Rep">
+                                            <div class="slds-truncate">
+                                                <ui:outputText value="{#item.geSalesRepFullName}"/>
+                                            </div>
+                                        </td>
+                                        <td data-label="Email">
+                                            <div class="slds-truncate">
+                                                <ui:outputEmail value="{#item.geSalesRepEmail}"/>
+                                            </div>
+                                        </td>
+                                        <td data-label="Phone">
+                                            <div class="slds-truncate">
+                                                <ui:outputPhone value="{#item.geSalesRepPhone}"/>
+                                            </div>
+                                        </td>
+                                    </tr>  
+                                </aura:iteration>  
+                            </tbody>
+                        </table>
+                    </aura:set>
+                </aura:if>  
+                
+            </aura:if>
+        </lightning:card>
+        <aura:set attribute="else">
+            {!v.body}
+        </aura:set>
+    </aura:if>   
+</aura:component>

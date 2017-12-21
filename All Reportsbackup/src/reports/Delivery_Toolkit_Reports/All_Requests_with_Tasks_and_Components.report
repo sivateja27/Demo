@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Request__c$Project_Name__c</field>
+    </columns>
+    <columns>
+        <field>Request__c$Request_Category__c</field>
+    </columns>
+    <columns>
+        <field>Request__c.Delivery_Tasks__r$Assigned_To__c</field>
+    </columns>
+    <columns>
+        <field>Request__c.Delivery_Tasks__r$Due_Date__c</field>
+    </columns>
+    <columns>
+        <field>Request__c.Delivery_Tasks__r$Estimated_Hours__c</field>
+    </columns>
+    <columns>
+        <field>Request__c.Delivery_Tasks__r$Actual_Hours__c</field>
+    </columns>
+    <currency>USD</currency>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Request__c$Request_Name_short__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Request__c.Delivery_Tasks__r$Task_Name_Short__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>All Requests with Tasks and Components</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Requests_and_Related_Info__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Request__c$Close_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

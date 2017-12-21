@@ -1,0 +1,15 @@
+<aura:documentation>
+	<aura:description>
+    	<p>This component is used to display the opportunity owners grouped by Tier1 business and the number of opportunitites associated with GE Sales Representatives and the total opportunities amount. 
+            
+            If the recordId is Legal Entity Account , based on it's commercial entity, the Account owners are displayed.            
+            
+            If the Account Id is a Commercial Entity, then account record should have corresponding Hub Identifier value.           
+            
+            If the Account Id is a Legal Entity, then account record should have Commercial Entity with corresponding Hub Identifier value. This is an independent component. </p>
+        
+        <p>This example shows how to display Top Account owners by providing account Id, either commercialEntityId or legalEntityId attribute and showFilter to <code>geinsights:HUB_GE_Filter</code> component <code>geinsights:HUB_GE_Opportunity_Owners</code>.</p>
+    	<pre>&lt;geinsights:HUB_GE_Opportunity_Owners commercialEntityId="{!v.id}" legalEntityId ="{!v.legalEntityid}" showFilter="true"/&gt;</pre>
+    </aura:description>
+	
+</aura:documentation>

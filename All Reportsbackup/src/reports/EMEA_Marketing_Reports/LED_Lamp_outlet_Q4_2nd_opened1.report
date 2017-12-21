@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_32946463</developerName>
+        <masterLabel>Language name</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>CAMPAIGN_NAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>EMEA 2014-11 eDM - LED Lamp outlet 2nd edition 2014 Spanish</sourceValue>
+            </sourceValues>
+            <value>Spanish</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMEA 2014-11 eDM - LED Lamp outlet 2nd edition 2014 Hungarian</sourceValue>
+            </sourceValues>
+            <value>Hungarian</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMEA 2014-11 eDM - LED Lamp outlet 2nd edition 2014 French</sourceValue>
+            </sourceValues>
+            <value>French</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMEA 2014-10 eBlast - eDM - LED Lamp outlet 2nd edition 2014</sourceValue>
+            </sourceValues>
+            <value>English</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMEA 2014-11 eDM - LED Lamp outlet 2nd edition 2014 Russian</sourceValue>
+            </sourceValues>
+            <value>Russian</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>CAMPAIGN_NAME</field>
+    </columns>
+    <columns>
+        <field>EMAIL</field>
+    </columns>
+    <columns>
+        <field>MEMBER_STATUS</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>EMAIL</column>
+            <operator>notContain</operator>
+            <value>@ge.com</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CAMPAIGN_NAME</column>
+            <operator>contains</operator>
+            <value>EMEA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CAMPAIGN_NAME</column>
+            <operator>contains</operator>
+            <value>LED Lamp outlet 2nd edition 2014</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_STATUS</column>
+            <operator>equals</operator>
+            <value>Opened</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>EMAIL</column>
+            <operator>notContain</operator>
+            <value>ge.com</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>EMAIL_OPT_OUT</column>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_32946463</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>LED Lamp outlet Q4 2nd - opened</name>
+    <params>
+        <name>scopeid</name>
+        <value></value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CampaignLead</reportType>
+    <scope>orgAll</scope>
+    <showDetails>true</showDetails>
+</Report>

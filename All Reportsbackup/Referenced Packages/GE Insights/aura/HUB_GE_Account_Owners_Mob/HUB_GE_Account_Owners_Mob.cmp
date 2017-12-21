@@ -1,0 +1,145 @@
+<aura:component controller="geinsights.HubGEAccountTeamController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >	
+    <aura:attribute name="showFilter" type="boolean" access="global" description="Boolean value to show filter"/>           
+    <aura:attribute name="numOfRecords" type="Integer" access="global" default="10" description="Determines maximum number of records to be displayed on the page"/>
+    <aura:attribute name="country" type="String" access="global" description="Value to filter by country"/>
+    <aura:attribute name="business" type="String" access="global" description="Value to filter by business unit"/>
+    <aura:attribute name="searchAccId" type="String" access="global" description="Value to search by account"/>
+    <aura:attribute name="spinner" type="Boolean" access="private" default="false" description="Boolean value to show spinner"/>
+    
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" description="Action to perform on the component load"/>          
+    <aura:handler name="backtoOptyOwners" event="geinsights:GE_Back_Button" action="{!c.refreshPage}" description="Even to get back to the Account owners page"/>    
+    <aura:attribute name="items" type="HubInsight_Aggregation_c__x[]" access="private" description="List of records"/>
+    <aura:attribute name="salesrepdtls" type="HubInsight_Aggregation_c__x" access="private" description="Contains the details of Sales Representative"/>
+    <aura:attribute name="opps" type="Opportunity__x[]" access="private" description="List of Opportunity records"/>
+    <aura:attribute name="commercialEntityId" type="String" access="global" description="Top Account Owners belong to this commercial entity id "/>
+    <aura:attribute name="legalEntityId" type="String" access="global" description="Top Account Owners belong to the commercial entity associated with this legal Entity Id "/>    
+    
+    <aura:attribute name="showSalesRepDetails" type="boolean" access="private" description="Boolean value to show sales representative details"/>    
+    <aura:attribute name="showTopTenOptyOwners" type="boolean" access="private" description="Boolean value to show to Top 10 Account owners"/>
+    <aura:attribute name="showopportunities" type="boolean" access="private" description="Boolean value to show opportunities"/>    
+    <aura:handler name="filterChange" event="geinsights:HUB_GE_Filter_Change"
+                  action="{!c.updateFilter}" description="Event handler whan the filter is changed"/>
+    
+    <lightning:card iconName="standard:person_account">
+        <aura:set attribute="title">
+            <aura:if isTrue="{!v.showopportunities}">
+                Opportunities 
+            </aura:if>
+            <aura:if isTrue="{!v.showSalesRepDetails}">
+                Sales Rep Details 
+            </aura:if>
+            <aura:if isTrue="{!v.showTopTenOptyOwners}">
+                Top Account Team Members
+            </aura:if>
+        </aura:set>
+        <aura:set attribute="footer">
+            
+        </aura:set>
+        <aura:set attribute="actions">
+            <aura:if isTrue="{!v.showSalesRepDetails || v.showopportunities}">
+                <lightning:button variant="brand" label="Back" onclick="{! c.viewTopAccounts }" />
+            </aura:if>
+        </aura:set>   
+        <aura:if isTrue="{!v.showTopTenOptyOwners}">
+            <aura:if isTrue="{!v.commercialEntityId != null}">
+                <geinsights:HUB_GE_Filter commercialEntityId="{!v.commercialEntityId}" selValue="{!v.country}" selAccValue="{!v.searchAccId}"/>
+            </aura:if>
+            <aura:if isTrue="{!v.spinner}">
+                <geinsights:hubGESpinner /> 
+                <aura:set attribute="else">
+                    <ul class="slds-has-dividers_around-space  slds-p-horizontal_x-small">
+                        <aura:iteration items="{!v.items}" var="item" >
+                            <li class="slds-item">
+                                <article class="slds-tile slds-tile_board">
+                                    <h3 class="slds-truncate" title="{!item.geSalesRepFullName}">
+                                        <a data-record= "{!item.geSalesrepExternalId }" onclick="{!c.showSalesRepDetails}"> <ui:outputText title="{!item.geSalesRepFullName}" value="{!item.geSalesRepFullName}"  /> </a>
+                                    </h3>
+                                    <div class="slds-tile__detail slds-text-body_small">
+                                        <p class="slds-text-heading_medium"><a data-record="{!item.geSalesrepExternalId }" onclick="{!c.showOppDetails}"> <ui:outputCurrency value="{!item.totalOpptyAmount }" currencySymbol="USD"/> </a></p>
+                                    </div>
+                                </article>
+                            </li>
+                        </aura:iteration>  
+                    </ul>
+                </aura:set>
+            </aura:if>
+        </aura:if>
+        <aura:if isTrue="{!v.showSalesRepDetails}">
+            <!-- Sales rep details-->
+            <table class="slds-table slds-table--bordered slds-no-row-hover slds-max-medium-table--stacked slds-table--fixed-layout">
+                <thead>
+                    <tr class="slds-text-title--caps">
+                        <th scope="col">
+                            <div class="slds-truncate" title="Name">Name</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Tier 1">Tier 1</div>
+                        </th> 
+                        <th scope="col">
+                            <div class="slds-truncate" title="Tier 2">Tier 2</div>
+                        </th> 
+                        <th scope="col">
+                            <div class="slds-truncate" title="Email">Email</div>
+                        </th> 
+                        <th scope="col">
+                            <div class="slds-truncate" title="Phone">Phone</div>
+                        </th> 
+                    </tr>
+                </thead>
+                <tbody>                    
+                    <tr class="slds-hint-parent">
+                        <td data-label="Name">
+                            <div class="slds-truncate">
+                                <ui:outputText title="{!v.salesrepdtls.name}" value="{!v.salesrepdtls.name}"/>
+                            </div>
+                        </td>
+                        <td data-label="Tier 1">
+                            <div class="slds-truncate">
+                                <ui:outputText title="{!v.salesrepdtls.tier1}" value="{!v.salesrepdtls.tier1}"/>
+                            </div>
+                        </td>
+                        <td data-label="Tier 2">
+                            <div class="slds-truncate">
+                                <ui:outputText title="{!v.salesrepdtls.tier2}" value="{!v.salesrepdtls.tier2}"/>
+                            </div>
+                        </td>
+                        <td data-label="Email">
+                            <div class="slds-truncate">
+                                <ui:outputEmail value="{!v.salesrepdtls.email}"/>
+                            </div>
+                        </td>
+                        <td data-label="Phone">
+                            <div class="slds-truncate">
+                                <ui:outputPhone value="{!v.salesrepdtls.phone }"/>
+                            </div>
+                        </td>                                                        
+                    </tr>                                       
+                </tbody>
+            </table>
+        </aura:if>
+        <aura:if isTrue="{!v.showopportunities}">
+            <!-- Opportunity details-->
+            <ul class="slds-has-dividers_around-space  slds-p-horizontal_x-small">
+                <aura:iteration items="{!v.opps}" var="item" >
+                    <li class="slds-item">
+                        <article class="slds-tile slds-tile_board">
+                            <h3 class="slds-truncate" title="{!item.name}">
+                                <a data-record="{!item.Id }" onclick="{!c.navigatetoOpp}"><ui:outputText title="{!item.name}" value="{!item.name}"  /></a>
+                            </h3>
+                            <div class="slds-tile__detail slds-text-body_small">
+                                <p class="slds-text-heading_medium"> <ui:outputCurrency value="{!item.amount }" currencySymbol="{!item.currencyCode +' '}"/> </p>
+                                <p class="slds-truncate" title="{!item.accountName }">
+                                    <a data-record="{!item.accountId }" onclick="{!c.navigatetoOpp}"><ui:outputText value="{!item.accountName }"/></a>
+                                </p>
+                                <p class="slds-truncate" title="{!'Closing'+item.closeDate }">Closing  <ui:outputDate value="{!item.closeDate }"/> </p>
+                            </div>
+                            <div class="slds-tile__detail slds-text-body_small">
+                                <ui:outputText value="{!item.stageName }"/> 
+                            </div>
+                        </article>
+                    </li>
+                </aura:iteration>  
+            </ul>
+        </aura:if>
+    </lightning:card>            
+</aura:component>

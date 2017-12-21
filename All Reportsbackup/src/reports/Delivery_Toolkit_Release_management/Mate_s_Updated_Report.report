@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Request__c.Request_No__c</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>Request__c.Release_Name__c</field>
+    </columns>
+    <columns>
+        <field>Request__c.Request_Stage__c</field>
+    </columns>
+    <columns>
+        <field>Request__c.Status__c</field>
+    </columns>
+    <columns>
+        <field>Request__c.Solution_Owner__c</field>
+    </columns>
+    <columns>
+        <field>Request__c.Assigned_To__c</field>
+    </columns>
+    <columns>
+        <field>Request__c.Business_Value__c</field>
+    </columns>
+    <columns>
+        <field>Request__c.Solution_Type__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>need to be groomed and assigned to a release date</description>
+    <filter>
+        <booleanFilter>1 OR (2 and 3) OR (3 and 4)</booleanFilter>
+        <criteriaItems>
+            <column>Request__c.Request_No__c</column>
+            <operator>contains</operator>
+            <value>375,374,331,350,351,269,145,285,291,385,336</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_NAME</column>
+            <operator>equals</operator>
+            <value>Platform Excellence</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Request__c.Release_Name__c</column>
+            <operator>contains</operator>
+            <value>unassigned</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Request__c.Request_Stage__c</column>
+            <operator>equals</operator>
+            <value>Verification,Validation,Deployment Ready</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Priority tickets for July from PB</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Request__c@Request__c.Project_Name__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Request__c.Request_Stage__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Request__c.Close_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

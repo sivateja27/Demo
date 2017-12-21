@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>AgentType__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>AgentType</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CallReference__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>CallReference</label>
+        <required>false</required>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Called__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The number that was called by the originator. (DNIS)</description>
+        <externalId>false</externalId>
+        <label>Called</label>
+        <required>false</required>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Caller__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The number that was dialed by the originator of the call. (ANI)</description>
+        <externalId>false</externalId>
+        <label>Caller</label>
+        <required>false</required>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>UCID__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Universal Call ID for the Avaya telephone system.</description>
+        <externalId>false</externalId>
+        <label>UCID</label>
+        <length>20</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>UUI__c</fullName>
+        <deprecated>false</deprecated>
+        <description>User-to-User Information as provided by the CTI link</description>
+        <externalId>false</externalId>
+        <label>UUI</label>
+        <length>96</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+</CustomObject>

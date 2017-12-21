@@ -1,0 +1,4 @@
+<aura:event type="COMPONENT" description="This event is fired when the filter value is changed" >
+    <aura:attribute name="type" type="String" description="Contains Country or Account text"/>
+    <aura:attribute name="value" type="String" description="Corresponding Country or AccountId value"/>
+</aura:event>

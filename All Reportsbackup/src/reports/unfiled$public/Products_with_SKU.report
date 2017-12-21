@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Product2$Name</field>
+    </columns>
+    <columns>
+        <field>Product2$Product_Hierarchy_Code__c</field>
+    </columns>
+    <columns>
+        <field>Product2.Material_Masters__r$Name</field>
+    </columns>
+    <columns>
+        <field>Product2.Material_Masters__r$GE_LGT_EM_SAP_MaterialNumber__c</field>
+    </columns>
+    <currency>USD</currency>
+    <format>Tabular</format>
+    <name>Products with SKU</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Products_with_Material_Master__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Product2$CreatedDate</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
+    </timeFrameFilter>
+</Report>

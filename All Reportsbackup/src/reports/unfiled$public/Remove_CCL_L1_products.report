@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Product2.Level_1__c</field>
+    </columns>
+    <columns>
+        <field>NAME</field>
+    </columns>
+    <columns>
+        <field>ACTIVE</field>
+    </columns>
+    <currency>USD</currency>
+    <description>Shalini request: Please remove the following products from LEVEL 1 and subsequently the Product Sub group from LEVEL 2 for the products below. I have talked to K. Agi and Andre and they are okay with this.</description>
+    <filter>
+        <criteriaItems>
+            <column>Product2.Level_1__c</column>
+            <operator>equals</operator>
+            <value>AUT - AUTOMOTIVE,CFL - COMPACT FLUORESCENT,COM - COMPONENTS,HAL - HALOGEN,HID - HIGH INTENSITY DISCHARGE,INC - INCANDESCENT,MKT - MARKETING MATERIAL,OTL - OTHER LED (FINANCE USE),OTN - OTHER NON-LED (FINANCE USE)</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Remove CCL L1 products</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>ProductList</reportType>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

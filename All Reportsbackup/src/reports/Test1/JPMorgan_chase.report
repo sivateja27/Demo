@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ORDER_NUMBER</field>
+    </columns>
+    <columns>
+        <field>Order.GE_Order_NO__c</field>
+    </columns>
+    <columns>
+        <field>ORDER_EFFECTIVE_DATE</field>
+    </columns>
+    <columns>
+        <field>ORDER_TOTAL_AMOUNT</field>
+    </columns>
+    <columns>
+        <field>ORDER_CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>ORDER_LAST_UPDATE</field>
+    </columns>
+    <currency>USD</currency>
+    <format>Tabular</format>
+    <name>JPMorgan chase</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OrderList</reportType>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>ORDER_LAST_UPDATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2016-11-22</startDate>
+    </timeFrameFilter>
+</Report>

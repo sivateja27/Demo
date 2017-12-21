@@ -1,0 +1,155 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="geinsights.HubGEAccountTeamController">	      
+    
+    <aura:attribute name="item" type="geinsights.OpptyWrapper" description="Contains the Sales rep record grouped by tier2 business"/>
+    <aura:attribute name="salesRepRecord" type="geinsights.SalesRepWrapper[]" description="Contains the list of GE Sales Representatives "/>  <!--Use Opty rep wrapper variable-->
+    <aura:attribute name="showthis" type="boolean" default="false" description="Boolean value to show the Sales representatives records Tier2 business when clicked"/>
+    <aura:attribute name="searchAccId" type="String" description="The id of the account associated to the commercial entity in the context."/> 
+    <aura:attribute name="country" type="String" description="Design attribute used to filter by country"/>
+    <aura:attribute name="id" type="String" access="global"/>
+    <!--<aura:attribute name="spinner" type="boolean" default="false" description="Boolean value to show the spinner"/>-->
+    <aura:attribute name="spinner2" type="boolean" default="false" description="Boolean value to show the spinner"/>
+    
+    <aura:attribute name="isAccountTeam" type="boolean" description="Boolean to determine Account Owners or Opportunity owners component"/>
+    <aura:attribute name="ownerOnly" type="boolean" default="false" description="Boolean to display only the accounts with role as Account Owner"/>
+    
+    <aura:registerEvent name="showOptyOwnersByTier" type="geinsights:GE_RefreshOptyComponent" description="Even to refresh the component"/>   
+    
+        
+    <!--list of Tier 2 Sales representatives details will be displayed hear--> 
+    <tr class="slds-hint-parent"> 
+        <td data-label="Tier 1 Business">
+            <div class="slds-truncate">
+                <!-- <ui:outputText title="{#v.item.tier1Business}" value="{#v.item.tier1Business}"/>-->
+            </div>
+        </td>
+        <td data-label="Tier 2 Business">
+            <div class="slds-truncate">
+                <ui:outputText title="{#v.item.tier2Business}" value="{#v.item.tier2Business}"/>
+            </div>
+        </td>
+        <td data-label="GE Sales Rep">
+            <div>
+                <aura:if isTrue="{#v.item.tier1Business != 'Total GE'}"> 
+                    <a  id="clickme" style="margin-bottom: 10px;" onclick="{!c.slidewidget}"><ui:outputNumber value="{#v.item.noOfPeople}"/></a>
+                </aura:if>
+                <aura:if isTrue="{#v.item.tier1Business == 'Total GE'}"> 
+                    <ui:outputNumber value="{#v.item.noOfPeople}"/>
+                </aura:if>
+            </div>
+        </td>
+        
+        <td data-label="No. Of Opptys">
+            <div class="slds-truncate" title="{#v.item.noOfOpptys}">
+                <aura:if isTrue="{#v.item.noOfOpptys > 0}"> 
+                    <a class="slds-text-heading--small textfontsize" id="clickme" style="margin-bottom: 10px;" onclick="{!c.openmodal}">{#v.item.noOfOpptys}</a>
+                    <aura:set attribute="else">
+                        <ui:outputNumber value="{#v.item.noOfOpptys}"/>
+                    </aura:set>
+                </aura:if>
+            </div>
+        </td>
+        <td data-label="Total Oppty Amount">
+            <div class="slds-truncate" title="{#v.item.amount}" >
+                <aura:if isTrue="{#v.item.noOfOpptys > 0}"> 
+                    <a  id="clickme" style="margin-bottom: 10px;"  onclick="{!c.openmodal}"><ui:outputCurrency value="{#v.item.amount}" currencyCode="USD "/></a>
+                    <aura:set attribute="else">
+                        <ui:outputCurrency value="{#v.item.amount}" currencyCode="USD "/>
+                    </aura:set>
+                </aura:if>                
+            </div>
+        </td>
+    </tr> 
+    <aura:if isTrue="{!v.showthis}">    <!--can use aura iteration to show multiple rows --> 
+        <tr>
+            <td colspan ="5">
+                <div class="slds-box slds-panel__section " style="width:100%; border-color: rgb(173, 179, 161);">
+                    <table class="slds-table slds-table--bordered slds-max-medium-table--stacked slds-table--fixed-layout">
+                        <thead>
+                            <tr class="slds-text-title--caps">
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Name">GE Sales Rep</div>
+                                </th>
+                                
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Email">Email</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Mobile">Phone</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Role">Role</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Number of Opptys">No. Of Opptys</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Total amount of Opptys">Total Oppty Amount</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>                             
+                            <aura:if isTrue="{!v.spinner2}">
+                                <tr>
+                                    <td colspan="6">
+                                        <geinsights:hubGESpinner />
+                                    </td>
+                                </tr>
+                                <!--list of Sales representatives details corresponding to a particular Tier 1 and Tier2 will be displayed hear--> 
+                                <aura:set attribute="else">
+                                    <aura:iteration items="{!v.salesRepRecord}" var="sRR">
+                                        <tr class="slds-hint-parent"> 
+                                            <td data-label="GE Sales Rep">
+                                                <div class="slds-truncate">
+                                                    
+                                                    <ui:outputText title="{!sRR.name}" value="{!sRR.name}"/>
+                                                </div>
+                                            </td>
+                                            
+                                            <td data-label="Email">
+                                                <div class="slds-truncate">
+                                                    <ui:outputEmail value="{!sRR.email}"/>
+                                                </div>
+                                            </td>
+                                            <td data-label="Phone">
+                                                <div class="slds-truncate">
+                                                    <ui:outputPhone value="{!sRR.phone}"/>
+                                                </div>
+                                            </td>
+                                            <td data-label="Role">
+                                                <div class="slds-truncate">
+                                                    
+                                                    <ui:outputText title="{!sRR.role}" value="{!sRR.role}"/>
+                                                </div>
+                                            </td>
+                                            <td data-label="No. Of Opptys">
+                                                <div class="slds-truncate" >
+                                                    <aura:if isTrue="{!sRR.noOfOpptys > 0}"> 
+                                                        <a data-srId="{!sRR.Id}" data-srrole="{!sRR.role}"  title="{!sRR.noOfOpptys}" onclick="{!c.openmodal}"><ui:outputnumber value="{!sRR.noOfOpptys}"/></a>
+                                                        <aura:set attribute="else">
+                                                            <ui:outputNumber value="{!sRR.noOfOpptys}"/>
+                                                        </aura:set>
+                                                    </aura:if>
+                                                </div>
+                                            </td>
+                                            <td data-label="Total Oppty Amount">                                                                                                    
+                                                <div class="slds-truncate" >
+                                                    <aura:if isTrue="{!sRR.noOfOpptys > 0}">
+                                                        <a data-srId="{!sRR.Id}"  data-srrole="{!sRR.role}" id="clickme" title="{!sRR.amount}"  onclick="{!c.openmodal}"><ui:outputCurrency value="{!sRR.amount}" currencyCode="USD "/></a>
+                                                        <aura:set attribute="else">
+                                                            <ui:outputCurrency value="{!sRR.amount}" currencyCode="USD "/>
+                                                        </aura:set>
+                                                    </aura:if>
+                                                </div>                                                
+                                            </td>
+                                        </tr>
+                                    </aura:iteration>
+                                </aura:set>
+                            </aura:if>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </aura:if>     
+</aura:component>

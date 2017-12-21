@@ -1,0 +1,6 @@
+<aura:documentation>
+	<aura:description>
+        This component lists the parent and sub commercial entities of a commercial entity. This component can be used independently.
+        This component always hass to be used inside an AssociatesitesAndEntities component.
+    </aura:description>	
+</aura:documentation>

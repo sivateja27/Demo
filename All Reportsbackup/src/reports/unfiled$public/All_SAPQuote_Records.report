@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>CUST_LAST_UPDATE</field>
+    </columns>
+    <columns>
+        <field>SAP_Quote__c.Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>SAP_Quote__c.SAP_Unique_Id__c</field>
+    </columns>
+    <columns>
+        <field>SAP_Quote__c.Agent_SAPUniqueId__c</field>
+    </columns>
+    <columns>
+        <field>SAP_Quote__c.Agent_Name__c</field>
+    </columns>
+    <columns>
+        <field>CUST_LAST_UPDATE_NAME</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>CUST_LAST_UPDATE_NAME</column>
+            <operator>equals</operator>
+            <value>Integration User</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>All SAPQuote Records</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$SAP_Quote__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>CUST_LAST_UPDATE</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CUST_LAST_UPDATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2016-08-26</startDate>
+    </timeFrameFilter>
+</Report>

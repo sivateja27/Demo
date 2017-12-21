@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>DIVISION</field>
+    </columns>
+    <columns>
+        <field>User.GE_LGT_Business_Division__c</field>
+    </columns>
+    <columns>
+        <field>User.GE_LGT_Region__c</field>
+    </columns>
+    <columns>
+        <field>User.GE_LGT_Sub_Region__c</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>PROFILE</field>
+    </columns>
+    <columns>
+        <field>EMAIL</field>
+    </columns>
+    <columns>
+        <field>LAST_LOGIN</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>(1 OR 2) AND 3</booleanFilter>
+        <criteriaItems>
+            <column>User.GE_LGT_Business_Division__c</column>
+            <operator>equals</operator>
+            <value>Latin America</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>DIVISION</column>
+            <operator>equals</operator>
+            <value>GE Latin America Lighting</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.GE_LGT_Region__c</column>
+            <operator>equals</operator>
+            <value>North Cone</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Control 1 - Users MCCA</name>
+    <params>
+        <name>active</name>
+        <value>active</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>User</reportType>
+    <showDetails>true</showDetails>
+    <sortColumn>User.GE_LGT_Region__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>LAST_LOGIN</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

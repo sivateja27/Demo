@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Préférences de l&apos;utilisateur</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Préférences de l&apos;utilisateur</value>
+    </caseValues>
+    <fields>
+        <label><!-- Best Bets View --></label>
+        <name>BestBetsView__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last What&apos;s New Version --></label>
+        <name>LastWhatIsNewVersion__c</name>
+    </fields>
+    <fields>
+        <label><!-- Max Pages Anonymous Web Activity --></label>
+        <name>MaxPagesAWA__c</name>
+    </fields>
+    <fields>
+        <label><!-- Max Pages Interesting Moments --></label>
+        <name>MaxPagesIM__c</name>
+    </fields>
+    <fields>
+        <label><!-- Max Pages My Best Bets --></label>
+        <name>MaxPagesMBB__c</name>
+    </fields>
+    <fields>
+        <label><!-- Max Pages My Email --></label>
+        <name>MaxPagesME__c</name>
+    </fields>
+    <fields>
+        <label><!-- Max Pages My Best Bets (Hidden) --></label>
+        <name>MaxPagesMHBB__c</name>
+    </fields>
+    <fields>
+        <label><!-- Max Pages My Team&apos;s Best Bets --></label>
+        <name>MaxPagesMTBB__c</name>
+    </fields>
+    <fields>
+        <label><!-- Max Pages My Watch List --></label>
+        <name>MaxPagesMWL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Max Pages Score --></label>
+        <name>MaxPagesSC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Max Pages Web Activity --></label>
+        <name>MaxPagesWA__c</name>
+    </fields>
+    <fields>
+        <label><!-- Max Pages --></label>
+        <name>MaxPages__c</name>
+    </fields>
+    <fields>
+        <label><!-- Show What&apos;s New --></label>
+        <name>ShowWhatIsNew__c</name>
+    </fields>
+    <fields>
+        <label><!-- Time Frame Days --></label>
+        <name>TimeFrameDays__c</name>
+    </fields>
+    <gender>Masculine</gender>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

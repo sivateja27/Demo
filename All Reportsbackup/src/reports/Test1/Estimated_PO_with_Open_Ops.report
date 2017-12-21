@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ORDER_NUMBER</field>
+    </columns>
+    <columns>
+        <field>ORDER_TYPE</field>
+    </columns>
+    <columns>
+        <field>Order.open_Opportunity__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_OWNER</field>
+    </columns>
+    <columns>
+        <field>Order.Order_Owner__c</field>
+    </columns>
+    <columns>
+        <field>Order.Order_Opportunity_Owner__c</field>
+    </columns>
+    <columns>
+        <field>Order.differentOwner__c</field>
+    </columns>
+    <columns>
+        <field>Order.Order_Amount__c</field>
+    </columns>
+    <columns>
+        <field>ORDER_TOTAL_AMOUNT</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY.NAME</field>
+    </columns>
+    <columns>
+        <field>Order.GE_Opportunity_Id__c</field>
+    </columns>
+    <columns>
+        <field>ORDER_LAST_UPDATE</field>
+    </columns>
+    <currency>USD</currency>
+    <description>try to find Open Ops with estimated Owner</description>
+    <filter>
+        <criteriaItems>
+            <column>Order.OrderRecordType__c</column>
+            <operator>equals</operator>
+            <value>Estimated Po</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Estimated PO with Open Ops</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OrderList</reportType>
+    <showDetails>true</showDetails>
+    <sortColumn>ORDER_LAST_UPDATE</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>ORDER_EFFECTIVE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,8 @@
+<design:component >	
+    <design:attribute name="showCriteria" label="Display Type Filter" description="Filter entities based on Type." /> 
+    <design:attribute name="showCountry" label="Display Country Filter" description="Filter Entities based on Shipping Country." />    
+    <design:attribute name="showNameSearch" label="Display Name Search Filter" description="Filter Entities based on Name." />
+    <design:attribute name="showMapGrid" label="Display Map" description="Display Map." />
+    <design:attribute name="showActiveEntitiesGrid" label="Display Active Entities" description="Show Active Entities." />
+    <design:attribute name="showNonActiveEntitiesGrid" label="Display Inactive Entities" description="Show Inactive Entities." />
+</design:component>

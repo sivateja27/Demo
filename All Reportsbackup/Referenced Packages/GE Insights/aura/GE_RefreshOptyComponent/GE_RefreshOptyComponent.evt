@@ -1,0 +1,9 @@
+<aura:event type="APPLICATION" description="This Event is used in all components traversing from Tier1/Tier2 screen to opportunity details and vice versa to pass below attributes and make use accordingly" >    
+	<aura:attribute name="tier1Business" type="String" description="Tier1 business"/>
+    <aura:attribute name="tier2Business" type="String" description="Tier2 business"/>
+    <aura:attribute name="accountId" type="String" description="Commercial Entity ID"/>
+    <aura:attribute name="salesrepId" type="String" description="Sales rep Id"/>
+    <aura:attribute name="fromscreen" type="String" description="Screen Name from which the event is fired"/>
+    <aura:attribute name="ownerOnly" type="boolean" description="True for Account Owner / False for Account Team."/>
+    <aura:attribute name="role" type="String" description="Role of the GE Sales Rep"/>
+</aura:event>

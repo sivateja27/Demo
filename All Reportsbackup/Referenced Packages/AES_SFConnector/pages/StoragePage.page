@@ -1,0 +1,411 @@
+<apex:page sidebar="false">
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+  This is your new Page
+  <!-- End Default Content REMOVE THIS -->
+    <script type="text/javascript">
+    var source;
+    var target;
+    var tabInfo = {};
+    var currentTabKey="";   
+    var tabCount;
+    var pageLoaded=false;   
+    var ie10 = (navigator.userAgent.match(/msie [10]/i));
+    var ie9 = (navigator.userAgent.match(/msie [9]/i));
+    var ie11 = !(window.ActiveXObject) && "ActiveXObject" in window;
+    var storageFields = ["agentState","lastReasonCodeSent","callData","AcdCallInfo"];
+    
+  if (window.addEventListener) {
+        if(!ie9 && !ie10 && !ie11)
+        window.addEventListener("storage", HandleStorageEvent, false);
+        window.addEventListener("message", HandleMessageEvent);
+    } else {
+        if(!ie9 && !ie10 && !ie11)
+        window.addEventListener("onstorage", HandleStorageEvent);
+        window.addEventListener("onmessage", HandleMessageEvent);
+    }
+
+    window.onload= function()
+        {
+            pageLoaded=true;        
+            OutputLog("VF -load"); 
+            source = window.parent.window;
+            tabCount = localStorage.getItem("noOfBrowserTabs");
+            currentTabKey = "browserTab_"+(parseInt(tabCount)+1);
+            for(var i=0;i<storageFields.length;i++)
+             {
+                tabInfo[storageFields[i]] =  localStorage.getItem(storageFields[i]);
+             }          
+        }
+
+
+    if(ie9)
+    {
+        setInterval("MonitorTabInfo()",1000);                  
+        window.onbeforeunload = function()
+        {
+           if(pageLoaded)
+           {           
+           OutputLog("VF -unload");
+           tabCount = localStorage.getItem("noOfBrowserTabs");
+           localStorage.setItem("noOfBrowserTabs",tabCount-1);
+           delete localStorage[currentTabKey];
+           OutputLog("VF -unload tab deleted"+currentTabKey);          
+
+           }        
+        }    
+    }
+    
+    if(ie10 || ie11)
+    {
+        setInterval("MonitorTabInfo()",1000);
+ 
+        window.onunload = function()
+        {
+           if(pageLoaded)
+           {           
+           OutputLog("VF -unload -ie10");
+           tabCount = localStorage.getItem("noOfBrowserTabs");
+           localStorage.setItem("noOfBrowserTabs",tabCount-1);
+           delete localStorage[currentTabKey];
+           OutputLog("VF -unload tab deleted"+currentTabKey);          
+
+           }        
+        }     
+    }
+    
+   
+  function HandleMessageEvent(e) {
+    var obj = null;
+    try
+    {
+    obj = JSON.parse(e.data);
+    }
+    catch(e)
+    {
+    }
+    
+    if(obj && obj.hasOwnProperty('SoftphoneDomain') && obj.hasOwnProperty('Action'))
+    {
+       if(obj['Action'] == 'Update')
+       {
+           if(obj['Key'] && obj['Key'].indexOf("browserTab") == -1)
+           OutputLog("Updating local storage in Visualforce Page:"+obj['Key']+","+typeof obj['Value']=== 'object'?JSON.stringify(obj['Value']):obj['Value']);
+           
+           SetValue(obj['Key'],obj['Value']);
+           if(obj['Key'] && obj['Key'].indexOf("browserTab") != -1)
+            {
+              currentTabKey = obj['Key'];
+            }         
+       }
+       else if(obj['Action'] == 'Get')
+       {
+       
+           source = e.source;
+           target = e.origin;
+           var items = GetLocalStorageItems(true);
+           OutputLog("Retrieving local storage:"+items);
+           
+           source.postMessage('{"SoftphoneDomain":"' + document.domain + '","Action":"Get","Data":'+items+'}',e.origin);
+
+       }
+       else if (obj['Action'] == 'Clear')
+       {
+           localStorage.clear();
+       }
+       else if (obj['Action'] == 'Delete')
+       {
+           OutputLog("Delete localStorage Details in VisualForce Page."+obj['Key']);
+           delete tabInfo[obj['Key']];
+           delete localStorage[obj['Key']];
+       }
+       
+    }    
+    }
+    
+    function HandleStorageEvent(e) 
+    { 
+        var items = {key:e.key,oldValue:e.oldValue,newValue:e.newValue};
+        if(source){
+                if(ie10 || ie9 || ie11)
+                {                
+                
+                if(e.key && e.key.indexOf("browserTab") == -1)                
+                {                
+                source.postMessage('{"SoftphoneDomain":"' + document.domain + '","Action":"Storage","Data":'+JSON.stringify(items)+'}',target);       
+                OutputLog("Sending storage event:"+ JSON.stringify(items));
+                } 
+                }
+                else
+                 {
+                 source.postMessage('{"SoftphoneDomain":"' + document.domain + '","Action":"Storage","Data":'+JSON.stringify(items)+'}',target);       
+                 if(e.key && e.key.indexOf("browserTab") == -1)
+                     OutputLog("Sending storage event:"+ JSON.stringify(items));
+                 }       
+                        
+        }
+    }
+    
+    function SetValue(key,value)
+    {
+        
+        if(key.indexOf("browserTab") != -1 || key === "noOfBrowserTabs")
+        {
+            tabInfo[key] = localStorage.getItem(key);
+        }
+        
+        localStorage.setItem(key,typeof value === 'object'?JSON.stringify(value):value);
+         
+    }
+
+
+    function MonitorTabInfo()
+    {
+        GetLocalStorageItems(false);    
+        try{
+         for (var property in tabInfo) {
+                      if(property.indexOf("browserTab") != -1){
+                            var currentvalue=GetObject(tabInfo[property]);
+                            var currentlsvalue=GetObject(localStorage[property]);
+                            if(currentvalue && currentlsvalue && (currentvalue.lastUpdateTime !== currentlsvalue.lastUpdateTime || currentvalue.id !== currentlsvalue.id)){
+                                var e = {"key":property,"oldValue":JSON.stringify(currentvalue),"newValue":JSON.stringify(currentlsvalue)};
+                                if(source)                                
+                                source.postMessage('{"SoftphoneDomain":"' + document.domain + '","Action":"Storage","Data":'+JSON.stringify(e)+'}',target);       
+                                tabInfo[property] = JSON.stringify(currentlsvalue);
+                            }
+                            else if (localStorage.getItem(property) === null)
+                            {
+                                 var e = {"key":property,"oldValue":JSON.stringify(currentvalue),"newValue":null};
+                                 if(source)                                
+                                 source.postMessage('{"SoftphoneDomain":"' + document.domain + '","Action":"Storage","Data":'+JSON.stringify(e)+'}',target);                                 
+                                 delete tabInfo[property];
+                                  OutputLog("Browser tab deleted from memory"+property);
+                            }
+                        }
+                        else if (property === "callData")
+                             {
+                                  var result = CompareArray(GetObject(tabInfo[property]),GetObject(localStorage[property]));
+                                  if(!result)
+                                  {
+                                      var e = {"key":property,"oldValue":GetJsonString(tabInfo[property]),"newValue":localStorage[property]};
+                                      if(source)                                
+                                      source.postMessage('{"SoftphoneDomain":"' + document.domain + '","Action":"Storage","Data":'+JSON.stringify(e)+'}',target);       
+                                      tabInfo[property] = localStorage[property];
+
+                                  }      
+                            }
+                            else if (property === "AcdCallInfo")                        
+                            {
+                                   var result = CompareObjectIsEqual(GetObject(tabInfo[property]),GetObject(localStorage[property]));
+                                  if(!result)
+                                  {
+                                      var e = {"key":property,"oldValue":GetJsonString(tabInfo[property]),"newValue":localStorage[property]};
+                                      if(source)                                
+                                      source.postMessage('{"SoftphoneDomain":"' + document.domain + '","Action":"Storage","Data":'+JSON.stringify(e)+'}',target);       
+                                      tabInfo[property] = localStorage[property];
+
+                                  }                          
+                            }    
+                        else if(GetObject(tabInfo[property]) !== GetObject(localStorage[property]))
+                        {
+                            var e = {"key":property,"oldValue":tabInfo[property],"newValue":localStorage[property]};
+                            if(source)                            
+                            source.postMessage('{"SoftphoneDomain":"' + document.domain + '","Action":"Storage","Data":'+JSON.stringify(e)+'}',target);       
+                            tabInfo[property] = localStorage[property];
+                        }
+                }
+                }
+                catch(ex)
+                {
+                    OutputLog("Exception from MonitorTabInfo VF:" + ex);
+                }
+    }
+    
+    function GetLocalStorageItems(pageLoad)
+    {
+    
+        var items = {};
+        try{
+            for (var i = 0; i < localStorage.length; i++)
+            {
+            var key = localStorage.key(i);
+            var value = localStorage.getItem(key);
+            if(value && value!="undefined")
+                items[key]= value;
+            if((key.indexOf("browserTab") != -1 || key === "noOfBrowserTabs"))
+            {
+                if(!tabInfo.hasOwnProperty(key))
+                tabInfo[key] =  value;
+                else if (pageLoad)
+                tabInfo[key] =  value;                
+            }
+        }
+        }
+        catch(ex){
+            OutputLog("Exception from GetLocalStorageItems VF:" + ex);
+        }
+        
+        return JSON.stringify(items);
+    }
+    
+    function OutputLog(msg) {
+    var content = '<p>' + msg + '</p>';
+    if (window.console)
+        window.console.log(getDateString(new Date()) + ":" + new Date().getMilliseconds() + ":VF" + " --- " + msg);
+    }
+
+    function getDateString(date) {
+    var str = "";
+    try {
+        if (date == null || date == undefined || date == "") {
+            return "";
+        }
+
+        try {
+            date = new Date(date);
+        }
+        catch (err) {
+        }
+
+        var day = date.getDate();
+        day = day <= 9 ? ("0" + day) : day;
+        var month = date.getMonth();
+
+        month = month + 1;
+        month = month <= 9 ? ("0" + month) : month;
+        var year = date.getFullYear();
+        var hour = date.getHours();
+        hour = hour <= 9 ? ("0" + hour) : hour;
+        var min = date.getMinutes();
+        min = min <= 9 ? ("0" + min) : min;
+        var sec = date.getSeconds();
+        sec = sec <= 9 ? ("0" + sec) : sec;
+        str = year + "-" + month + "-" + day + " " + hour + ":" + min + ":" + sec;
+    }
+    catch (ex) {
+        OutputLog(ex.Message + ex);
+    }
+    return str;
+}
+
+function GetObject(str) {
+    var obj = str;
+    
+    try {
+        obj = JSON.parse(str);
+    }
+    catch (ex) {
+    }
+
+    return obj;
+}
+
+function GetJsonString(str) {
+    var obj = str;
+    try {
+        obj = JSON.stringify(str);
+    }
+    catch (ex) {
+    }
+
+    return obj;
+}
+
+function CompareObjectIsEqual(a,b)
+{
+  try
+  {
+  if(!a && !b)
+    return true;
+  else if ((!a && b) || (a && !b))  
+    return false;
+    
+  var aProps = Object.getOwnPropertyNames(a);
+  var bProps = Object.getOwnPropertyNames(b);
+  
+  if (aProps.length != bProps.length) {
+        return false;
+  }
+  
+  for (var i = 0; i < aProps.length; i++) {
+        var propName = aProps[i];
+
+        // If values of same property are not equal,
+        // objects are not equivalent
+        
+        if(a[propName] instanceof Array)
+        {
+          var result = CompareArray(a[propName],b[propName]);
+          if(result)
+           continue;
+           else
+           return result;
+        }
+        else if(a[propName] instanceof Object)
+        {
+           var result =CompareObjectIsEqual(a[propName],b[propName]);
+           if(result)
+           continue;
+           else
+           return result;
+        }
+        else if (a[propName] !== b[propName]) {
+            return false;
+        }
+    }
+   }
+   catch(ex)
+   {
+       OutputLog("Exception from CompareObjectIsEqual VF:" + ex);
+   }
+    
+  return true;
+}
+
+function CompareArray(a,b)
+{
+  try
+  {
+  if(!a && !b)
+    return true;
+  else if ((!a && b) || (a && !b)) 
+    return false;
+  var aLength = a.length;
+  var bLength= b.length;
+  if (aLength !=bLength) {
+        return false;
+  }
+  a.sort();
+  b.sort();
+  for (var i = 0; i < a.length; i++) {
+        if(a[i] instanceof Array)
+        {
+          var result = CompareArray(a[i],b[i]);
+          if(result)
+           continue;
+           else
+           return result;
+        }
+        else if(a[i] instanceof Object)
+        {
+           var result =CompareObjectIsEqual(a[i],b[i]);
+           if(result)
+           continue;
+           else
+           return result;
+        }
+        else if (a[i] !== b[i]) {
+            return false;
+        }
+  }
+  }
+  catch(ex)
+  {
+     OutputLog("Exception from CompareArray VF:" + ex);
+  }
+  
+  return true;
+}
+    
+   </script>
+</apex:page>

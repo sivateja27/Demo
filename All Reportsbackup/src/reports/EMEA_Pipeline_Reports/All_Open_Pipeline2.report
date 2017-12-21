@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_7177218</developerName>
+        <masterLabel>Current Status</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>STAGE_NAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>S1 Consult</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S2 Audit</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S3 Solve</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S4 Negotiate</sourceValue>
+            </sourceValues>
+            <value>In the Pipe</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>S5 Close</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PO Received</sourceValue>
+            </sourceValues>
+            <value>Already Won</value>
+        </values>
+    </buckets>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>REVENUE_AMOUNT.CONVERT</field>
+    </columns>
+    <currency>USD</currency>
+    <description>LED and NON LED Drill</description>
+    <filter>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <operator>notEqual</operator>
+            <value>Closed Lost</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.GE_LGT_Business_Division__c</column>
+            <operator>equals</operator>
+            <value>Europe,MEAT</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>FiscalQuarter</dateGranularity>
+        <field>REVENUE_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Product2.GE_LGT_LED_NonLED__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_7177218</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>All Open Pipeline</name>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>0</value>
+    </params>
+    <reportType>OpportunitySchedule</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <timeFrameFilter>
+        <dateColumn>REVENUE_DATE</dateColumn>
+        <endDate>2016-03-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2015-01-01</startDate>
+    </timeFrameFilter>
+</Report>

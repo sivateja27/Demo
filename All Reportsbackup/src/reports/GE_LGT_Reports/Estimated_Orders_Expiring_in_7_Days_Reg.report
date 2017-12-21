@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Opportunity.Orders$Account</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Account.Owner</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity$GE_LGT_TeamMember__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Orders$OrderNumber</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Orders$EffectiveDate</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Orders$Order_Amount__c.CONVERT</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Orders$Forecast__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>Estimated Orders Expiring in 7 Days-Regional team</description>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity$Owner</column>
+            <operator>notEqual</operator>
+            <value>Kevin Kovitch,Robyn Gallucci,Bence Nemeth</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Owner.IsActive</column>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Orders$RecordType</column>
+            <operator>equals</operator>
+            <value>Order.Estimated_PO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Account.RecordType</column>
+            <operator>equals</operator>
+            <value>Account.SAP_Account_Strategic,Account.GE_LGT_End_User</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$StageName</column>
+            <operator>equals</operator>
+            <value>S1 Consult,S2 Evaluate,S3 Solve,S4 Negotiate,S5 Close</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Orders$EffectiveDate</column>
+            <operator>equals</operator>
+            <value>NEXT_N_DAYS:7</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Orders$PO_Received_Formula__c</column>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Owner.GE_LGT_Business_Division__c</column>
+            <operator>equals</operator>
+            <value>North America</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Owner</column>
+            <operator>equals</operator>
+            <value>Scott Driskell,Daniel levy,Kevin Salmen,Darrin Somerville,Kevin Podmore,Fox Holt,Brian Hewgley</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity$Owner</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Estimated Orders Expiring in 7 Days-Reg</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Ops_with_Orders__c</reportType>
+    <roleHierarchyFilter>NA_NPS_GM</roleHierarchyFilter>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Opportunity.Orders$EffectiveDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

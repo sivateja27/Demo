@@ -1,0 +1,28 @@
+.THIS .slds-box{
+    padding:0px;
+}
+
+.THIS .slds-box_small, .THIS .slds-box--small{
+    padding:0px;
+}
+
+.THIS .tableHeader {
+    color: black;  
+    background-color:rgb(244, 246, 249);
+}
+
+.THIS .scrollerSize {
+	height: 300px;
+}
+
+.THIS .slds-container_fluid {
+	minwidth:100px;
+}
+
+.THIS .pullRight{
+	float:right;
+}
+
+.THIS .pullLeft{
+	float:left;
+}

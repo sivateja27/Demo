@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>GE_LGT_EM_MaterialMaster__c.Material_Type__c</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>GE_LGT_EM_MaterialMaster__c.GE_LGT_EM_SAP_MaterialNumber__c</field>
+    </columns>
+    <columns>
+        <field>GE_LGT_EM_MaterialMaster__c.GE_LGT_EM_MaterialDescription__c</field>
+    </columns>
+    <columns>
+        <field>GE_LGT_EM_MaterialMaster__c.Level_4__c</field>
+    </columns>
+    <columns>
+        <field>GE_LGT_EM_MaterialMaster__c.Level_3__c</field>
+    </columns>
+    <columns>
+        <field>GE_LGT_EM_MaterialMaster__c.Level_1__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>GE_LGT_EM_MaterialMaster__c.GE_LGT_EM_ProductHierarchy__c</column>
+            <operator>notContain</operator>
+            <value>COM,AUT,INC,HAL,CFL,HID</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>GE_LGT_EM_MaterialMaster__c.Level_4__c</column>
+            <operator>notContain</operator>
+            <value>NO PRODUCT LINE (FINANCE USE),Other Led (Finance use),Other N LED (Finance use),Marketing material</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <name>mATERIAL SUMMARY KAFZY-2034</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$GE_LGT_EM_MaterialMaster__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,31 @@
+.THIS .marginbottom{
+    margin-bottom: 10px;
+}
+.THIS .inputsize{
+        width: 50%;
+}
+.THIS .textfontsize{
+	font-size: 0.85rem;
+}
+.THIS .textunderline{
+    text-decoration: underline;        
+}
+.THIS .topborderline{
+    border-top: 1px solid rgb(216, 221, 230); 
+}
+.THIS .bottomborderline{
+    border-bottom: 1px solid rgb(216, 221, 230); 
+}
+.THIS .fontbold{
+    font-weight: bold;
+}
+.THIS .allsidesmargin{
+    margin: 3px;
+}
+.THIS .boxheight{
+    height:170px;
+}
+
+.THIS .boxheight1{
+    height:210px;
+}

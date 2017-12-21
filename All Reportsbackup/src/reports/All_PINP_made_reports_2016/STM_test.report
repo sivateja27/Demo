@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>ProcessInstance.Nodes$ElapsedTimeInDays</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>ProcessInstance$ProcessDefinition</column>
+            <operator>contains</operator>
+            <value>EMEA NEW</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>ProcessInstance.Nodes$ProcessNode</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ProcessInstance$TargetName</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>STM_test</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Approval_Process_Instances__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <timeFrameFilter>
+        <dateColumn>ProcessInstance$CreatedDate</dateColumn>
+        <endDate>2016-10-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2016-07-29</startDate>
+    </timeFrameFilter>
+</Report>

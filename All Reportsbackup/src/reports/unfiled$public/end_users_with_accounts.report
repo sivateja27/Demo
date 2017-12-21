@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>User$Name</field>
+    </columns>
+    <columns>
+        <field>User$IsActive</field>
+    </columns>
+    <columns>
+        <field>User*User$GE_LGT_Business_Division__c</field>
+    </columns>
+    <columns>
+        <field>User$Account</field>
+    </columns>
+    <crossFilters>
+        <criteriaItems>
+            <column>RecordType</column>
+            <operator>equals</operator>
+            <value>Account.GE_LGT_End_User</value>
+        </criteriaItems>
+        <operation>with</operation>
+        <primaryTableColumn>User$Id</primaryTableColumn>
+        <relatedTable>Account</relatedTable>
+        <relatedTableJoinColumn>Owner</relatedTableJoinColumn>
+    </crossFilters>
+    <crossFilters>
+        <operation>with</operation>
+        <primaryTableColumn>User$Id</primaryTableColumn>
+        <relatedTable>Opportunity</relatedTable>
+        <relatedTableJoinColumn>Owner</relatedTableJoinColumn>
+    </crossFilters>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>User*User$GE_LGT_Business_Division__c</column>
+            <operator>equals</operator>
+            <value>North America</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>end users with accounts</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Accounts_Users__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>User$Name</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>User$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

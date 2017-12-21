@@ -1,0 +1,6 @@
+<aura:event type="component" description="Event template" >
+    <aura:attribute name="fromclosedate" type="date" access="global" description="From Close date."/>   
+    <aura:attribute name="toclosedate" type="date" access="global" description="To Close date."/>       
+    <aura:attribute type="string" name="optyrange" access="global" description="Selected opty range."/>                    
+    <aura:attribute type="string" name="stagename" access="global" description="Selected Stage name."/>            
+</aura:event>

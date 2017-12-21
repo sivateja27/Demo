@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CollaborationGroup$Name</field>
+    </columns>
+    <columns>
+        <field>CollaborationGroup.FeedItems$Body</field>
+    </columns>
+    <columns>
+        <field>CollaborationGroup.FeedItems$CreatedBy</field>
+    </columns>
+    <columns>
+        <field>CollaborationGroup.FeedItems$LikeCount</field>
+    </columns>
+    <columns>
+        <field>CollaborationGroup.FeedItems$CommentCount</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>CollaborationGroup$Name</column>
+            <operator>equals</operator>
+            <value>NA SFDC Chatter Group</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Top Likes for Issues</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Chatter_Groups_with_Activities__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>CollaborationGroup.FeedItems$LikeCount</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CollaborationGroup$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

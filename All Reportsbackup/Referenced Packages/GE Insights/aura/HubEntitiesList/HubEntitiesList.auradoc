@@ -1,0 +1,13 @@
+<aura:documentation>
+	<aura:description>
+        This component displays the segregated list of Accounts that have open opportunities and no open opportunities associated with the commercial eEntity in the context.
+        This component further displays the locations of these accounts on the map.
+        For accounts that have open opportunities the account marker size is propotional to the opportunity amount and is marked in green color, whereas for accounts that do not have open opportunities the
+        marker is red in color. 
+        
+        
+	<p>This example shows how to display HubEntitiesList by providing account Id as accountId attribute. Here v.id is id of account in spoke. <code>geinsights:HubEntitiesList</code>.</p>
+    <pre>&lt;geinsights:HubEntitiesList accountId="{!v.id}"/&gt;</pre>
+    </aura:description>
+	
+</aura:documentation>

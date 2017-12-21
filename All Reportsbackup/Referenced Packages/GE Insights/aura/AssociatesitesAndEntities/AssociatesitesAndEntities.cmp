@@ -1,0 +1,76 @@
+<aura:component implements="force:hasRecordId,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="geinsights.HUBAssociatesandEntities">
+    <aura:attribute type="String" name="accountID" access="global" description="Id of the Account in Spoke Organization." />
+    <aura:attribute type="String" name="commercialEntityId" access="global" description="Id of the commercial Entity from Hub." />
+    <aura:attribute type="String" name="country" access="global" default="All" description="Set to filter the accounts based on shipping country." />    
+    <aura:attribute type="Boolean" name="spinner" access="private" default="false" description="Display a waiting spinner when true." />
+    <aura:attribute type="geinsights.HUBAssociatesandEntities" name="associateDate" access="global" description="Summary of prospects (Non-MDM Accounts) and legal entities(MDM Accounts)." />
+    <aura:attribute name="showError" type="boolean" access="private" default="false" description="Set to true when there is an error." />
+    <aura:attribute name="errors" type="Object[]" access="private" description="Captures the errors." />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"  description="Loads the component content on inital load of component." />
+    <aura:handler name="filterChange" event="geinsights:HUB_GE_Filter_Change" action="{!c.updateFilter}" description="Loads the component data based on the filters in  filter component." />
+    <aura:handler name="backToSnapshot" event="geinsights:GE_Back_Button" action="{!c.NavigateBack}" description="Indicates the back button is clicked to return to component." />
+    <aura:handler event="geinsights:changeCommEntity" action="{!c.ChangeCommAccountInAssociated}" description="Handles the change in context commercial Entity." />
+    <aura:registerEvent name="clearComponents" type="geinsights:ClearComponentsInSnapshot" description="clears the contents of snapshot to display" />
+    <aura:method name="refreshFilterChange" action="{!c.updateFilter}" description="filters the accounts summary based on filters." />
+    
+    
+    <lightning:card iconName="standard:account">
+        <aura:set attribute="title">Associated Sites &amp; Entities</aura:set>
+        <aura:set attribute="body">
+            <aura:if isTrue="{!v.spinner}">
+                <geinsights:hubGESpinner />
+                <aura:set attribute="else">
+                    <aura:if isTrue="{!v.showError}">
+                        <geinsights:HUB_GE_Error errors="{!v.errors}"></geinsights:HUB_GE_Error>
+                    </aura:if>
+                    <lightning:layout HorizontalAlign="space" multipleRows="true">
+                        <lightning:layoutItem flexibility="auto" padding="around-small" size="12" largeDeviceSize="6" mediumDeviceSize="6" smallDeviceSize="12">
+                            <lightning:layout HorizontalAlign="space" multipleRows="true">
+                                <lightning:layoutItem flexibility="auto" padding="around-small" size="12" largeDeviceSize="12" mediumDeviceSize="12" smallDeviceSize="12">
+                                    <geinsights:HubSectionHeader secName="Sub Commercial Entities" sectionData="{!v.associateDate.subComEntities}"/>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem flexibility="auto" padding="around-small" size="12" largeDeviceSize="12" mediumDeviceSize="12" smallDeviceSize="12">
+                                    <geinsights:HubSectionHeader secName="Parent Commercial Entity" sectionData="{!v.associateDate.parentComEntities}"/>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                        </lightning:layoutItem>
+                        <lightning:layoutItem flexibility="auto" padding="around-small" size="12" largeDeviceSize="6" mediumDeviceSize="6" smallDeviceSize="12">
+                            <ui:outputText class="slds-text-title--caps slds-has-flexi-truncate" value="Prospects &amp; Legal Entities" />
+                            <ul class="slds-has-block-links marginscroll">
+                                <li>
+                                    <ui:outputText value="Prospects" click="{!c.navigateToEntitiesList}" class="slds-text-link"/>
+                                    <lightning:badge label="{!v.associateDate.prospects}" />
+                                </li>
+                                <ul class="slds-has-block-links marginleft">
+                                    <li>
+                                        <ui:outputText value="Open Opportunity Prospects" click="{!c.navigateToEntitiesList}" class="slds-text-link"/>
+                                        <lightning:badge label="{!v.associateDate.activePros}" />
+                                    </li>
+                                    <li>
+                                        <ui:outputText value="No Open Opportunity Prospects" click="{!c.navigateToEntitiesList}" class="slds-text-link"/>
+                                        <lightning:badge label="{!v.associateDate.inactivePros}" />
+                                    </li>
+                                </ul>
+                                <li>
+                                    <ui:outputText value="Legal Entities" click="{!c.navigateToEntitiesList}" class="slds-text-link"/>
+                                    <lightning:badge label="{!v.associateDate.totalLEs}" />
+                                </li>
+                                <ul class="slds-has-block-links marginleft">
+                                    <li>
+                                        <ui:outputText value="Open Opportunity Legal Entities" click="{!c.navigateToEntitiesList}" class="slds-text-link"/>
+                                        <lightning:badge label="{!v.associateDate.activeLEs}" />
+                                    </li>
+                                    <li>
+                                        <ui:outputText value="No Open Opportunity Legal Entities" click="{!c.navigateToEntitiesList}" class="slds-text-link"/>
+                                        <lightning:badge label="{!v.associateDate.inActivLEs}" />
+                                    </li>
+                                </ul>
+                            </ul>
+                            
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                </aura:set>
+            </aura:if>
+        </aura:set>
+    </lightning:card>    
+</aura:component>

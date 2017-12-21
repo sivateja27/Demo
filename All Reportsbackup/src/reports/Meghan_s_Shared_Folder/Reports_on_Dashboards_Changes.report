@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Report$Name</field>
+    </columns>
+    <columns>
+        <field>Report$LastModifiedBy</field>
+    </columns>
+    <columns>
+        <field>Report$LastModifiedDate</field>
+    </columns>
+    <columns>
+        <field>Report.DashboardComponents$Dashboard</field>
+    </columns>
+    <columns>
+        <field>Report.DashboardComponents$Title</field>
+    </columns>
+    <columns>
+        <field>Report.DashboardComponents$DashboardColumn</field>
+    </columns>
+    <columns>
+        <field>Report.DashboardComponents$LastModifiedBy</field>
+    </columns>
+    <columns>
+        <field>Report.DashboardComponents$LastModifiedDate</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Report.DashboardComponents$Dashboard</column>
+            <operator>contains</operator>
+            <value>LGT-Strat,LGT-account manager,QMI,LED Executive pipeline</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Report.DashboardComponents$Dashboard</column>
+            <operator>notContain</operator>
+            <value>cloned,revised</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <name>Reports on Dashboards - Changes</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Reports_WITH_OR_WITHOUT_Dashboards__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Report$Name</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Report$LastModifiedDate</dateColumn>
+        <interval>INTERVAL_CURFY</interval>
+    </timeFrameFilter>
+</Report>

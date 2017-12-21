@@ -1,0 +1,15 @@
+<aura:documentation>
+	<aura:description>
+        <p>This component displays a snapshot of Account Owners, Opportunity Owners and Associated Sites and Entities of a Commercial Entity.
+            
+            If the recordId is Legal Entity Account , based on it's commercial entity, the snapshot is displayed.
+            
+            If the Account Id is a Commercial Entity, then account record should have corresponding Hub Identifier value.
+           
+            If the Account Id is a Legal Entity, then account record should have Commercial Entity with corresponding Hub Identifier value.
+        </p>
+    
+	<p>This example shows how to display commercial entity snapshot by providing account Id as recordId attribute <code>geinsights:HUBCommercialEntitySnapshot</code>.</p>
+    <pre>&lt;geinsights:HUBCommercialEntitySnapshot recordId="{!v.id}"/&gt;</pre>
+        </aura:description>
+    </aura:documentation>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CollaborationGroup$Name</field>
+    </columns>
+    <columns>
+        <field>CollaborationGroup.FeedItems$Type</field>
+    </columns>
+    <columns>
+        <field>CollaborationGroup$Owner</field>
+    </columns>
+    <columns>
+        <field>CollaborationGroup.FeedItems$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>CollaborationGroup$CollaborationType</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>CollaborationGroup.FeedItems$CreatedDate</column>
+            <operator>greaterOrEqual</operator>
+            <value>7/1/2014 12:00 AM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CollaborationGroup.FeedItems$CreatedDate</column>
+            <operator>lessOrEqual</operator>
+            <value>7/31/2014 12:00 AM</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <aggregateType>RowCount</aggregateType>
+        <dateGranularity>Day</dateGranularity>
+        <field>CollaborationGroup.FeedItems$CreatedBy</field>
+        <sortByName>RowCount</sortByName>
+        <sortOrder>Desc</sortOrder>
+        <sortType>Aggregate</sortType>
+    </groupingsDown>
+    <name>Chatter Group posts x User - 30</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Chatter_Groups_with_Group_Feed__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CollaborationGroup.FeedItems$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

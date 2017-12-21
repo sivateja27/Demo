@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Release_Component__c$Request_Name_Short__c</field>
+    </columns>
+    <columns>
+        <field>Release_Component__c$Component_Name__c</field>
+    </columns>
+    <columns>
+        <field>Release_Component__c$Metadata_Type__c</field>
+    </columns>
+    <columns>
+        <field>Release_Component__c$Name</field>
+    </columns>
+    <columns>
+        <field>Release_Component__c$Status__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Release_Component__c$Release_Name__c</column>
+            <operator>contains</operator>
+            <value>JUL 27</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Release_Component__c$Request_Name_Short__c</column>
+            <operator>notContain</operator>
+            <value>CDT</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Jul 27</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Release_Components__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Release_Component__c$Metadata_Type__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Release_Component__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

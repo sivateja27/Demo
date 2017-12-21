@@ -1,0 +1,6 @@
+<aura:documentation>
+    <aura:description><p>This component displays top ten account owners in mobile. This is an independent component, specifically designed for mobile.
+        This example shows how to display Top Account owners by providing account Id, either commercialEntityId or legalEntityId attribute <code>geinsights:HUB_GE_Account_Owners_Mob</code>.        
+        Create a lightning quick action button to use them as global actions in Salesforce1.</p>
+    </aura:description>    
+</aura:documentation>

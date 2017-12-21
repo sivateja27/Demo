@@ -1,0 +1,58 @@
+<aura:component controller="geinsights.HubGEAccountTeamController"  access="public">
+    <aura:dependency resource="geinsights:HubGETier1Details" />    
+    <aura:attribute name="id" type="String" access="global" description="Commercial Entity id"/>
+    <aura:attribute name="country" type="String" access="global" description="Used to filter by country"/>
+    <aura:attribute name="business" type="String" access="global" description="Used to search by Business"/>
+    <aura:attribute name="searchAccId" type="String" access="global" description="Used to search by Account"/>
+    <aura:attribute name="isAccountTeam" type="boolean"/>
+    <aura:attribute name="ownerOnly" type="boolean" default="false"/>
+    <aura:attribute name="spinner" type="boolean" default="false" description="Boolean value to show spinner"/>
+    <aura:attribute name="selectedTier1" type="String" access="global" description="selected value for Tier1."/>
+    <aura:attribute name="selectedTier2" type="String" access="global" description="selected value for Tier2."/>   
+    <aura:attribute name="Tier1OpptyList" type="geinsights.OpptyWrapper[]" description="List of Opportunities to display on the component"/>    
+    <aura:handler name="change" value="{!v.selectedTier1}" action="{!c.itemsChange1}"/>
+    <aura:handler name="change" value="{!v.selectedTier2}" action="{!c.itemsChange2}"/>
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" description=""/>
+    
+    <table class="slds-table slds-table--bordered slds-max-medium-table--stacked slds-table--fixed-layout">
+        <thead>
+            <tr class="slds-text-title--caps">
+                <th scope="col">
+                    <div class="slds-truncate" title="Tier 1 Business">Tier 1 Business</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Tier 2 Business">Tier 2 Business</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Name">GE Sales Rep</div>
+                </th>
+                
+                <th scope="col">
+                    <div class="slds-truncate" title="Number of Opptys">No. Of Opptys</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Total amount of Opptys">Total Oppty Amount</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>  
+            <aura:if isTrue="{!v.spinner}">
+                <tr>
+                    <td colspan="5">
+                        <!--loading spinner start..-->                
+                        <geinsights:hubGESpinner />
+                        
+                        <!-- Loading spinner end-->
+                    </td>
+                </tr>                
+                <aura:set attribute="else">                                            
+                    <!--Tier1 Opty details..-->                    
+                    <aura:iteration items="{!v.Tier1OpptyList}" var="tier1Item">
+                        <geinsights:HubGETier1Details tier1Item="{!tier1Item}" id="{!v.id}" country="{!v.country}" searchAccId="{!v.searchAccId}" isAccountTeam="{!v.isAccountTeam}" ownerOnly="{!v.ownerOnly}" tier1value="{!v.selectedTier1}" tier2value="{!v.selectedTier2}"/>
+                    </aura:iteration>    
+                </aura:set>
+            </aura:if>                                
+        </tbody>
+    </table>   
+    
+</aura:component>

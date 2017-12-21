@@ -1,0 +1,9 @@
+<aura:component access="global">
+	<aura:attribute name="errors" type="Object[]" access="global" description="Collects the list of errors."/> 
+    <div class="slds-m-around--small">
+    <!-- Iterate through list of errors attribute-->
+    <aura:iteration items="{!v.errors}" var="err">
+        <h2 class="slds-text-color--error"><lightning:icon size="xx-small" iconName="utility:error" variant="error"/>&nbsp;&nbsp;{!err.message }</h2>
+    </aura:iteration>
+    </div> 
+ </aura:component>

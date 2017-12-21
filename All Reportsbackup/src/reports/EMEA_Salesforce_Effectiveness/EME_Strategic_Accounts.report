@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_64126234</developerName>
+        <masterLabel>Forecast</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Opportunity.Orders$Forecast__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Commitment</sourceValue>
+            </sourceValues>
+            <value>1. Commitment</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Stretch</sourceValue>
+            </sourceValues>
+            <value>2. Stretch</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Too Early to Indicate</sourceValue>
+            </sourceValues>
+            <value>3. Too Early to Indicate</value>
+        </values>
+    </buckets>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Orders$Order_Amount__c.CONVERT</field>
+    </columns>
+    <columns>
+        <field>Opportunity$GE_LGT_GE_Opportunity_Id__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Account.Owner</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Owner</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity$Owner.GE_LGT_Business_Division__c</column>
+            <operator>equals</operator>
+            <value>Europe,MEAT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Account.Tier1__c</column>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Orders$RecordType</column>
+            <operator>equals</operator>
+            <value>Order.Estimated_PO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$StageName</column>
+            <operator>notEqual</operator>
+            <value>PO Received,Closed Lost</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Owner.GE_LGT_Region__c</column>
+            <operator>notEqual</operator>
+            <value>EU Distribution,MEAT Distribution</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_64126234</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity$Account</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>EME Strategic Accounts 2017</name>
+    <params>
+        <name>co</name>
+        <value>0</value>
+    </params>
+    <reportType>Ops_with_Orders__c</reportType>
+    <roleHierarchyFilter>GE_Lighting_CEO</roleHierarchyFilter>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Opportunity.Orders$EffectiveDate</dateColumn>
+        <interval>INTERVAL_CURFY</interval>
+    </timeFrameFilter>
+</Report>

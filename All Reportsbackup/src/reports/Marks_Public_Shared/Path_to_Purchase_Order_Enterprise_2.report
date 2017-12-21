@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.TAM__c</field>
+    </columns>
+    <columns>
+        <field>Account.Areas_of_Interest__c</field>
+    </columns>
+    <columns>
+        <field>Account.Project_Status__c</field>
+    </columns>
+    <columns>
+        <field>Account.Next_Steps__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>((((((1 AND 2))) ) AND 3) AND 4) AND 5</booleanFilter>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <operator>equals</operator>
+            <value>Account.SAP_Account_Strategic</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.GE_LGT_Business_Division__c</column>
+            <operator>equals</operator>
+            <value>North America</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Project_Status__c</column>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <operator>equals</operator>
+            <value>Advance Auto Parts,T-Mobile,Life Time Fitness,MIT,Buffalo Wild Wings,AutoNation Inc.,Ryder,PetSmart Inc,Publix,Forever 21</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <name>Path to Purchase Order Enterprise_2</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Account.Project_Status__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

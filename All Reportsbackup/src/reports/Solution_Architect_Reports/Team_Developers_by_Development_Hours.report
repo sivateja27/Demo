@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>Release_Component__c.Actual_Hours__c:SUM</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Total Hours</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <columns>
+        <field>Release_Component__c$Component_Name__c</field>
+    </columns>
+    <columns>
+        <field>Release_Component__c$Component_No__c</field>
+    </columns>
+    <columns>
+        <field>Release_Component__c$Metadata_Type__c</field>
+    </columns>
+    <columns>
+        <field>Release_Component__c$Name</field>
+    </columns>
+    <columns>
+        <field>Release_Component__c$Actual_Hours__c</field>
+    </columns>
+    <columns>
+        <field>Release_Component__c$Request_Name_Short__c</field>
+    </columns>
+    <columns>
+        <field>Release_Component__c$Release_Name__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Release_Component__c$Status__c</column>
+            <operator>equals</operator>
+            <value>Deployed</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <name>Team Developers by Development Hours</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Release_Components__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Release_Component__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

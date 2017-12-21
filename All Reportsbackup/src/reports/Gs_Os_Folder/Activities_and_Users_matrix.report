@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>User$Name</field>
+    </columns>
+    <currency>USD</currency>
+    <description>This report summarizes all completed activities or logged calls.  Totaled by Activity Type and District</description>
+    <filter>
+        <criteriaItems>
+            <column>User*User$GE_LGT_Sub_Region__c</column>
+            <operator>equals</operator>
+            <value>Central,East,Eastern Canada,Midwest,Northeast,Northwest,Southeast,Southwest,West,Western Canada</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.Activity$OwnerId$Subject</column>
+            <operator>equals</operator>
+            <value>LED Tubes/Price Reduction,Legislation,RS/BT Discussion,Why GE Ballast - June,Why GE Ballast,Why GE LED Lamp</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>User.Activity$OwnerId$Subject</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>User*User$GE_LGT_Sub_Region__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Completed/Logged Calls - Summary Matrix</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>GE_LGT_User_With_Activities__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <timeFrameFilter>
+        <dateColumn>User.Activity$OwnerId$ActivityDate</dateColumn>
+        <interval>INTERVAL_CURFY</interval>
+    </timeFrameFilter>
+</Report>

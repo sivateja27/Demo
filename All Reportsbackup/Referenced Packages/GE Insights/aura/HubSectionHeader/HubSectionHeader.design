@@ -1,0 +1,4 @@
+<design:component >
+	<design:attribute name="secName" label="Section Name" description="Name of the Section" />
+    <design:attribute name="showDetails" label="Display Details" description="Default value to either show or not show details" />
+</design:component>

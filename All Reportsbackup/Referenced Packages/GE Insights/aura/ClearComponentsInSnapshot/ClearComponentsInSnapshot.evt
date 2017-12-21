@@ -1,0 +1,8 @@
+<aura:event type="APPLICATION" description="Event template" >
+    <aura:attribute type="Boolean" name="showAllComps" default="true" description="Shows all components in the snapshot component."/>
+    <aura:attribute type="String" name="criteria" description="Record type of Account either MDM oe NON MDM Account."/>
+    <aura:attribute type="String" name="country" description="Country - values for =m the country filter."/>
+    <aura:attribute type="String" name="comId" description="Commecial Entity . Id of the commercial entity from the hub org."/>
+    <aura:attribute type="String" name="accId" description="Account Id in the spoke org."/>
+   <aura:attribute type="Object" name="cmp" description="Component body"/>
+</aura:event>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>LEAD_OWNER</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>LEAD_SOURCE</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATE</field>
+    </columns>
+    <columns>
+        <field>CONVERTED_DATE</field>
+    </columns>
+    <columns>
+        <field>OPP_OWNER</field>
+    </columns>
+    <columns>
+        <field>OPP_NAME</field>
+    </columns>
+    <columns>
+        <field>OPP_ACCT_NAME</field>
+    </columns>
+    <columns>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>(1 OR 2 OR 3) AND 4</booleanFilter>
+        <criteriaItems>
+            <column>COMPANY_ACCT</column>
+            <operator>contains</operator>
+            <value>anixter,arrow i,avnet,cameron i,colfax c,dover co,emerson el,fastenal,flowserve,foxguard,genuine part,intertek,kelly ser,kelly sv,mersen,meyer tool,moog,morris mac,netscount,neal ind,package one,package 1,plexus,praxair,rea magnet,reliance steel,roper tech,sonepar,teledyne,westinghouse air</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>COMPANY_ACCT</column>
+            <operator>equals</operator>
+            <value>ABB,moog</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>COMPANY_ACCT</column>
+            <operator>startsWith</operator>
+            <value>Abb abb l,ab s</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>COMPANY_ACCT</column>
+            <operator>notEqual</operator>
+            <value>,AB Sciex,AB STERNHAMMAR AB Sciex,AB STERNHAMMAR,AB Sugar,AB SUMINISTROS ELECTRICOS,AB Supplies Inc,Applexus Technologies Pvt Ltd,Arrow Intelligent Systems,Arrow Italy - Silverstar S.R.L,Brook Electrical Supply/Sonepar USA - Distributor Member,CAMERON INTEGRATED SERVICES LTD,CENTELHA EQUIPAMENTOS ELÉTRICOS - SONEPAR,Hino Genuine Parts</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>COMPANY_ACCT</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>GE Suppliers LED + Controls - Leads</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityLead</reportType>
+    <scope>org</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>LAST_ACTIVITY</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>LEAD_ID</field>
+    </columns>
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>TITLE</field>
+    </columns>
+    <columns>
+        <field>COMPANY</field>
+    </columns>
+    <columns>
+        <field>Lead.GE_LGT_Vertical__c</field>
+    </columns>
+    <columns>
+        <field>Lead.GE_LGT_Sub_Vertical__c</field>
+    </columns>
+    <columns>
+        <field>LEAD_SOURCE</field>
+    </columns>
+    <columns>
+        <field>RATING</field>
+    </columns>
+    <columns>
+        <field>STREET</field>
+    </columns>
+    <columns>
+        <field>EMAIL</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>(1 OR 2 OR 3) AND 4</booleanFilter>
+        <criteriaItems>
+            <column>COMPANY</column>
+            <operator>contains</operator>
+            <value>hotel</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>COMPANY</column>
+            <operator>contains</operator>
+            <value>resort,holiday inn,motel,renaissance,embassy suites</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>COMPANY</column>
+            <operator>contains</operator>
+            <value>marriott,westin,radisson,best western,hilton,hyatt,las vegas sands,sheraton,starwood,travellodge,ritz-carlton,kimpton,waldorf,fairmont,four seasons</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>COMPANY</column>
+            <operator>notContain</operator>
+            <value>produce,jewellery,school,institute,city of,pharmacy,biochemicals,hyundai,fairmont homes,food group,pickard,automotive,studies,displays,furnish,college,supply company</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Leads - Hospitality</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>LeadList</reportType>
+    <scope>org</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

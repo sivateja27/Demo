@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_13055695</developerName>
+        <masterLabel>Key Vertical</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>OpportunityLineItem.Vertical_ProductGroup__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Retail</sourceValue>
+            </sourceValues>
+            <value>Retail</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Hospitality</sourceValue>
+            </sourceValues>
+            <value>Hospitality</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Commercial Property Mgmt/Office Bldg</sourceValue>
+            </sourceValues>
+            <value>Office</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Utility--ROADWAY COBRAHEAD</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Utility--ROADWAY COBRAHEAD LED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Government--ROADWAY COBRAHEAD</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Government--ROADWAY COBRAHEAD LED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Government--ROADWAY HI MAST</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Government--ROADWAY TUNNEL LED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Government--ROADWAY TURNPIKE</sourceValue>
+            </sourceValues>
+            <value>Roadway</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.GE_LGT_Vertical__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AMOUNT.CONVERT</field>
+    </columns>
+    <columns>
+        <field>Opportunity.GE_LGT_Closed_Status_Date__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <operator>equals</operator>
+            <value>Closed Lost,PO Received</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.GE_LGT_Business_Division__c</column>
+            <operator>equals</operator>
+            <value>North America</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>BucketField_13055695</column>
+            <operator>equals</operator>
+            <value>Roadway</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>SERVICE_QUARTER</column>
+            <operator>greaterThan</operator>
+            <value>12/31/2011</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.GE_LGT_Closed_Status_Date__c</column>
+            <operator>greaterThan</operator>
+            <value>12/31/2011</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>STAGE_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>SERVICE_QUARTER</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Roadway win rate opp detail</name>
+    <params>
+        <name>open</name>
+        <value>closed</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityProduct</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>AMOUNT.CONVERT</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2011-01-01</startDate>
+    </timeFrameFilter>
+</Report>

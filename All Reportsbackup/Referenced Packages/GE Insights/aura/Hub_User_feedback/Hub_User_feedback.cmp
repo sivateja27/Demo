@@ -1,0 +1,74 @@
+<aura:component controller="geinsights.HubGEAccountTeamController" access="global" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" >	     
+    <aura:attribute type="boolean" name="dislike" access="private"   />
+    <aura:attribute type="boolean" name="fieldblank" access="private"  />    
+    <aura:attribute type="boolean" name="submitfeed" access="private" description="Display a submit feedback button when true." />    
+    <aura:attribute type="String" name="comments" access="public"  description="Captures user comments." />    
+    <aura:attribute type="String" name="componentName" access="global" default="GE Insights Snapshot"  description="used to capture component name from which user is giving feedback" />        
+    <aura:attribute type="boolean" name="showComponent" access="private" default="true" description="Display a submit feedback button when true." />    
+    <aura:attribute type="boolean" name="showFullComponent" access="public"  description="Display a submit feedback button when true." />    
+    <aura:attribute name="spinner" type="boolean" default="false"  access="private" description="Loads the spinner when the component is loading the contents."/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>    
+    <aura:if isTrue="{!v.showFullComponent}">
+        <aura:if isTrue="{!v.spinner}">
+            <lightning:card >
+                <geinsights:hubGESpinner />
+            </lightning:card>
+            <aura:set attribute="else" >
+                <lightning:card >
+                    <aura:set attribute="title">
+                        <aura:if isTrue="{!v.showComponent}">  
+                            <div class="slds-float_left">
+                                <lightning:Icon iconName="standard:feedback" alternativeText="Feedback" size="small" />
+                                Give us your Valuable Feedback ! &nbsp;
+                            </div>
+                            
+                            <div class="slds-float_left">
+                                <button class="slds-button slds-button--icon likedislikeclicked " title="like">
+                                    <lightning:buttonIcon aura:id="like" iconName="utility:like" variant="base" size="small" onclick="{!c.submitLike}" />
+                                    <span class="slds-assistive-text">Like</span>
+                                </button>                
+                                
+                                <button class="slds-button slds-button--icon likedislikeclicked" title="dislike">
+                                    <lightning:buttonIcon aura:id="dislike" iconName="utility:dislike" variant="base" size="small" onclick="{!c.submitDisLike}" />
+                                    <span class="slds-assistive-text">DisLike</span>
+                                </button>
+                            </div>                            
+                        </aura:if>
+                    </aura:set>            
+                    <aura:set attribute="footer" > 
+                        <aura:if isTrue="{!and(v.showComponent,v.submitfeed)}">                                                
+                            <table class="slds-table slds-table_cell-buffer">
+                                <tr>
+                                    <td>                        
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label" for="textarea-id-01">
+                                                <aura:if isTrue="{!v.dislike}"><abbr class="slds-required" title="required">*</abbr> How can we improve the content?<aura:set attribute="else" >Comments</aura:set></aura:if></label>
+                                            <div class="slds-form-element__control">
+                                                <ui:inputTextArea aura:id="comments" class="slds-textarea" label="" value="{!v.comments}" rows="3" cols="40" placeholder="Please add your feedback comments here.." />						
+                                                
+                                            </div>
+                                            <aura:if isTrue="{!v.fieldblank}"><div class="slds-form-element__help slds-text-color_error" id="error-01">This field is required</div></aura:if>
+                                        </div>
+                                    </td>
+                                </tr>  
+                                <tr>
+                                    <td colspan="2"> 
+                                        <lightning:button variant="brand" label="Submit Feedback" onclick="{!c.submitFeedback}" />    
+                                    </td>
+                                </tr>
+                            </table>                                
+                        </aura:if>            
+                    </aura:set> 
+                    <aura:set attribute="body">             
+                        
+                    </aura:set>
+                    <aura:if isTrue="{!not(v.showComponent)}">
+                        <div class="slds-m-around_medium">
+                            <ui:outputText class="slds-text-title slds-text-body_regular slds-has-flexi-truncate" value="Thank you for taking the time to provide us with your feedback. Your feedback is important to us." />
+                        </div>
+                    </aura:if>
+                </lightning:card>  
+            </aura:set>
+        </aura:if>
+    </aura:if>
+</aura:component>

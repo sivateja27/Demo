@@ -1,0 +1,5 @@
+<aura:event type="APPLICATION" description="Event template" >    
+    <aura:attribute name="country" type="String" description="Country - Account shipping country."/>
+    <aura:attribute name="comId" type="String" description="Commercial Entity ID - Account ID in the Hub of the commercial entity."/>
+    <aura:attribute name="accId" type="String" description="Account Id in the spoke."/>
+</aura:event>

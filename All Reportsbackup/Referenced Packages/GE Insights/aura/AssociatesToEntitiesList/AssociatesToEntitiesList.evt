@@ -1,0 +1,6 @@
+<aura:event type="APPLICATION" description="This event is fired when users clicks on Prospect and Entities List" >
+	<aura:attribute name="type" type="String" description="Type of Account MDM or NON-MDM Account"/>
+    <aura:attribute name="country" type="String" description="Country - Account shipping country."/>
+    <aura:attribute name="comId" type="String" description="Commercial Entity Id."/>
+    <aura:attribute name="accId" type="String" description="Id of the account."/>
+</aura:event>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>SAP_Quote__c.SAP_Quote_LineItems__r$Name</field>
+    </columns>
+    <crossFilters>
+        <operation>with</operation>
+        <primaryTableColumn>SAP_Quote__c$Id</primaryTableColumn>
+        <relatedTable>SAP_Quote_LineItem__c</relatedTable>
+        <relatedTableJoinColumn>SAP_Quote__c</relatedTableJoinColumn>
+    </crossFilters>
+    <currency>USD</currency>
+    <format>Summary</format>
+    <groupingsDown>
+        <aggregateType>RowCount</aggregateType>
+        <dateGranularity>Day</dateGranularity>
+        <field>SAP_Quote__c$Name</field>
+        <sortByName>RowCount</sortByName>
+        <sortOrder>Desc</sortOrder>
+        <sortType>Aggregate</sortType>
+    </groupingsDown>
+    <name>SAP Quote with line items count</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>SAP_Quotes__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <timeFrameFilter>
+        <dateColumn>SAP_Quote__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CURFY</interval>
+    </timeFrameFilter>
+</Report>

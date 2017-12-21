@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>BestBetsCache</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>BestBetsCache</value>
+    </caseValues>
+    <fields>
+        <label><!-- AccountLinkName --></label>
+        <name>AccountLinkName__c</name>
+    </fields>
+    <fields>
+        <label><!-- AccountLink --></label>
+        <name>AccountLink__c</name>
+    </fields>
+    <fields>
+        <label><!-- BestBetsView --></label>
+        <name>BestBetsView__c</name>
+    </fields>
+    <fields>
+        <label><!-- ContactId --></label>
+        <name>ContactId__c</name>
+    </fields>
+    <fields>
+        <label><!-- ContactLink --></label>
+        <name>ContactLink__c</name>
+    </fields>
+    <fields>
+        <label><!-- ContactName --></label>
+        <name>ContactName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Id --></label>
+        <name>Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- LIMDate --></label>
+        <name>LIMDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- LIMDesc --></label>
+        <name>LIMDesc__c</name>
+    </fields>
+    <fields>
+        <label><!-- LIMType --></label>
+        <name>LIMType__c</name>
+    </fields>
+    <fields>
+        <label><!-- LeadScore --></label>
+        <name>LeadScore__c</name>
+    </fields>
+    <fields>
+        <label><!-- Priority --></label>
+        <name>Priority__c</name>
+    </fields>
+    <fields>
+        <label><!-- RelativeScore --></label>
+        <name>RelativeScore__c</name>
+    </fields>
+    <fields>
+        <label><!-- RowNum --></label>
+        <name>RowNum__c</name>
+    </fields>
+    <fields>
+        <label><!-- SObjectType --></label>
+        <name>SObjectType__c</name>
+        <picklistValues>
+            <masterLabel>Contact</masterLabel>
+            <translation><!-- Contact --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead</masterLabel>
+            <translation><!-- Lead --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>User</masterLabel>
+            <translation><!-- User --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- TotalCount --></label>
+        <name>TotalCount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Urgency --></label>
+        <name>Urgency__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Opportunity$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Opportunity_Support_Requests__r$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Opportunity_Support_Requests__r.Risk_by_products__r$Name</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity.Opportunity_Support_Requests__r$RecordType</column>
+            <operator>equals</operator>
+            <value>Opportunity_Support_Request__c.EMEA_Risk_buy,Opportunity_Support_Request__c.EMEA_Risk_buy_Sub</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>EMEA Risk Buy OSR all</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Risk_buy_OSR__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Opportunity$GE_LGT_Approval_Date_for_Deal_Lane__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

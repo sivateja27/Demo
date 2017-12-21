@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_7177218</developerName>
+        <masterLabel>Current Status</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>STAGE_NAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>S1 Consult</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S2 Audit</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S3 Solve</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S4 Negotiate</sourceValue>
+            </sourceValues>
+            <value>In the Pipe</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>S5 Close</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PO Received</sourceValue>
+            </sourceValues>
+            <value>Already Won</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_57535774</developerName>
+        <masterLabel>New Region</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>User.GE_LGT_Region__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Central</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>France and Benelux</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Italy</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Spain</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Europe Functional</sourceValue>
+            </sourceValues>
+            <value>Project West</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CIS &amp; Ukraine</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>South EE</sourceValue>
+            </sourceValues>
+            <value>Project East</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>UK</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Nordic</sourceValue>
+            </sourceValues>
+            <value>Project North</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Opportunity.GE_LGT_GE_Opportunity_Id__c</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>REVENUE_DATE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>REVENUE_AMOUNT.CONVERT</field>
+    </columns>
+    <columns>
+        <field>BucketField_57535774</field>
+    </columns>
+    <columns>
+        <field>Product2.GE_LGT_Product_Segment__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.SKU__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.GE_LGT_Product_Line__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.GE_LGT_Product_Group__c</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_NAME</field>
+    </columns>
+    <columns>
+        <field>UNIT_PRICE.CONVERT</field>
+    </columns>
+    <columns>
+        <field>SCHEDULE_QUANTITY</field>
+    </columns>
+    <columns>
+        <field>TOTAL_PRICE.CONVERT</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <operator>notEqual</operator>
+            <value>Closed Lost,PO Received</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.GE_LGT_Business_Division__c</column>
+            <operator>equals</operator>
+            <value>Europe</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Product2.GE_LGT_LED_NonLED__c</column>
+            <operator>notEqual</operator>
+            <value>Non LED</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <operator>notEqual</operator>
+            <value>012i0000000McrD</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>EU LED Proj Pipe exc Spec tabular</name>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunitySchedule</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>FULL_NAME</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>REVENUE_DATE</dateColumn>
+        <interval>INTERVAL_NEXT1</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>EXP_REVENUE_AMOUNT.CONVERT:SUM</calculatedFormula>
+        <datatype>currency</datatype>
+        <description>Sum of factored (weighted) revenue per delivery schedule</description>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Forcasted Topline ($)</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <aggregates>
+        <acrossGroupingContext>REVENUE_DATE</acrossGroupingContext>
+        <calculatedFormula>User.Q1_Op_Plan__c.CONVERT:SUM / 3</calculatedFormula>
+        <datatype>currency</datatype>
+        <developerName>FORMULA2</developerName>
+        <downGroupingContext>FULL_NAME</downGroupingContext>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Monthly OP ($)</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <aggregates>
+        <acrossGroupingContext>REVENUE_DATE</acrossGroupingContext>
+        <calculatedFormula>EXP_REVENUE_AMOUNT.CONVERT:SUM/User.Q1_Op_Plan__c.CONVERT:SUM * 3</calculatedFormula>
+        <datatype>percent</datatype>
+        <description>Ratio of (won+weighted pipeline)/OP plan</description>
+        <developerName>FORMULA3</developerName>
+        <downGroupingContext>FULL_NAME</downGroupingContext>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Monthly OP (%)</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>User.Q1_Op_Plan__c.CONVERT:SUM</calculatedFormula>
+        <datatype>currency</datatype>
+        <developerName>FORMULA4</developerName>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Quarterly OP ($)</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_85736397</developerName>
+        <masterLabel>New Region</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>User.GE_LGT_Region__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Africa</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Middle East</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Turkey</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Project MEAT</sourceValue>
+            </sourceValues>
+            <value>Project MEAT</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Central</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>France and Benelux</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Italy</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Spain</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Project West</sourceValue>
+            </sourceValues>
+            <value>Project West</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Nordic</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>UK</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Project North</sourceValue>
+            </sourceValues>
+            <value>Project North</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CIS &amp; Ukraine</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>South EE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Project East</sourceValue>
+            </sourceValues>
+            <value>Project East</value>
+        </values>
+    </buckets>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>User.Q1_Op_Plan__c.CONVERT</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>User.Q2_Op_Plan__c.CONVERT</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>User.Q3_Op_Plan__c.CONVERT</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>User.Q4_Op_Plan__c.CONVERT</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>REVENUE_AMOUNT.CONVERT</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>User.GE_LGT_Business_Division__c</column>
+            <operator>equals</operator>
+            <value>Europe,MEAT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER_ACTIVE</column>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>FiscalQuarter</dateGranularity>
+        <field>REVENUE_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_85736397</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FULL_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>FactoredRevenueVSOP2modified</name>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>0</value>
+    </params>
+    <reportType>OpportunitySchedule</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <timeFrameFilter>
+        <dateColumn>REVENUE_DATE</dateColumn>
+        <endDate>2015-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2015-01-01</startDate>
+    </timeFrameFilter>
+</Report>

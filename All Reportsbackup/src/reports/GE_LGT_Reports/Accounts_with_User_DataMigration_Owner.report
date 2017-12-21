@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>User.Account$LastModifiedById$Id</field>
+    </columns>
+    <columns>
+        <field>User.Account$LastModifiedById$Name</field>
+    </columns>
+    <columns>
+        <field>User.Account$LastModifiedById$RecordType</field>
+    </columns>
+    <columns>
+        <field>User.Account$LastModifiedById$Owner</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>User.Account$LastModifiedById$RecordType</column>
+            <operator>equals</operator>
+            <value>Account.GE_LGT_End_User</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.Account$LastModifiedById$Owner</column>
+            <operator>contains</operator>
+            <value>User DataMigration</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Accounts with User DataMigration Owner</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Users_and_Accounts__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>User$ChatterAdoptionStageModifiedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

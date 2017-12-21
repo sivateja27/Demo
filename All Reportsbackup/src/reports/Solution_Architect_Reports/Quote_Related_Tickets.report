@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Request__c.Request_No__c</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Request__c.Project_Name__c</field>
+    </columns>
+    <columns>
+        <field>Request__c.Request_Category__c</field>
+    </columns>
+    <columns>
+        <field>Request__c.Business_Value__c</field>
+    </columns>
+    <columns>
+        <field>Request__c.Request_Stage__c</field>
+    </columns>
+    <columns>
+        <field>Request__c.Level_of_Effort__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Request__c.Project_Name__c</column>
+            <operator>contains</operator>
+            <value>Quote,Price Agreement</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Quote Related Tickets</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Request__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Request__c.Close_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>User.GE_LGT_Region__c</field>
+    </columns>
+    <columns>
+        <field>User.GE_LGT_Sub_Region__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>ROLE</column>
+            <operator>equals</operator>
+            <value>NA-GM US Prof Sales South,NA-South OEM Manager,NA-South Region Ops Mgr,NA-South-Southeast DM,NA-South-Southeast Sales,NA-South-Southwest DM,NA-South-Southwest Sales,NA-West DM,NA-West-West Sales,NA-West Region Executive,NA-West Fixture DM,NA-West-Northwest DM,NA-West-Northwest Sales,NA_SA_Enterprise_North_Director,NA-SA Enterprise North Sales,NA_SA_Enterprise_South_Director,NA_SA_Enterprise_South_Sales,NA-SA West Retail Director,NA-SA West Retail Sales</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ROLE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Tom Cendroski Role Report_South</name>
+    <params>
+        <name>active</name>
+        <value>active</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>User</reportType>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>LAST_LOGIN</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

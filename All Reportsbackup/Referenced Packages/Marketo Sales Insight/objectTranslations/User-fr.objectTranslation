@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- IsCachingAnonWebActivityList --></label>
+        <name>IsCachingAnonWebActivityList__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsCachingBestBets --></label>
+        <name>IsCachingBestBets__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsCachingEmailActivityList --></label>
+        <name>IsCachingEmailActivityList__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsCachingGroupedWebActivityList --></label>
+        <name>IsCachingGroupedWebActivityList__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsCachingInterestingMomentsList --></label>
+        <name>IsCachingInterestingMomentsList__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsCachingScoringList --></label>
+        <name>IsCachingScoringList__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsCachingStreamList --></label>
+        <name>IsCachingStreamList__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsCachingWatchList --></label>
+        <name>IsCachingWatchList__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsCachingWebActivityList --></label>
+        <name>IsCachingWebActivityList__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marketo Sales Insight Welcome Counter --></label>
+        <name>Sales_Insight_Counter__c</name>
+    </fields>
+</CustomObjectTranslation>

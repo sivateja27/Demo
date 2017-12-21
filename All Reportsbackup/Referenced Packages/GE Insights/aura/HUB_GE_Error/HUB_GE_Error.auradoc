@@ -1,0 +1,9 @@
+<aura:documentation>
+	<aura:description>
+        <p>Component is used to display errors if anything goes wrong while loading Account owners, Opportunity owners or Assiociate sites and enities in GE Insights application. This is an independent component.
+        </p>
+        <p>This example shows how to display errors by providing errors attribute.</p>
+    	
+        <p><pre>&lt;geinsights:HUB_GE_Error errors="{!v.errors}" /&gt;</pre></p>
+    </aura:description>	
+</aura:documentation>

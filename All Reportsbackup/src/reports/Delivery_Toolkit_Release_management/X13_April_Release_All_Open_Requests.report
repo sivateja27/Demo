@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Request__c.Request_No__c</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Request__c.Project_Name__c</field>
+    </columns>
+    <columns>
+        <field>Request__c.Status__c</field>
+    </columns>
+    <columns>
+        <field>Request__c.Request_Stage__c</field>
+    </columns>
+    <columns>
+        <field>Request__c.Solution_Owner__c</field>
+    </columns>
+    <columns>
+        <field>Request__c.Assigned_To__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>all 13 April requests which is not closed</description>
+    <filter>
+        <criteriaItems>
+            <column>Request__c.Release_Name__c</column>
+            <operator>equals</operator>
+            <value>2017 APR 13</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Request__c.Status__c</column>
+            <operator>notEqual</operator>
+            <value>Closed,Cancelled</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>13 April Release - All Open Requests</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Request__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Request__c.Status__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Request__c.Close_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

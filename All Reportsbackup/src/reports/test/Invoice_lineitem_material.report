@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>GE_LGT_EM_InvoiceLineItem__c.GE_LGT_EM_Customer_Material_Number__c</field>
+    </columns>
+    <columns>
+        <field>GE_LGT_EM_InvoiceLineItem__c.GE_LGT_EM_SAP_Invoice_Number__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>GE_LGT_EM_InvoiceLineItem__c.GE_LGT_EM_Material__c</column>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Invoice lineitem-material</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$GE_LGT_EM_InvoiceLineItem__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>GE_LGT_EM_InvoiceLineItem__c.GE_LGT_EM_Invoice_Creation_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2016-02-01</startDate>
+    </timeFrameFilter>
+</Report>

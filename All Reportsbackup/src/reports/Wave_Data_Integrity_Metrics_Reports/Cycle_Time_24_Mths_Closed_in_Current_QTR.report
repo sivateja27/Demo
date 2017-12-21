@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>OPPORTUNITY.NAME</field>
+    </columns>
+    <columns>
+        <field>FROM_OPPORTUNITY_STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>STAGE_DURATION</field>
+    </columns>
+    <columns>
+        <field>RECORDTYPE</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Total_Order_Amount__c.CONVERT</field>
+    </columns>
+    <columns>
+        <field>OWNER_NAME</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <currency>USD</currency>
+    <description>Cycle time 24 months for Standard and Standard Flow Opps Closed in current qtr.</description>
+    <filter>
+        <criteriaItems>
+            <column>FROM_OPPORTUNITY_STAGE_NAME</column>
+            <operator>equals</operator>
+            <value>S5 Close,S1 Consult,S2 Evaluate,S3 Solve,S4 Negotiate</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER_NAME</column>
+            <operator>notEqual</operator>
+            <value>Kevin Kovitch,Robyn Gallucci,Bence Nemeth,Aditya Ghadigaonkar</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER_ACTIVE</column>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Total_Order_Amount__c</column>
+            <operator>greaterThan</operator>
+            <value>USD 500000</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>TYPE</column>
+            <operator>equals</operator>
+            <value>Standard,Standard-Flow</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Cycle Time 24 Mths Closed in Current QTR</name>
+    <params>
+        <name>include</name>
+        <value>closedwon</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityHistory</reportType>
+    <scope>all</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <endDate>2017-01-11</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2015-01-11</startDate>
+    </timeFrameFilter>
+</Report>

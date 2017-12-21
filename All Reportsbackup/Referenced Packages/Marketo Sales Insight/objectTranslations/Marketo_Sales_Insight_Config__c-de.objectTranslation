@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>false</plural>
+        <value>Marketo Sales Insight-Konfig</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>true</plural>
+        <value>Marketo Sales Insight-Konfig</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>false</plural>
+        <value>Marketo Sales Insight-Konfig</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>true</plural>
+        <value>Marketo Sales Insight-Konfig</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>false</plural>
+        <value>Marketo Sales Insight-Konfig</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>true</plural>
+        <value>Marketo Sales Insight-Konfig</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>false</plural>
+        <value>Marketo Sales Insight-Konfig</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>true</plural>
+        <value>Marketo Sales Insight-Konfig</value>
+    </caseValues>
+    <fields>
+        <label><!-- API Secret Key --></label>
+        <name>API_Secret_Key__c</name>
+    </fields>
+    <fields>
+        <label><!-- API URL --></label>
+        <name>API_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- API User Id --></label>
+        <name>API_User_Id__c</name>
+    </fields>
+    <fields>
+        <label>Enable Marketo API auf Deutsch</label>
+        <name>Enable_Marketo_API__c</name>
+    </fields>
+    <fields>
+        <label><!-- Show RSS Icon --></label>
+        <name>Enable_RSS__c</name>
+    </fields>
+    <fields>
+        <label>Marketo Host auf Deutsch</label>
+        <name>Marketo_Host__c</name>
+    </fields>
+    <fields>
+        <label><!-- Test Configuration --></label>
+        <name>Test_Configuration__c</name>
+    </fields>
+    <gender>Neuter</gender>
+    <layouts>
+        <layout>Marketo Sales Insight Config Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>ID</nameFieldLabel>
+    <webLinks>
+        <label>Testkonfiguration</label>
+        <name>Test_Configuration</name>
+    </webLinks>
+</CustomObjectTranslation>

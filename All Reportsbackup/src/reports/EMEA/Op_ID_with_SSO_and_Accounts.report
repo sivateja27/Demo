@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>User.Opportunity$OwnerId$GE_LGT_GE_Opportunity_Id__c</field>
+    </columns>
+    <columns>
+        <field>User$EmployeeNumber</field>
+    </columns>
+    <columns>
+        <field>User.Opportunity$OwnerId$GE_LGT_End_User__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>User*User$GE_LGT_Business_Division__c</column>
+            <operator>equals</operator>
+            <value>Europe,MEAT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.Opportunity$OwnerId$GE_LGT_GE_Opportunity_Id__c</column>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User$EmployeeNumber</column>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User*User$GE_LGT_Region__c</column>
+            <operator>notEqual</operator>
+            <value>Europe Functional,Functional,Leadership,MEAT Functional</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.Opportunity$OwnerId$Type</column>
+            <operator>equals</operator>
+            <value>End User - Retrofit,End User - New Construction</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Op ID with SSO and Accounts</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunities_with_Users__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>User$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

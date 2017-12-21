@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Opportunity.Orders$EffectiveDate</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Orders$GE_Order_NO__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Orders$TotalAmount</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity$GE_LGT_GE_Opportunity_Id__c</column>
+            <operator>equals</operator>
+            <value>EU16124894</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Orders$RecordType</column>
+            <operator>equals</operator>
+            <value>Order.Received_PO</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>EU16124894 Received Orders Q2</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Ops_with_Orders__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Opportunity.Orders$EffectiveDate</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Opportunity.Orders$EffectiveDate</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
+    </timeFrameFilter>
+</Report>

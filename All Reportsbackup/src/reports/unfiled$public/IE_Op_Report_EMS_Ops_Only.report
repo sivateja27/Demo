@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Opportunity$Intelligent_Environments_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Account.RecordType</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Owner</field>
+    </columns>
+    <columns>
+        <field>Opportunity$StageName</field>
+    </columns>
+    <columns>
+        <field>Opportunity.OpportunityTeamMembers$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity.OpportunityTeamMembers$TeamMemberRole</field>
+    </columns>
+    <columns>
+        <field>Opportunity$GE_LGT_TeamMember__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity$Type</column>
+            <operator>equals</operator>
+            <value>Intelligent Environments</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Intelligent_Environments_Segment__c</column>
+            <operator>equals</operator>
+            <value>Energy Management</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity$Account</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>IE Op Report - EMS Ops Only</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunities_with_Opportunity_Team__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Opportunity$GE_LGT_Approval_Date_for_Deal_Lane__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

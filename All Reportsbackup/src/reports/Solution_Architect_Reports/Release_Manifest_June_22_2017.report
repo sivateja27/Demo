@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Release_Component__c$Component_No__c</field>
+    </columns>
+    <columns>
+        <field>Release_Component__c$Name</field>
+    </columns>
+    <columns>
+        <field>Release_Component__c$Parent_Entity__c</field>
+    </columns>
+    <columns>
+        <field>Release_Component__c$Status__c</field>
+    </columns>
+    <columns>
+        <field>Release_Component__c$Request_Name_Short__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Release_Component__c$Release_Name__c</column>
+            <operator>equals</operator>
+            <value>2017 JUN 22</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Release_Component__c$Metadata_Type__c</column>
+            <operator>notContain</operator>
+            <value>Test Execution,Test Scenario</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Release_Component__c$Release_Action__c</column>
+            <operator>notEqual</operator>
+            <value>Delete</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Release_Component__c$Status__c</column>
+            <operator>notEqual</operator>
+            <value>Deployed</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Release_Component__c$Metadata_Type__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Release Manifest - June 22, 2017</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Release_Components__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Release_Component__c$Name</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Release_Component__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

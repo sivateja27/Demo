@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Sales_Concession_Request__c.GE_LGT_Requestor__c</field>
+    </columns>
+    <columns>
+        <field>CUST_CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>Sales_Concession_Request__c.Concession_Type__c</field>
+    </columns>
+    <columns>
+        <field>Sales_Concession_Request__c.GE_LGT_Root_Cause_Error__c</field>
+    </columns>
+    <columns>
+        <field>Sales_Concession_Request__c.GE_LGT_Comments__c</field>
+    </columns>
+    <columns>
+        <field>Sales_Concession_Request__c.Approver__c</field>
+    </columns>
+    <columns>
+        <field>Sales_Concession_Request__c.GE_LGT_Concession_Status__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Sales_Concession_Request__c.GE_LGT_Actual_Amount__c</field>
+    </columns>
+    <currency>USD</currency>
+    <format>Tabular</format>
+    <name>Sales Concessions MTD</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Sales_Concession_Request__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>CUST_CREATED_DATE</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_THISMONTH</interval>
+    </timeFrameFilter>
+</Report>

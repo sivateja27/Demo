@@ -1,0 +1,8 @@
+<design:component >
+	
+	<design:attribute name="AccountOwnerSnapshotOrder" label="Account Owner Snapshot Order" description="Enter 0 for hiding the component" min="0" max="3"/>
+	<design:attribute name="OpportunityOwnerSnapshotOrder" label="Opportunity Owner Snapshot Order" description="Enter 0 for hiding the component" min="0" max="3"/>
+	<design:attribute name="associatedSiteEntityOrder" label="associated Site Entity Order" description="Enter 0 for hiding the component" min="0" max="3"/>
+    
+    <design:attribute name="layoutType" datasource="One Column,Two Column,Three Column" />
+</design:component>

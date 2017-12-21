@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>Opportunity.True_Amount__c.CONVERT:SUM/1000000000</calculatedFormula>
+        <datatype>currency</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Total Amount (#)</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>RowCount</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA2</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Total Opps (#)</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_66097265</developerName>
+        <masterLabel>End User Strategic?</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Opportunity$GE_LGT_End_User__c.True_Type__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Strategic (Tier One)</sourceValue>
+            </sourceValues>
+            <value>Strategic</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Agency</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>End User</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Industrial</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Service</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Strategic (Other)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Third-Party</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Unknown</sourceValue>
+            </sourceValues>
+            <value>Non-Strategic</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_69343921</developerName>
+        <masterLabel>Stage Groupings</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Opportunity$True_Stage__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>S0 Qualify</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S1 Consult</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S2 Evaluate</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S3 Solve</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S4 Negotiate</sourceValue>
+            </sourceValues>
+            <value>G1 Open</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Closed Won</sourceValue>
+            </sourceValues>
+            <value>G2 Won</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Closed Lost</sourceValue>
+            </sourceValues>
+            <value>G3 Lost</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_94540650</developerName>
+        <masterLabel>Strategic?</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Opportunity$Account.True_Type__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Strategic (Tier One)</sourceValue>
+            </sourceValues>
+            <value>Strategic</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Agency</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>End User</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Industrial</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Strategic (Other)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Third-Party</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Service</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Unknown</sourceValue>
+            </sourceValues>
+            <value>Non-Strategic</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Opportunity$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Account.isStrategic__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Account</field>
+    </columns>
+    <columns>
+        <field>Opportunity$GE_LGT_End_User__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$True_Close_Date__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$True_Amount__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$True_Stage__c</field>
+    </columns>
+    <currency>USD</currency>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_66097265</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_94540650</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Account Type Pipeline Analysis</name>
+    <params>
+        <name>co</name>
+        <value>0</value>
+    </params>
+    <reportType>All_Opportunities__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Opportunity$True_Close_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_30360845</developerName>
+        <masterLabel>Lead score range</masterLabel>
+        <nullTreatment>z</nullTreatment>
+        <sourceColumnName>Lead.mkto2__Lead_Score__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>0</to>
+            </sourceValues>
+            <value>Zero</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>0</from>
+                <to>300</to>
+            </sourceValues>
+            <value>1-300</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>300</from>
+                <to>600</to>
+            </sourceValues>
+            <value>301-600</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>600</from>
+            </sourceValues>
+            <value>600+</value>
+        </values>
+    </buckets>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>(1 or 2  or 4 or 5) AND 3</booleanFilter>
+        <criteriaItems>
+            <column>CAMPAIGN_NAME</column>
+            <operator>contains</operator>
+            <value>EMEA 2014-12 LP - Illuminated minds collector campaign</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CAMPAIGN_NAME</column>
+            <operator>equals</operator>
+            <value>EMEA 2015-01 Illuminated Minds Collector - who clicked IM link in email or LP</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>EMAIL</column>
+            <operator>notContain</operator>
+            <value>@ge.com</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CAMPAIGN_NAME</column>
+            <operator>contains</operator>
+            <value>EMEA 2015-03 LP - White Paper Download - IM - A Financial Love Affair: Funding L</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CAMPAIGN_NAME</column>
+            <operator>contains</operator>
+            <value>EMEA 2015-03 LP - IM - Live Stream - Popup</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>EMAIL</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>EMEA 2014-12 LP-IM collector e-mails</name>
+    <params>
+        <name>scopeid</name>
+        <value></value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CampaignLead</reportType>
+    <scope>orgAll</scope>
+    <showDetails>true</showDetails>
+</Report>

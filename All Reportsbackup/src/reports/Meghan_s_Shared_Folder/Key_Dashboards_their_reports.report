@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Report$Name</field>
+    </columns>
+    <columns>
+        <field>Report$Owner</field>
+    </columns>
+    <columns>
+        <field>Report$LastModifiedBy</field>
+    </columns>
+    <columns>
+        <field>Report$LastModifiedDate</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Report$Owner</column>
+            <operator>equals</operator>
+            <value>Current Dashboard Reports</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Report.DashboardComponents$Dashboard</column>
+            <operator>equals</operator>
+            <value>led executive pipeline dashboard,LGT-account manager,qmi dashboard,LGT-strategic accounts,Updated Digital Pipeline Dashboard</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Report.DashboardComponents$Dashboard</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Key Dashboards &amp; their reports</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Reports_With_Dashboard_Names__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Report$LastModifiedBy</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Report$LastModifiedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

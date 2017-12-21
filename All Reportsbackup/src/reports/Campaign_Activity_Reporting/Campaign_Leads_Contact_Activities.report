@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <block>
+        <blockInfo>
+            <blockId>B1</blockId>
+            <joinTable>Campaign</joinTable>
+        </blockInfo>
+        <columns>
+            <field>Campaign.LeadCampaignMembers.Activities$Subject</field>
+        </columns>
+        <columns>
+            <field>Campaign.LeadCampaignMembers.Activities$Status</field>
+        </columns>
+        <currency>USD</currency>
+        <format>Summary</format>
+        <name>Campaign Leads w/ Activities block 1</name>
+        <params>
+            <name>scopeid</name>
+            <value></value>
+        </params>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>Campaigns_w_Campaign_Members_Activities__c</reportType>
+        <scope>orgActive</scope>
+        <timeFrameFilter>
+            <dateColumn>Campaign$CreatedDate</dateColumn>
+            <interval>INTERVAL_CURRENT</interval>
+        </timeFrameFilter>
+    </block>
+    <blockInfo>
+        <blockId xsi:nil="true"/>
+        <joinTable>Campaign</joinTable>
+    </blockInfo>
+    <description>Joined format to report on activities associated with both leads and contacts in campaigns</description>
+    <format>MultiBlock</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Campaign$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Campaign.LeadCampaignMembers.Activities$Owner</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Campaign Leads &amp; Contact Activities</name>
+    <params>
+        <name>lsk</name>
+        <value>1</value>
+    </params>
+    <reportType>Campaigns_w_Campaign_Members_Activities__c</reportType>
+    <showDetails>true</showDetails>
+</Report>

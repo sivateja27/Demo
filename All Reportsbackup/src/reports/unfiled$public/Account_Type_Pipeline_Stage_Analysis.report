@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>Opportunity.True_Amount__c.CONVERT:SUM/1000000000</calculatedFormula>
+        <datatype>currency</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Total Amount (#)</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>RowCount</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA2</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Total Opps (#)</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_12777175</developerName>
+        <masterLabel>Stage Grouping</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Opportunity.True_Stage__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Closed Won</sourceValue>
+            </sourceValues>
+            <value>G2 Won</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>S0 Qualify</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S1 Consult</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S3 Solve</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S2 Evaluate</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S4 Negotiate</sourceValue>
+            </sourceValues>
+            <value>G1 Open</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Closed Lost</sourceValue>
+            </sourceValues>
+            <value>G3 Lost</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_67953482</developerName>
+        <masterLabel>Type Grouping</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Account.True_Type__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Agency</sourceValue>
+            </sourceValues>
+            <value>T1 Agency</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Service</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Unknown</sourceValue>
+            </sourceValues>
+            <value>T5 Other</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Strategic (Tier One)</sourceValue>
+            </sourceValues>
+            <value>T4 Strategic</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>End User</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Industrial</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Strategic (Other)</sourceValue>
+            </sourceValues>
+            <value>T2 End User</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Third-Party</sourceValue>
+            </sourceValues>
+            <value>T3 Channel</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>RECORDTYPE</field>
+    </columns>
+    <columns>
+        <field>Opportunity.True_Stage__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.True_Close_Date__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.True_Amount__c.CONVERT</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <currency>USD</currency>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_12777175</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_67953482</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Account Type Pipeline Stage Analysis</name>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>0</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

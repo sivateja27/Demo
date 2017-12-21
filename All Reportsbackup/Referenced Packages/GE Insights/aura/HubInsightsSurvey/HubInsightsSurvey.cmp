@@ -1,0 +1,39 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <lightning:card iconName="custom:custom23">
+        <aura:set attribute="title">
+            Feedback
+        </aura:set>
+        <aura:set attribute="body" >
+            <lightning:layout multipleRows="true">
+                <lightning:layoutItem flexibility="auto" padding="around-small"  size="12" largeDeviceSize="12" mediumDeviceSize="12" smallDeviceSize="12">
+                    <p style="margin-left:20px">The Commercial Digital Thread team is dedicated to providing you customer insights at your fingertips. 
+                        Please let us know your feedback so we can make the insights better: <a href="http://surveys.ge.com/create/201832" target="_blank">Take Survey</a></p>
+                    <br/>
+                    <p style="margin-left:20px">
+                        Is the data you see incorrect? If so, please let us know and we’ll fix it: 
+                        <a href="mailto:hub.datastewards@ge.com?Subject=Insights%20Feedback" target="_top">
+                            hub.datastewards@ge.com</a>
+                    </p>
+                    <br />                    
+                    <p style="margin-left:20px">
+                        Sincerely,<br/>
+                        The Commercial Digital Thread Team.												
+                    </p>                    
+                    <table style="width:50%;margin-left: 4%">
+                        <!--<tr>
+                            <td style="font-size:11px">Chief Product Manager</td>
+                            <td style="font-size:11px">Sr. Software Architect</td>						
+                        </tr>
+                        <tr>
+                            <td><img src="{!$Resource.HubInsightsSurveyImg1}"  style="margin-left:10%; height:80px"/></td>
+                            <td><img src="{!$Resource.HubInsightsSurveyImg2}"  style="margin-left:10%; height:80px"/></td>
+                        </tr> -->
+                    </table>					
+                </lightning:layoutItem>
+                
+            </lightning:layout>
+        </aura:set>
+        
+    </lightning:card>
+    
+</aura:component>

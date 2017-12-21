@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Opportunity$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Opportunity_Support_Requests__r$GE_LGT_Opportunity_Owner__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Opportunity_Support_Requests__r$Owner</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Opportunity_Support_Requests__r$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Opportunity_Support_Requests__r$Pricing_Request__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Opportunity_Support_Requests__r$Name</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity.Opportunity_Support_Requests__r$Pricing_Request__c</column>
+            <operator>equals</operator>
+            <value>Pricing Request</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Owner</column>
+            <operator>notContain</operator>
+            <value>Rinat Shtoff,Robyn Gallucci</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Opportunity_Support_Requests__r$Status__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Andrea Corriere- OSR Queue</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity_with_Pricing_OSR__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Opportunity.Opportunity_Support_Requests__r$CreatedDate</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Opportunity.Opportunity_Support_Requests__r$CreatedDate</dateColumn>
+        <interval>INTERVAL_THISWEEK</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account$RecordType</field>
+    </columns>
+    <columns>
+        <field>Account.SAP_Quotes__r$Strategic_Partner_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account$GE_LGT_Agent_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.SAP_Quotes__r$Name</field>
+    </columns>
+    <columns>
+        <field>Account.SAP_Quotes__r.SAP_Quote_LineItems__r$Name</field>
+    </columns>
+    <columns>
+        <field>Account$GE_LGT_FAM_AM__c</field>
+    </columns>
+    <columns>
+        <field>Account.SAP_Quotes__r.SAP_Quote_LineItems__r$Sales_Price__c</field>
+    </columns>
+    <columns>
+        <field>Account.SAP_Quotes__r.SAP_Quote_LineItems__r$SKU__c</field>
+    </columns>
+    <columns>
+        <field>Account.SAP_Quotes__r.SAP_Quote_LineItems__r$Total_Price__c</field>
+    </columns>
+    <columns>
+        <field>Account$CreatedBy</field>
+    </columns>
+    <columns>
+        <field>Account$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>Account$Parent</field>
+    </columns>
+    <columns>
+        <field>Account$Parent_Account_Name__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>Agreement 80035301  
+-          Revision P100081287  processed 7/29
+o   Changes made:
+  Item 93040325 EASCHK5N5504DBLCK was added to the agreement</description>
+    <filter>
+        <criteriaItems>
+            <column>Account.SAP_Quotes__r$Strategic_Partner_Name__c</column>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.SAP_Quotes__r.SAP_Quote_LineItems__r$Quote_Number__c</column>
+            <operator>equals</operator>
+            <value>0080035301</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.SAP_Quotes__r.SAP_Quote_LineItems__r$Sales_Price__c</column>
+            <operator>equals</operator>
+            <value>USD 998</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Agreement 80035301 Testing</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Accounts_with_Quotes__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Account$CEC_Engagement_Timing__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

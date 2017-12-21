@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Opportunity$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Owner.GE_LGT_Business_Division__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Owner.GE_LGT_Region__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Owner.GE_LGT_Sub_Region__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Owner</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Owner.EmployeeNumber</field>
+    </columns>
+    <columns>
+        <field>Opportunity.OpportunityLineItems.OpportunityLineItemSchedules$ScheduleDate</field>
+    </columns>
+    <columns>
+        <field>Opportunity.OpportunityLineItems.OpportunityLineItemSchedules$Revenue.CONVERT</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Amount.CONVERT</field>
+    </columns>
+    <columns>
+        <field>Opportunity$ExpectedRevenue.CONVERT</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity$Owner.GE_LGT_Business_Division__c</column>
+            <operator>equals</operator>
+            <value>Europe,MEAT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$StageName</column>
+            <operator>notEqual</operator>
+            <value>Closed Lost</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Amount</column>
+            <operator>greaterThan</operator>
+            <value>USD 1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.OpportunityLineItems.OpportunityLineItemSchedules$Revenue</column>
+            <operator>greaterThan</operator>
+            <value>USD 1</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Oppty with ProductsSchedules</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Oppty_with_ProductsSchedules__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Opportunity$Name</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Opportunity.OpportunityLineItems.OpportunityLineItemSchedules$ScheduleDate</dateColumn>
+        <interval>INTERVAL_CURFY</interval>
+    </timeFrameFilter>
+</Report>

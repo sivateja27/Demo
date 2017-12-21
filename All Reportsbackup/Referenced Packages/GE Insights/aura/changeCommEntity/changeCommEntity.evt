@@ -1,0 +1,4 @@
+<aura:event type="APPLICATION" description="Event template" >
+	<aura:attribute name="newCommEntity" type="String" description="New commercial entity Id"/>
+	<aura:attribute name="newCommName" type="String" description="New commercial entity Name"/>
+</aura:event>

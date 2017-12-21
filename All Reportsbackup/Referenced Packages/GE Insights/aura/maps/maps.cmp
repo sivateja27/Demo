@@ -1,0 +1,17 @@
+<aura:component >
+	
+    <aura:attribute name="spinner" type="Boolean" default="true" description="Loading spinner. when set to true a spinner will appear"/> 
+    
+    <aura:attribute name="activeAccounts" type="geinsights.AccNameOpptyAmt[]"  description="List of Accounts with open opportunities"/>
+    <aura:attribute name="inActiveAccounts" type="geinsights.AccNameOpptyAmt[]" description="List of Accounts with no open opportunities"/> 
+    <aura:attribute name="centerLat" type="Decimal"  default="41.093889" description="Default focal center location latitude." />
+    <aura:attribute name="centerLong" type="Decimal"  default="-73.419722" description="Default focal center location Longitute." />
+    <ltng:require styles="{!$Resource.geinsights__leaflet+ '/leaflet.css'}" scripts="{!$Resource.geinsights__leaflet+ '/leaflet.js'}" afterScriptsLoaded="{!c.jsLoaded}" />
+   
+    <!-- Loads the map. Displays a spinner when the mapping is loading.-->
+    <div id="{!globalId + '_map'}">
+    	<aura:if isTrue="{!v.spinner}">
+	        <geinsights:hubGESpinner />
+	    </aura:if> 
+	</div>
+</aura:component>

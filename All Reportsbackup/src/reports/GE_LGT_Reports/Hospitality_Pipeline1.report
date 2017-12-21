@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.GE_LGT_End_User__c</field>
+    </columns>
+    <columns>
+        <field>REVENUE_AMOUNT.CONVERT</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>Product2.GE_LGT_Product_Segment__c</field>
+    </columns>
+    <columns>
+        <field>OWNER_COMPANY</field>
+    </columns>
+    <columns>
+        <field>Opportunity.GE_LGT_TeamMember__c</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATE</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>(((1 or 2 or 3 or 4 or 5 or 7 or 8 or 9 or 10) AND 6))</booleanFilter>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <operator>equals</operator>
+            <value>bryan dorsey,christopher lyke,samuel grebe,craig hall,jay thompson</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.GE_LGT_End_User__c</column>
+            <operator>contains</operator>
+            <value>cbre,trane,usg,ge all facilities,hilton,marriott,ritz,renaissance,residence inn,courtyard,farifield,springhill,travelplace,AC hotels,intercontinental,crown plaza,holiday inn,candlewood,staybridge,indigo,comfort inn,quality inn,sleep inn,clarion,econolodge,westin,sheraton,regis,W hotel,four points,aloft,meridien,wyndham,ramada,howard johnson,hayworth,wingate,microtel,travelodge,super 8,knights inn,waldorf,conrad,doubletree,embassy suites,hampton,homewood,sofitel,hyatt,andaz,extended stays,four seasons,quinta</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>DESCRIPTION</column>
+            <operator>contains</operator>
+            <value>cbre,trane,usg,ge all facilities,hilton,marriott,ritz,renaissance,residence inn,courtyard,farifield,springhill,travelplace,AC hotels,intercontinental,crown plaza,holiday inn,candlewood,staybridge,indigo,comfort inn,quality inn,sleep inn,clarion,econolodge,westin,sheraton,regis,W hotel,four points,aloft,meridien,wyndham,ramada,howard johnson,hayworth,wingate,microtel,travelodge,super 8,knights inn,waldorf,conrad,doubletree,embassy suites,hampton,homewood,sofitel,hyatt,andaz,extended stays,four seasons,quinta</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OPPORTUNITY_NAME</column>
+            <operator>contains</operator>
+            <value>cbre,trane,usg,ge all facilities,hilton,marriott,ritz,renaissance,residence inn,courtyard,farifield,springhill,travelplace,AC hotels,intercontinental,crown plaza,holiday inn,candlewood,staybridge,indigo,comfort inn,quality inn,sleep inn,clarion,econolodge,westin,sheraton,regis,W hotel,four points,aloft,meridien,wyndham,ramada,howard johnson,hayworth,wingate,microtel,travelodge,super 8,knights inn,waldorf,conrad,doubletree,embassy suites,hampton,homewood,sofitel,hyatt,andaz,extended stays,four seasons,quinta</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.GE_LGT_TeamMember__c</column>
+            <operator>contains</operator>
+            <value>bryan dorsey,chistopher lyke,samuel grebe,craig hall,jay thompson</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.GE_LGT_Business_Division__c</column>
+            <operator>equals</operator>
+            <value>North America</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PARTNER_NAME</column>
+            <operator>contains</operator>
+            <value>cbre,trane,usg,ge all facilities,hilton,marriott,ritz,renaissance,residence inn,courtyard,farifield,springhill,travelplace,AC hotels,intercontinental,crown plaza,holiday inn,candlewood,staybridge,indigo,comfort inn,quality inn,sleep inn,clarion,econolodge,westin,sheraton,regis,W hotel,four points,aloft,meridien,wyndham,ramada,howard johnson,hayworth,wingate,microtel,travelodge,super 8,knights inn,waldorf,conrad,doubletree,embassy suites,hampton,homewood,sofitel,hyatt,andaz,extended stays,four seasons,quinta</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.GE_LGT_Initiative__c</column>
+            <operator>equals</operator>
+            <value>GE4GE</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER_COMPANY</column>
+            <operator>equals</operator>
+            <value>CBRE</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FULL_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>REVENUE_QUARTER</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Hospitality Pipeline</name>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunitySchedule</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>LAST_UPDATE</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Opportunity.GE_LGT_Expected_Ship_Date__c</dateColumn>
+        <endDate>2014-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2014-01-01</startDate>
+    </timeFrameFilter>
+</Report>

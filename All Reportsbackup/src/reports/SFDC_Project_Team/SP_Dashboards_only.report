@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Dashboard$Title</field>
+    </columns>
+    <columns>
+        <field>Dashboard$CreatedBy</field>
+    </columns>
+    <columns>
+        <field>Dashboard$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>Dashboard$Folder</field>
+    </columns>
+    <columns>
+        <field>Dashboard$Type</field>
+    </columns>
+    <currency>USD</currency>
+    <format>Tabular</format>
+    <name>SP-Dashboards only</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Dashboards__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Dashboard$Type</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Dashboard$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

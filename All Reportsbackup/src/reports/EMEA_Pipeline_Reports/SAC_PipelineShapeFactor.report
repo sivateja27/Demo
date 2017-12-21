@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>IF(Opportunity.GE_LGT_Amount_PO_Received__c.CONVERT:SUM=0, 0, IF(Opportunity.GE_LGT_Amount_PO_Received__c.CONVERT:SUM+Opportunity.GE_LGT_Amount_of_Closed_Lost__c.CONVERT:SUM=0, 0, (Opportunity.GE_LGT_Amount_PO_Received__c.CONVERT:SUM)/(Opportunity.GE_LGT_Amount_PO_Received__c.CONVERT:SUM+Opportunity.GE_LGT_Amount_of_Closed_Lost__c.CONVERT:SUM)))</calculatedFormula>
+        <datatype>percent</datatype>
+        <description>Win Rate</description>
+        <developerName>FORMULA1</developerName>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Conversion</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>EXP_AMOUNT.CONVERT:SUM/AMOUNT.CONVERT:SUM</calculatedFormula>
+        <datatype>percent</datatype>
+        <developerName>FORMULA2</developerName>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>wAVG Probability %</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>EXP_AMOUNT.CONVERT:SUM</calculatedFormula>
+        <datatype>currency</datatype>
+        <developerName>FORMULA3</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Factored Revenue ($)</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>AMOUNT.CONVERT:SUM</calculatedFormula>
+        <datatype>currency</datatype>
+        <developerName>FORMULA4</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Unfactored Revenue ($)</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_31899491</developerName>
+        <masterLabel>NewRegion</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>User.GE_LGT_Region__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>CIS &amp; Ukraine</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>South EE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Project East</sourceValue>
+            </sourceValues>
+            <value>Project East</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Italy</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Spain</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Central</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>France and Benelux</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Project West</sourceValue>
+            </sourceValues>
+            <value>Project West</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Nordic</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>UK</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Project North</sourceValue>
+            </sourceValues>
+            <value>Project North</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Africa</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Middle East</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Turkey</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Project MEAT</sourceValue>
+            </sourceValues>
+            <value>Project MEAT</value>
+        </values>
+    </buckets>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>AGE</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>User.GE_LGT_Business_Division__c</column>
+            <operator>equals</operator>
+            <value>Europe,MEAT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.GE_LGT_Region__c</column>
+            <operator>notEqual</operator>
+            <value>Europe Functional,North EE</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER_ACTIVE</column>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.POT__c</column>
+            <operator>equals</operator>
+            <value>North Europe,Smart Cities Europe,South East Europe&amp;Specialty,Project MEAT,Strategic Accounts Europe</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>STAGE_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.POT__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FULL_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>SAC-PipelineShapeFactor</name>
+    <params>
+        <name>open</name>
+        <value>open</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>0</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Opportunity.GE_LGT_Expected_PO_Receipt_Date__c</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
+    </timeFrameFilter>
+</Report>

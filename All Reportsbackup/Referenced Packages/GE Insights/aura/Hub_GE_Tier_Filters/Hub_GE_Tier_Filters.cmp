@@ -1,0 +1,55 @@
+<aura:component controller="geinsights.HubGEAccountTeamController" implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global">   
+    <aura:attribute name="expandFilter" type="boolean" default="true" access="global"  description="Boolean to expand and collapse filter components."/>    
+    <aura:attribute name="selectedTier1" type="String" access="global" description="selected value for Tier1."/>
+    <aura:attribute name="selectedTier2" type="String" access="global" description="selected value for Tier2."/>   
+    <aura:attribute type="string[]" name="tier1list" access="global" description="List of tier1 values."/>
+    <aura:attribute type="string[]" name="tier2list" access="global" description="List of tier2 values."/>    
+        
+              
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <div class="slds-panel__section slds-has-divider--top">
+        <div class="slds-grid">
+            <!--expand and collapse filter components -->
+            <a onclick="{!c.toggleFilter}">
+                <span>
+                    <span class="slds-text-link--reset slds-truncate">Filter</span>
+                    <aura:if isTrue="{!v.expandFilter}">
+                        <span class="slds-icon_container slds-icon-utility-down slds-m-left--x-small slds-button__icon">
+                            <lightning:icon iconName="utility:chevrondown" size="xx-small" alternativeText="Expand"/></span>
+                    </aura:if>
+                    <aura:if isTrue="{!not(v.expandFilter)}">
+                        <span class="slds-icon_container slds-icon-utility-up slds-m-left--x-small slds-button__icon">
+                            <lightning:icon iconName="utility:chevronright" size="xx-small" alternativeText="Collapse"/></span>
+                    </aura:if>
+                </span>
+            </a>
+            <!--Reset Link -->
+            <a href="javascript:void(0);" onclick="{!c.resetFilter}" class="slds-col--bump-left">Reset All</a>
+            
+        </div>
+        <div aura:id="filterPanel" class="slds-show">
+            <!--Tier1 and Tier 2 Picklist value -->
+            <lightning:layout horizontalAlign="spread" multipleRows="true">
+                <lightning:layoutItem flexibility="auto" padding="around-small" size="12" largeDeviceSize="6" mediumDeviceSize="6" smallDeviceSize="12">
+                    
+                    <lightning:select aura:id="tier1" name="Tier 1 Business" label="Tier 1 Business" onchange="{!c.applyTier1Filter}" value="{!v.selectedTier1}">
+                        <ui:inputSelectOption label="All" value="true" /> 
+                        <aura:iteration items="{!v.tier1list}" var="item" >
+                            <ui:inputSelectOption label="{!item}"/>                            
+                        </aura:iteration>
+                    </lightning:select>
+                    
+                </lightning:layoutItem>                
+                <lightning:layoutItem flexibility="auto" padding="around-small" size="12" largeDeviceSize="6" mediumDeviceSize="6" smallDeviceSize="12">
+                    <lightning:select aura:id="tier2" name="Tier 2 Business" label="Tier 2 Business" onchange="{!c.applyTier2Filter}" value="{!v.selectedTier2}">
+                        <ui:inputSelectOption label="All" value="true" /> 
+                        <aura:iteration items="{!v.tier2list}" var="item" >
+                            <ui:inputSelectOption label="{!item}" /> 
+                        </aura:iteration>
+                    </lightning:select>                       
+                </lightning:layoutItem>                
+            </lightning:layout>
+        </div>
+    </div>
+</aura:component>

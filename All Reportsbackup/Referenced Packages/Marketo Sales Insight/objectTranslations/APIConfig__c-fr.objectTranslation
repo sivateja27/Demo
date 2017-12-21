@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Configuration API</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Configuration API</value>
+    </caseValues>
+    <fields>
+        <label><!-- API Secret Key --></label>
+        <name>API_Secret_Key__c</name>
+    </fields>
+    <fields>
+        <label><!-- API_URL --></label>
+        <name>API_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- API User Id --></label>
+        <name>API_User_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Best Bets Debug Mode --></label>
+        <name>BestBetsDebugMode__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Status Field --></label>
+        <name>ContactStatusField__c</name>
+    </fields>
+    <fields>
+        <label><!-- Default Hide Days --></label>
+        <name>DefaultHideDays__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable Marketo API --></label>
+        <name>Enable_Marketo_API__c</name>
+    </fields>
+    <fields>
+        <label><!-- Show RSS Icon --></label>
+        <name>Enable_RSS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marketo Host --></label>
+        <name>Marketo_Host__c</name>
+    </fields>
+    <fields>
+        <label><!-- RCA Enabled --></label>
+        <name>RcaEnabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Score Scoring Field Name --></label>
+        <name>ScoreScoringFieldName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Urgency Scoring Field Name --></label>
+        <name>UrgencyScoringFieldName__c</name>
+    </fields>
+    <gender>Masculine</gender>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

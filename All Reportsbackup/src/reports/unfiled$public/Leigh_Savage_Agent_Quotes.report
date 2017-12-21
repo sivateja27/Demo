@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account.SAP_Quotes1__r$Name</field>
+    </columns>
+    <columns>
+        <field>Account.SAP_Quotes1__r$Quote_Number__c</field>
+    </columns>
+    <columns>
+        <field>Account.SAP_Quotes1__r$Quote_created__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.SAP_Quotes1__r$Grand_Total__c.CONVERT</field>
+    </columns>
+    <columns>
+        <field>Account$GE_LGT_Agent_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.SAP_Quotes1__r$GE_Opportunity_Id__c</field>
+    </columns>
+    <columns>
+        <field>Account.SAP_Quotes1__r$Opportunity_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.SAP_Quotes1__r$Strategic_Partner_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account$Name</field>
+    </columns>
+    <columns>
+        <field>Account.SAP_Quotes1__r$Rep_Number_Agent__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>Bell &amp; McCoy, Southern Lighting Source, Coresential</description>
+    <filter>
+        <criteriaItems>
+            <column>Account$GE_LGT_Agent_Name__c</column>
+            <operator>contains</operator>
+            <value>Bell &amp; Mccoy,Coresential,Southern Lighting Source,CW</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Leigh Savage-Agent Quotes</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Agent_Accounts_with_Quotes__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Account.SAP_Quotes1__r$Quote_created__c</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Account$CEC_Engagement_Timing__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

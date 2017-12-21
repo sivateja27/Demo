@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ProcessInstance.Nodes$ProcessNode</field>
+    </columns>
+    <columns>
+        <field>ProcessInstance.Nodes$ElapsedTimeInDays</field>
+    </columns>
+    <columns>
+        <field>ProcessInstance.Nodes$NodeStatus</field>
+    </columns>
+    <columns>
+        <field>ProcessInstance.Nodes$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>ProcessInstance.Nodes$CompletedDate</field>
+    </columns>
+    <columns>
+        <field>ProcessInstance.Nodes$LastActor</field>
+    </columns>
+    <columns>
+        <field>ProcessInstance$ElapsedTimeInDays</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>ProcessInstance$ProcessDefinition</column>
+            <operator>contains</operator>
+            <value>EMEA New Sample Product</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ProcessInstance.Nodes$NodeStatus</column>
+            <operator>notEqual</operator>
+            <value>R</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ProcessInstance$TargetName</field>
+        <sortOrder>Desc</sortOrder>
+    </groupingsDown>
+    <name>OSR new product Approval</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Approval_Process_History__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>ProcessInstance$CreatedDate</dateColumn>
+        <interval>INTERVAL_LAST30</interval>
+    </timeFrameFilter>
+</Report>

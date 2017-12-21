@@ -1,0 +1,3 @@
+<aura:documentation>
+	<aura:description>This component is used as a custom spinner component to make use in other components as lightning:spinner tag blocks whole page while spinning/refreshing.</aura:description>	
+</aura:documentation>

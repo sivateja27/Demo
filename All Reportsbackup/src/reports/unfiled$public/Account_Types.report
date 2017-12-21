@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_52730683</developerName>
+        <masterLabel>Type Groupings</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Account.True_Type__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Agency</sourceValue>
+            </sourceValues>
+            <value>T1 Agency</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>End User</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Industrial</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Strategic (Other)</sourceValue>
+            </sourceValues>
+            <value>T2 End User</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Third-Party</sourceValue>
+            </sourceValues>
+            <value>T3 Channel</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Strategic (Tier One)</sourceValue>
+            </sourceValues>
+            <value>T4 Strategic</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Service</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Unknown</sourceValue>
+            </sourceValues>
+            <value>T5 Other</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>RECORDTYPE</field>
+    </columns>
+    <columns>
+        <field>TYPE</field>
+    </columns>
+    <columns>
+        <field>Account.True_Type__c</field>
+    </columns>
+    <columns>
+        <field>CREATED</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <currency>USD</currency>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_52730683</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Account Types</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>COUNTRY</field>
+    </columns>
+    <columns>
+        <field>EMAIL</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>1 or 2</booleanFilter>
+        <criteriaItems>
+            <column>COUNTRY</column>
+            <operator>equals</operator>
+            <value>Aland,Albania,Algeria,Andorra,Angola,Armenia,Austria,Azerbaijan,Bahrain,Belarus,Belgium,Benin,Bosnia and Herzegovina,Botswana,Bulgaria,Burkina Faso,Burundi,Cameroon,Cape Verde,Central African Republic,Chad,Comoros,Croatia,Cyprus,Czech Republic,Democratic Republic of the Congo,Denmark,Djibouti,Egypt,Equatorial Guinea,Eritrea,Estonia,Ethiopia,Faroe Islands,Finland,France,Gabon,Gambia,Georgia,Germany,Ghana,Gibraltar,Greece,Guernsey,Guinea,Guinea-Bissau,Hungary,Iceland,Iran,Iraq,Ireland,Isle Of Man,Israel,Italy,Ivory Coast,Jersey,Jordan,Kazakhstan,Kenya,Kosovo,Kuwait,Latvia,Lebanon,Lesotho,Liberia,Libya,Liechtenstein,Lithuania,Luxembourg,Macedonia,Madagascar,Malawi,Mali,Malta,Mauritania,Mauritius,Mayotte,Moldova,Monaco,Montenegro,Morocco,Mozambique</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>COUNTRY</column>
+            <operator>equals</operator>
+            <value>Namibia,Netherlands,Niger,Nigeria,Northern Cyprus,Norway,Oman,Palestine,Poland,Portugal,Qatar,Republic of the Congo,Réunion,Romania,Russia,Rwanda,San Marino,Sao Tome &amp; Principe,Tomé and Príncipe,Saudi Arabia,Senegal,Serbia,Seychelles,Sierra Leone,Slovakia,Slovenia,Somalia,South Africa,South Sudan,Spain,Sudan,Svalbard and Jan Mayen,Swaziland,Sweden,Switzerland,Syria,Tanzania,Togo,Tunisia,Turkey,Uganda,Ukraine,United Arab Emirates,United Kingdom,Vatican City,Western Sahara,Yemen,Zambia,Zimbabwe,Zimbabwe (Rhodesia),Congo,Democratic Republic of (Congo),German,Scotland,Slovenije,United Republic of,Vatican</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>EMEA Countries</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>LeadList</reportType>
+    <scope>org</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

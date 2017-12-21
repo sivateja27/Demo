@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_34337280</developerName>
+        <masterLabel>Account Manager</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Opportunity.OpportunityTeamMembers$TeamMemberRole</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <value>Account Manager</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Application Engineer</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Commercial Support</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Customer Service</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Deal Manager</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Project Manager</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Product Manager</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Pricing</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Other</sourceValue>
+            </sourceValues>
+            <value>-</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Spec Engineer</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sales</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Leadership</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Lighting Designer</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Marketing</sourceValue>
+            </sourceValues>
+            <value>--</value>
+        </values>
+        <values>
+            <value>- -</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_40409630</developerName>
+        <masterLabel>Deal Manager</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Opportunity.OpportunityTeamMembers$TeamMemberRole</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Deal Manager</sourceValue>
+            </sourceValues>
+            <value>Deal Manager</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Application Engineer</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Commercial Support</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Customer Service</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Leadership</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Lighting Designer</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Marketing</sourceValue>
+            </sourceValues>
+            <value>-</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Other</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Pricing</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Product Manager</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sales</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Spec Engineer</sourceValue>
+            </sourceValues>
+            <value>--</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_87081628</developerName>
+        <masterLabel>Digital Solution Architect</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Opportunity.OpportunityTeamMembers$TeamMemberRole</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <value>Digital Solution Architect</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Deal Manager</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Leadership</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Lighting Designer</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Marketing</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Other</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Pricing</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Product Manager</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Project Manager</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sales</sourceValue>
+            </sourceValues>
+            <value>-</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Application Engineer</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Commercial Support</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Customer Service</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Spec Engineer</sourceValue>
+            </sourceValues>
+            <value>--</value>
+        </values>
+        <values>
+            <value>- -</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Opportunity$Account</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Amount</field>
+    </columns>
+    <columns>
+        <field>Opportunity$CloseDate</field>
+    </columns>
+    <columns>
+        <field>Opportunity.OpportunityTeamMembers$Name</field>
+    </columns>
+    <columns>
+        <field>BucketField_40409630</field>
+    </columns>
+    <columns>
+        <field>BucketField_34337280</field>
+    </columns>
+    <columns>
+        <field>BucketField_87081628</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity$RecordType</column>
+            <operator>equals</operator>
+            <value>Opportunity.Intelligent_City,Opportunity.IntelligentCityAdvance</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Intelligent_Environments_Segment__c</column>
+            <operator>equals</operator>
+            <value>Intelligent Enterprises,Energy Management</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.OpportunityTeamMembers*User$GE_LGT_Business_Division__c</column>
+            <operator>equals</operator>
+            <value>North America</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$StageName</column>
+            <operator>equals</operator>
+            <value>S1- Prospecting,S2- Qualifying,S3- Discovery,S4- Solution Generation,S5- Validation,S6- Quoting,S7- Negotiating</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Owner</column>
+            <operator>contains</operator>
+            <value>casey</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <name>Casey Opportunities</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunities_with_Opportunity_Team__c</reportType>
+    <roleHierarchyFilter>GE_Lighting_CEO</roleHierarchyFilter>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Opportunity$CloseDate</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Opportunity$CloseDate</dateColumn>
+        <endDate>2019-06-30</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-01-01</startDate>
+    </timeFrameFilter>
+</Report>

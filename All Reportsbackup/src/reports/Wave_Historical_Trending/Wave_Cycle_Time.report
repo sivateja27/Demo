@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Wave_Cycle_Time_Snapshot__c.Opportunity__c</field>
+    </columns>
+    <columns>
+        <field>Wave_Cycle_Time_Snapshot__c.Stage_Name__c</field>
+    </columns>
+    <columns>
+        <field>Wave_Cycle_Time_Snapshot__c.Duration__c</field>
+    </columns>
+    <columns>
+        <field>Wave_Cycle_Time_Snapshot__c.Next_Stage__c</field>
+    </columns>
+    <columns>
+        <field>Wave_Cycle_Time_Snapshot__c.Opportunity_Owner__c</field>
+    </columns>
+    <columns>
+        <field>Wave_Cycle_Time_Snapshot__c.Opportunity_Owner_Id__c</field>
+    </columns>
+    <columns>
+        <field>Wave_Cycle_Time_Snapshot__c.Date_of_Change__c</field>
+    </columns>
+    <columns>
+        <field>CUST_CREATED_DATE</field>
+    </columns>
+    <currency>USD</currency>
+    <format>Tabular</format>
+    <name>Wave Cycle Time</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Wave_Cycle_Time_Snapshot__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>CUST_NAME</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Wave_Cycle_Time_Snapshot__c.Date_of_Change__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

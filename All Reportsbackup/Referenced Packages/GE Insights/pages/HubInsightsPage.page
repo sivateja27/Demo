@@ -1,0 +1,20 @@
+<apex:page title="GE Hub Insights" standardController="Account">
+    <!-- Loading Salesforce Lightning Design System -->
+    <apex:includeLightning />
+
+    <div id="lightning" />
+	<!--
+		Loads the HubInsigts acomponents and passes the account If from the standard controller.
+	-->
+    <script>
+    	var id = "{!$CurrentPage.parameters.id}";
+        $Lightning.use("geinsights:hubInsightsHarness", function() {
+          $Lightning.createComponent("geinsights:hubInsights",
+          { id: id}, 
+          "lightning",
+          function(cmp) {
+            // do some stuff
+          }); 
+        });
+    </script>
+</apex:page>

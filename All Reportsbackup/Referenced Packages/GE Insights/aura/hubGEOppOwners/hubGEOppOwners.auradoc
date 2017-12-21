@@ -1,0 +1,6 @@
+<aura:documentation>
+	<aura:description>This component displays all the opportunity owners group by Tier1 business and Tier2 business and the number of opportunitites associated with GE Sales Representatives and the total opportunities amount. It also can be used as independent component.</aura:description>
+	<aura:example name="ExampleName" ref="exampleComponentName" label="Label">
+		This component or application has no examples.
+	</aura:example>
+</aura:documentation>

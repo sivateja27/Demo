@@ -1,0 +1,7 @@
+<design:component label="Top Account Owners">
+    <design:attribute name="numOfRecords" label="Num Of Records" description="Maximum number of Top Account Owners to be displayed" />
+    <design:attribute name="country" label="Country" description="Specify the country to display Top Account Owners of that Country "/>
+     <design:attribute name="business" label="Business" description="Specify the Tier 1 Business to display Top Account Owners of that Business "/>
+   
+    <design:attribute name="showFilter" label="Show Filter" description="Check to show Country and Account Filter "/>
+</design:component>

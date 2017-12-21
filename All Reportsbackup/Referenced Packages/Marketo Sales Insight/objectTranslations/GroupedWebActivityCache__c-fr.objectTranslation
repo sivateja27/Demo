@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>GroupedWebActivityCache</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>GroupedWebActivityCache</value>
+    </caseValues>
+    <fields>
+        <label><!-- AccountLinkName --></label>
+        <name>AccountLinkName__c</name>
+    </fields>
+    <fields>
+        <label><!-- AccountLink --></label>
+        <name>AccountLink__c</name>
+    </fields>
+    <fields>
+        <label><!-- City --></label>
+        <name>City__c</name>
+    </fields>
+    <fields>
+        <label><!-- ContactLinkName --></label>
+        <name>ContactLinkName__c</name>
+    </fields>
+    <fields>
+        <label><!-- ContactLink --></label>
+        <name>ContactLink__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Id --></label>
+        <name>Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsAnonymous --></label>
+        <name>IsAnonymous__c</name>
+    </fields>
+    <fields>
+        <label><!-- LastVisitDT --></label>
+        <name>LastVisitDT__c</name>
+    </fields>
+    <fields>
+        <label><!-- PageViews --></label>
+        <name>PageViews__c</name>
+    </fields>
+    <fields>
+        <label><!-- RowNum --></label>
+        <name>RowNum__c</name>
+    </fields>
+    <fields>
+        <label><!-- SearchLinkName --></label>
+        <name>SearchLinkName__c</name>
+    </fields>
+    <fields>
+        <label><!-- SearchLink --></label>
+        <name>SearchLink__c</name>
+    </fields>
+    <fields>
+        <label><!-- State --></label>
+        <name>State__c</name>
+    </fields>
+    <fields>
+        <label><!-- TotalCount --></label>
+        <name>TotalCount__c</name>
+    </fields>
+    <fields>
+        <label><!-- WPageLinkName --></label>
+        <name>WPageLinkName__c</name>
+    </fields>
+    <fields>
+        <label><!-- WPageLink --></label>
+        <name>WPageLink__c</name>
+    </fields>
+    <gender>Masculine</gender>
+    <nameFieldLabel>GroupedWebActivityCache Name</nameFieldLabel>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,10 @@
+<aura:documentation>
+	<aura:description>
+        This component shows the summary of Accounts associated with commercial entity in the context segregated into prospects and legal entities. 
+    	The legal entities and prospsects are further summarised based on open opportunities.
+        The component shows the parent commercial entity and Sub-Commercial Entity of the context commercial entity.
+        
+        <p>This example shows how to display AssociatesAndEntities by providing account Id as accountId attribute. Here v.id is id of account in spoke. <code>geinsights:AssociatesAndEntities</code>.</p>
+    <pre>&lt;geinsights:AssociatesAndEntities accountId="{!v.id}"/&gt;</pre>
+    </aura:description>	
+</aura:documentation>

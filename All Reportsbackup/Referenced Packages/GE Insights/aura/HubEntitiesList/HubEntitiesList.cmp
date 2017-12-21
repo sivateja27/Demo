@@ -1,0 +1,314 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="geinsights.EntitiesListController">
+    <aura:dependency resource="geinsights:maps" />
+    <aura:dependency resource="geinsights:Hub_GE_Tier_Filters" />
+    <aura:attribute type="String" name="accountID" access="global" description="Id of the Account in Spoke Organization."/>
+    <aura:attribute type="String" name="commercialEntityId" access="global" description="Id of the commercial Entity from Hub."/>
+    <aura:attribute type="String" name="criteria" access="global" description="Set to filter the accounts based on type - Prospects (Non-MDM Account) or Legal Entities (MDM Account)."/>
+    <aura:attribute type="String" name="accName" access="private" description="Set to filter accounts based on name."/>
+    <aura:attribute type="String" name="ctry"  default="All" description="Set to filter the accounts based on shipping country."/>
+    <aura:attribute type="String" name="commName" access="private" description="Sets the commerial Entity name on the componant."/>
+    <aura:attribute type="Integer" name="gridElements" access="private" default="0" description="Number of elements in the grid other than map."/>
+    <aura:attribute type="Integer" name="fltrElements" access="private" default="0" description="Number of filters in the component to be dispalyed."/>
+    <aura:attribute type="Boolean" name="showCriteria" access="global" default="true" description="Set to true to display type filter."/>
+    <aura:attribute type="Boolean" name="showCountry" access="global" default="true" description="Set to true to display country filter."/>
+    <aura:attribute type="Boolean" name="showNameSearch" access="global" default="true" description="Set to true display name search filter."/>
+    <aura:attribute type="Aura.Component[]" name="mapBody" access="private" description="Creates the map dynamically."/>
+    <aura:attribute type="Boolean" name="showMapGrid" access="global" default="true" description="Set to true to display map in component."/>
+    <aura:attribute type="Boolean" name="showActiveEntitiesGrid" access="global" default="true" description="Set to to true to display Accounts with open opportunities"/>
+    <aura:attribute type="Boolean" name="showNonActiveEntitiesGrid" access="global" default="true" description="Set to to true to display Accounts with no open opportunities"/>
+    <aura:attribute type="Boolean" name="verticallyStacked" access="global" default="false" description="Set to true to display all components stacked vertically."/>
+    <aura:attribute type="Boolean" name="spinner" access="private" description="Display a waiting spinner when true."/>
+    <aura:attribute type="Boolean" name="showBackBtn"  default="false" description="Shows back button to move to associated sites  or snapshot component."/>
+    <aura:attribute name="showError" type="boolean" access="private" default="false" description="Set to true when there is an error."/>
+    <aura:attribute name="errors" type="Object[]" access="private" description="Captures the errors."/>
+    <aura:attribute type="geinsights.Countries[]" name="countriesPicklist" access="private" description="This is the clist of countries for the countries filter"/>
+    <aura:attribute type="geinsights.AccNameOpptyAmt[]" name="activeItems" access="private" description="List of all accounts asscociated with commercial entity with open opportunities."/>
+    <aura:attribute name="expandFilter" type="boolean" default="true" description="Boolean to expand and collapse Feedback components."/>    
+    <aura:attribute name="showOptyOwnersByTiers" type="boolean" default="false" description="Boolean value to show opportunities header by tier1 business and tier2 business"/>
+    
+    <aura:attribute type="geinsights.AccNameOpptyAmt[]" name="inActiveItems" access="private" description="List of all accounts associated with commercial entity with no open opportunities."/>
+    
+    <aura:attribute type="geinsights.SalesRepDetailsWrapper" name="salesRep" description="Sales rep details used to pass to opportunity details component."/>
+    <aura:attribute name="salesrepId" type="String" access="global" description="Contains sales representative id to pass to fetch the opportunities" default=""/>
+    <aura:attribute name="comId" type="String" access="global" description="Contains sales representative id to pass to fetch the opportunities" default=""/>
+    <aura:attribute name="salesrepRole" type="String" access="global" description="Contains sales representative Role to pass to fetch the opportunities"/>
+    <aura:attribute name="tier1name" type="String" access="global" description="Tier1 Business"/>
+    <aura:attribute name="tier2name" type="String" access="global" description="Tier2 Business"/>
+    <aura:attribute name="accId" type="String" access="global" description="Account Id"/>
+    <aura:attribute name="isowner" type="Boolean" access="global" description="Account Id"/>
+    <aura:attribute name="role" type="String" access="global" description="Account Id"/>
+    <aura:attribute name="country" type="String" access="global" description="Design attribute used to filter by country"/>
+    <aura:attribute name="business" type="String" access="global" description="Design attribute that specifies the Tier 1 Business to display Top Opportunity Owners of that Business"/>
+    <aura:attribute name="searchAccId" type="String" access="global" description="Used to display the list of records searched by Account"/>
+    <aura:dependency resource="geinsights:hubGEOppDetailsHeader" />
+    <aura:dependency resource="geinsights:HubGETier1DetailsHeader" />
+    <aura:attribute name="isAccountTeam" type="boolean" default="false" description="Boolean to determine Account Owners or Opportunity owners component"/>
+    <aura:attribute name="ownerOnly" type="boolean" default="false" description="Boolean to display only the accounts with role as Account Owner"/>
+    <aura:attribute name="tier1Value" type="String" access="global" default="All" description="selected value for Tier1."/>
+    <aura:attribute name="tier2Value" type="String" access="global" default="All" description="selected value for Tier2."/>
+     <aura:attribute name="criteriaList" type="String[]" access="public" default="All,Prospects,Legal Entities" description="selected value for Type."/>
+    <aura:attribute name="showFilters" type="Boolean" access="global" default="true" description="Show filters"/>
+    <aura:attribute type="Integer" name="activeItemsSize" access="private" description="Number of accounts with open opportunities."/>
+    <aura:attribute type="Integer" name="inactiveItemsSize" access="private" description="Number of accounts with no open opportunities."/>
+    <aura:attribute type="String" name="uiTheme" access="private" description="Identifies the user experience."/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" description="Loads the component content on inital load of component."/>
+    <aura:handler name="init" value="{!this}" action="{!c.getCountriesValues}" description="Loads the list of countries in the countries filter."/>
+    <aura:handler name="init" value="{!this}" action="{!c.getTheme}" description="Identifies the theme of the context user."/>
+    <aura:handler name="change" value="{!v.commercialEntityId}" action="{!c.doInit}" description="Loads the compoent data when identifies a change in the commercial entity."/>
+    <aura:handler name="filterChange" event="geinsights:HUB_GE_Filter_Change" action="{!c.updateFilter}" description="Loads the component data based on the filters in  filter component."/>
+    
+    <aura:handler name="backtoOptyOwners" event="geinsights:GE_Back_Button" action="{!c.refreshPage}" description="Event handler to go back to Opportunity owners component"/>
+    
+    <aura:registerEvent name="goToAssicatesandSites" type="geinsights:EntitiesListToAssociates" description="Indicates the back button is clicked to go to Associated sites component."/>
+    <aura:registerEvent name="backToSnapshot" type="geinsights:GE_Back_Button" description="Indicates the back button is clicked to go to Commercial Entity snapshot component."/>
+    
+    <aura:registerEvent name="showOptyOwnersByTier" type="geinsights:GE_RefreshOptyComponent" description="Even to refresh the component"/>
+    <aura:handler name="change" value="{!v.tier1Value}" action="{!c.tierValueChanged}"/>
+    <aura:handler name="change" value="{!v.tier2Value}" action="{!c.tierValueChanged}"/>
+    
+    <aura:handler name="change" value="{!v.showFilters}" action="{!c.showcollapseFilters}"/>
+    <lightning:card iconName="standard:account"> 
+        <aura:set attribute="title">Entities List</aura:set>
+        <aura:set attribute="actions">
+            <aura:if isTrue="{!v.showBackBtn}">
+                <lightning:button variant="brand" label="Back" onclick="{!c.toggleComp}" />
+                <aura:set attribute="else">
+                    <aura:if isTrue="{!empty(v.commercialEntityId)}">
+                        <aura:if isTrue="{!equals(v.uiTheme,'Theme4t')?false:true}">Commercial Entity:
+                            <ui:outputText value="{!v.commName}"/>
+                        </aura:if>
+                    </aura:if>
+                </aura:set>
+            </aura:if>
+        </aura:set>
+        <aura:set attribute="body">
+            
+            <aura:if isTrue="{!v.showError}">
+                <geinsights:HUB_GE_Error errors="{!v.errors}"></geinsights:HUB_GE_Error>
+            </aura:if>
+            <geinsights:Hub_GE_Tier_Filters selectedTier1="{!v.tier1Value}" selectedTier2="{!v.tier2Value}" expandFilter="{!v.showFilters}" />
+            <lightning:layout horizontalAlign="space" multipleRows="true">                        
+                <aura:if isTrue="{!v.showNameSearch}">
+                    <div class="slds-form-element  slds-p-around--small slds-col slds-size--12-of-12 slds-small-size--12-of-12 slds-medium-size--4-of-12 slds-large-size--4-of-12">
+                        <label class="uiLabel-left form-element__label uiLabel" for="text-input-id-1">Account Search</label>
+                        <br/>
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+                                        <ui:inputText aura:id="text-input-id-1" class="slds-input pullLeft" value="{!v.accName}" />
+                                    </div>
+                                </td>
+                                <td>
+                                    <lightning:buttonIcon iconName="utility:search" alternativeText="Search" onclick="{!c.doInit}" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </aura:if>
+                <aura:if isTrue="{!v.showCriteria}">
+                    <lightning:layoutItem flexibility="auto" padding="around-small" size="12" largeDeviceSize="{!v.fltrElements}" mediumDeviceSize="{!v.fltrElements}" smallDeviceSize="12">                                                    
+                        <ui:inputSelect class="slds-select" multiple="false" label="Type" change="{!c.doInit}" value="{!v.criteria}">
+                            <aura:iteration items="{!v.criteriaList}" var="item" >
+                                <ui:inputSelectOption label="{!item}" text="{!item}" />
+                            </aura:iteration>                            
+                        </ui:inputSelect>
+                    </lightning:layoutItem>
+                </aura:if>
+                <aura:if isTrue="{!v.showCountry}">
+                    <lightning:layoutItem flexibility="auto" padding="around-small" size="12" largeDeviceSize="{!v.fltrElements}" mediumDeviceSize="{!v.fltrElements}" smallDeviceSize="12">
+                        <ui:inputSelect class="slds-select" multiple="false" label="Country" change="{!c.doInit}" value="{!v.ctry}">
+                            <aura:iteration items="{!v.countriesPicklist}" var="c" >
+                                <ui:inputSelectOption text="{!c.alpha2Code}" label="{!c.fullName}"  value="{!equals(v.ctry,c.alpha2Code)?true:false}"/>
+                            </aura:iteration>
+                        </ui:inputSelect>
+                    </lightning:layoutItem>
+                </aura:if>
+            </lightning:layout>
+            <aura:if isTrue="{!v.spinner}">
+                <geinsights:hubGESpinner />
+                <aura:set attribute="else">        
+                    <lightning:layout horizontalAlign="space" multipleRows="true">
+                        <aura:if isTrue="{!v.showMapGrid}">
+                            <lightning:layoutItem flexibility="auto" class="slds-container_fluid" padding="around-small" size="12" largeDeviceSize="12" mediumDeviceSize="12" smallDeviceSize="12">
+                                <lightning:card iconName="standard:location">
+                                    <aura:set attribute="title">MAP</aura:set>
+                                    <aura:set attribute="body">{!v.mapBody}</aura:set>
+                                </lightning:card>
+                            </lightning:layoutItem>
+                        </aura:if>
+                    </lightning:layout>
+                    <lightning:layout multipleRows="true">
+                        <aura:if isTrue="{!not(v.showOptyOwnersByTiers)}">
+                            <aura:if isTrue="{!v.showActiveEntitiesGrid}">
+                                <lightning:layoutItem flexibility="auto" padding="around-small"  size="12" largeDeviceSize="{#v.gridElements}" mediumDeviceSize="{#v.gridElements}" smallDeviceSize="12">
+                                    <lightning:card iconName="standard:account">
+                                        <aura:set attribute="title">Open Opportunities at {!v.activeItemsSize} Legal Entities</aura:set>
+                                        <aura:set attribute="body">
+                                            <aura:if isTrue="{!equals(v.uiTheme,'Theme4t')?false:true}">
+                                                <table class="slds-table slds-table--bordered slds-no-row-hover slds-max-medium-table--stacked slds-table--fixed-layout"><thead><tr class="slds-text-title--caps"><th scope="col"><div class="slds-cell-wrap" title="Account Name">Account Name</div>
+                                                    </th>
+                                                    <th scope="col"><div class="slds-cell-wrap" title="Postal Code">Postal Code</div>
+                                                    </th>
+                                                    <th scope="col"><div class="slds-cell-wrap" title="Amount">Amount</div>
+                                                    </th>
+                                                    <th scope="col"><div class="slds-cell-wrap" title="Amount">Opp Count</div>
+                                                    </th>
+                                                    </tr>
+                                                    </thead>
+                                                </table>
+                                                <ui:scrollerWrapper class="scrollerSize">
+                                                    <table class="slds-table slds-table--bordered slds-no-row-hover slds-max-medium-table--stacked slds-table--fixed-layout">
+                                                        <tbody>
+                                                            <aura:iteration items="{!v.activeItems}" var="a" ><tr class="slds-hint-parent">
+                                                                <td class="slds-cell-wrap" title="{!a.accName}"><div>{#a.accName}</div>
+                                                                </td>
+                                                                <td class="slds-cell-wrap"><div style="margin-left:25px">{#a.postalCode}</div>
+                                                                </td>
+                                                                
+                                                                <td class="slds-cell-wrap" style="margin-left:25px">
+                                                                    <aura:if isTrue="{!a.oppCount > 0}">
+                                                                        <a id="clickme" data-accId="{!a.externalId}" data-tier1="{!a.tier1}" data-tier2="{!a.tier2}"  style="margin-bottom: 10px;"  onclick="{!c.openmodal}">
+                                                                            <ui:outputCurrency value="{#a.opptyAmt}" currencyCode="USD "/>
+                                                                        </a>
+                                                                        <aura:set attribute="else">
+                                                                            <ui:outputCurrency value="{#a.opptyAmt}" currencyCode="USD "/>
+                                                                        </aura:set>
+                                                                    </aura:if>
+                                                                </td>
+                                                                <td class="slds-cell-wrap"><div style="margin-left:25px">{#a.oppCount}</div>
+                                                                </td>
+                                                                </tr>
+                                                            </aura:iteration>
+                                                        </tbody>
+                                                    </table>
+                                                </ui:scrollerWrapper>
+                                            </aura:if>
+                                            <aura:if isTrue="{!equals(v.uiTheme,'Theme4t')?true:False}">
+                                                <ui:scrollerWrapper class="scrollerSize">
+                                                    <ul class="slds-has-dividers_around-space">
+                                                        <aura:iteration items="{!v.activeItems}" var="a" >
+                                                            <li class="slds-item">
+                                                                <article class="slds-tile slds-tile_board">
+                                                                    <h3 class="slds-truncate" >{#a.accName}</h3>
+                                                                    <div class="slds-tile__detail slds-text-body_small">
+                                                                        <p class="slds-truncate">{#a.postalCode}</p>
+                                                                        <p class="slds-truncate">
+                                                                            <ui:outputCurrency value="{#a.opptyAmt}"/>
+                                                                        </p>
+                                                                    </div>
+                                                                </article>
+                                                            </li>
+                                                        </aura:iteration>
+                                                    </ul>
+                                                </ui:scrollerWrapper>
+                                            </aura:if>
+                                        </aura:set>
+                                    </lightning:card>
+                                </lightning:layoutItem>
+                            </aura:if>
+                        </aura:if>
+                        <aura:if isTrue="{!v.showOptyOwnersByTiers}">
+                            <geinsights:hubGEOppDetailsHeader id="{!v.comId}" tier1="{!v.tier1name}" tier2="{!v.tier2name}" 
+                                                     salesRep="{!v.salesrepId}" country="{!v.country}" isowner="{!v.ownerOnly}" 
+                                                     business="{!v.business}" searchAccId="{!v.searchAccId}" isAccountTeam="{!v.isAccountTeam}" role="{!v.salesrepRole}"/>        
+                        </aura:if>
+                        <aura:if isTrue="{!not(v.showOptyOwnersByTiers)}">
+                            <aura:if isTrue="{!v.showNonActiveEntitiesGrid}">
+                                <lightning:layoutItem flexibility="auto" padding="around-small" size="12" largeDeviceSize="{!v.gridElements}" mediumDeviceSize="{!v.gridElements}" smallDeviceSize="12">
+                                    <lightning:card iconName="standard:account">
+                                        <aura:set attribute="title">{!v.inactiveItemsSize} Legal Entities with no Open Opportunities </aura:set>
+                                        <aura:set attribute="body">
+                                            <aura:if isTrue="{!equals(v.uiTheme,'Theme4t')?false:true}">
+                                                <table class="slds-table slds-table--bordered slds-no-row-hover slds-max-medium-table--stacked slds-table--fixed-layout">
+                                                    <thead>
+                                                        <tr class="slds-text-title--caps">
+                                                            <th scope="col">
+                                                                <div class="slds-cell-wrap" title="Account Name">Account Name</div>
+                                                            </th>
+                                                            <th scope="col">
+                                                                <div class="slds-cell-wrap" title="Amount">Postal Code</div>
+                                                            </th>
+                                                            <th scope="col">
+                                                                <div class="slds-cell-wrap" title="Last Time Active">Last Time Active (Days)</div>
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                                <ui:scrollerWrapper class="scrollerSize">
+                                                    <table class="slds-table slds-table--bordered slds-no-row-hover slds-max-medium-table--stacked slds-table--fixed-layout">
+                                                        <tbody>
+                                                            <aura:iteration items="{!v.inActiveItems}" var="a">
+                                                                <tr class="slds-hint-parent">
+                                                                    <td class="slds-cell-wrap">
+                                                                        <div>{#a.accName}</div>
+                                                                    </td>
+                                                                    <td class="slds-cell-wrap">
+                                                                        <div style="margin-left:25px">{#a.postalCode}</div>
+                                                                    </td>
+                                                                    <td class="slds-cell-wrap">
+                                                                        <div style="margin-left:25px">{#a.lastActive}</div>
+                                                                    </td>
+                                                                </tr>
+                                                            </aura:iteration>
+                                                        </tbody>
+                                                    </table>
+                                                </ui:scrollerWrapper>
+                                            </aura:if>
+                                            <aura:if isTrue="{!equals(v.uiTheme,'Theme4t')?true:false}">
+                                                <ui:scrollerWrapper class="scrollerSize">
+                                                    <ul class="slds-has-dividers_around-space">
+                                                        <aura:iteration items="{!v.inActiveItems}" var="a" >
+                                                            <li class="slds-item">
+                                                                <article class="slds-tile slds-tile_board">
+                                                                    <h3 class="slds-truncate" >{#a.accName}</h3>
+                                                                    <div class="slds-tile__detail slds-text-body_small">
+                                                                        <p class="slds-truncate">{#a.postalCode}</p>
+                                                                        <p class="slds-truncate">{#a.lastActive}"</p>
+                                                                    </div>
+                                                                </article>
+                                                            </li>
+                                                        </aura:iteration>
+                                                    </ul>
+                                                </ui:scrollerWrapper>
+                                            </aura:if>
+                                        </aura:set>
+                                    </lightning:card>
+                                </lightning:layoutItem>
+                            </aura:if>
+                        </aura:if>                                                                       
+                        
+                    </lightning:layout>
+                    <lightning:layout horizontalAlign="spread" multipleRows="true">
+                        <lightning:layoutItem flexibility="auto" padding="around-small" size="12"   largeDeviceSize="12" mediumDeviceSize="12" smallDeviceSize="12">
+                            
+                            <a onclick="{!c.toggleFilter}">
+                                <span>
+                                    <span class="slds-text-link--reset slds-truncate">Feedback</span>
+                                    <aura:if isTrue="{!not(v.expandFilter)}">
+                                        <span class="slds-icon_container slds-icon-utility-down slds-m-left--x-small slds-button__icon">
+                                            <lightning:icon iconName="utility:chevrondown" size="xx-small" alternativeText="Expand"/>
+                                            
+                                        </span>
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.expandFilter}">
+                                        <span class="slds-icon_container slds-icon-utility-up slds-m-left--x-small slds-button__icon">
+                                            <lightning:icon iconName="utility:chevronright" size="xx-small" alternativeText="Collapse"/></span>
+                                    </aura:if>
+                                </span>
+                            </a>
+                            <div aura:id="filterPanel" class="slds-hide">
+                                <br/>
+                                <geinsights:Hub_User_feedback componentName="Entities List" />
+                                
+                            </div>
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                </aura:set>
+            </aura:if>
+        </aura:set>
+        
+    </lightning:card>
+    
+    
+</aura:component>

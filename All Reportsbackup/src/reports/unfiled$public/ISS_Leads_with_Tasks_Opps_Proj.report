@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CREATED_BY</field>
+    </columns>
+    <columns>
+        <field>LEAD_OWNER</field>
+    </columns>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>EMAIL</field>
+    </columns>
+    <columns>
+        <field>COUNTRY</field>
+    </columns>
+    <columns>
+        <field>RATING</field>
+    </columns>
+    <columns>
+        <field>LEAD_STATUS</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>CREATED_BY</column>
+            <operator>contains</operator>
+            <value>Ana Iram,Anderson Torres,Andrea Ramirez,Blakely Kinnan,Felix Rangel,Garrard Karnes,Jacklyn Chitwood,Jimmy Hansel,Joao Caldas,Kimberly Calcidise,Matt Foor,Oscar Martinez,Renan Maurice Noel Diquelou,Roberto Gonzalez,Samueljames White</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>LEAD_OWNER</column>
+            <operator>notEqual</operator>
+            <value>Ana Iram,Anderson Torres,Andrea Ramirez,Blakely Kinnan,Felix Rangel,Garrard Karnes,Jacklyn Chitwood,Jimmy Hansel,Joao Caldas,Kimberly Calcidise,Matt Foor,Oscar Martinez,Renan Maurice Noel Diquelou,Roberto Gonzalez,Samueljames White</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>ISS - Leads with Tasks Opps Proj</name>
+    <params>
+        <name>closed</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>type</name>
+        <value>te</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>LeadActivity</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <endDate>2016-09-30</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2015-10-01</startDate>
+    </timeFrameFilter>
+</Report>

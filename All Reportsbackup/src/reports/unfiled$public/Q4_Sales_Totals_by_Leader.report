@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_47347788</developerName>
+        <masterLabel>EMEA-Asia-LATAM Sales Leaders</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>User.GE_LGT_Region__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>EU North Project</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EU Software</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EU South East Project</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EU Specialty</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EU Strategic Accounts</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Project MEAT</sourceValue>
+            </sourceValues>
+            <value>Pete Lau</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intelligent Cities</sourceValue>
+            </sourceValues>
+            <value>Phil Mandry</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Taiwan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Singapore</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Philippines</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Malaysia</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Korea</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Japan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>India</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>China Lighting</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>China Current</sourceValue>
+            </sourceValues>
+            <value>Henry Eng</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>User.GE_LGT_Region__c</field>
+    </columns>
+    <columns>
+        <field>ROLLUP_DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>FISCAL_QUARTER</field>
+    </columns>
+    <currency>USD</currency>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FULL_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Q4 Sales Totals by Leader</name>
+    <params>
+        <name>open</name>
+        <value>open</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_NEXT1</interval>
+    </timeFrameFilter>
+</Report>

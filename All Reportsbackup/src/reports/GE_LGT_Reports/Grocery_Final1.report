@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ACCOUNT_ID</field>
+    </columns>
+    <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>TYPE</field>
+    </columns>
+    <columns>
+        <field>Account.GE_LGT_Vertical__c</field>
+    </columns>
+    <columns>
+        <field>Account.GE_LGT_Sub_Vertical__c</field>
+    </columns>
+    <columns>
+        <field>DUE_DATE</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATE</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_STATE</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>(((((((1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9 OR 10 OR 11 OR 12 OR 13) AND 14) AND 15) AND 16) AND 17) AND 18) AND 19) AND 20</booleanFilter>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <operator>contains</operator>
+            <value>A&amp;P,DECA,defense commissary agency,delhaize america,demoulas,fareway,garden fresh,gfs,gordon food services,giant eagle</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <operator>contains</operator>
+            <value>aldi,grocery outlet,h mart,hannaford,harps food stores,heb company,houchens,hy-vee,js usa holdings,king kullen,kirklands,kroger,loblaws,love&apos;s,metro inc,natural grocers,pathmark,price chopper,publix,quiktrip,raley&apos;s,roundy&apos;s,harris teeter</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <operator>contains</operator>
+            <value>safeway,savemart,schnuck markets,shop n save,shopko,shoprite,smart &amp; final,smart and final,sobey,spartan stores,sprouts,supervalu,fresh market</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <operator>contains</operator>
+            <value>alimentation couche-tard,the pantry,total wine,trader joe,united supermarkets,wakefern food,wegman,weis markets,whole foods,winco,winn dixie</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <operator>contains</operator>
+            <value>associated food stores</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <operator>contains</operator>
+            <value>associated grocers</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <operator>contains</operator>
+            <value>bashas</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <operator>contains</operator>
+            <value>big y</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <operator>contains</operator>
+            <value>braums</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <operator>contains</operator>
+            <value>brookshire brothers</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <operator>contains</operator>
+            <value>cardenas markets</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <operator>contains</operator>
+            <value>casey&apos;s general stores</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <operator>contains</operator>
+            <value>cost plus world market</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <operator>notContain</operator>
+            <value>alcaldia,viladecans,decar,decasa,decat,decaux</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <operator>notContain</operator>
+            <value>aldis,warehouse,hall,kroger electric</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <operator>notContain</operator>
+            <value>astaldi,SUPERVALUE,shopkon</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <operator>notContain</operator>
+            <value>haldi</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <operator>notContain</operator>
+            <value>aldinger</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <operator>notContain</operator>
+            <value>spalding</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <operator>notContain</operator>
+            <value>plaza,twinco</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Grocery Final</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

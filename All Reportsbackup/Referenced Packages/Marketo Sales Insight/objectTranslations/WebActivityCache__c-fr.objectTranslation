@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>WebActivityCache</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>WebActivityCache</value>
+    </caseValues>
+    <fields>
+        <label><!-- AccountLinkName --></label>
+        <name>AccountLinkName__c</name>
+    </fields>
+    <fields>
+        <label><!-- AccountLink --></label>
+        <name>AccountLink__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- WebActivityCache --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- ActivityDT --></label>
+        <name>ActivityDT__c</name>
+    </fields>
+    <fields>
+        <label><!-- ContactLinkName --></label>
+        <name>ContactLinkName__c</name>
+    </fields>
+    <fields>
+        <label><!-- ContactLink --></label>
+        <name>ContactLink__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Contact__c</name>
+        <relationshipLabel><!-- WebActivityCache --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Id --></label>
+        <name>Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead --></label>
+        <name>Lead__c</name>
+        <relationshipLabel><!-- WebActivityCache --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Opportunity__c</name>
+        <relationshipLabel><!-- WebActivityCache --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- RowNum --></label>
+        <name>RowNum__c</name>
+    </fields>
+    <fields>
+        <label><!-- SActivityDT --></label>
+        <name>SActivityDT__c</name>
+    </fields>
+    <fields>
+        <label><!-- SearchLinkName --></label>
+        <name>SearchLinkName__c</name>
+    </fields>
+    <fields>
+        <label><!-- SearchLink --></label>
+        <name>SearchLink__c</name>
+    </fields>
+    <fields>
+        <label><!-- TotalCount --></label>
+        <name>TotalCount__c</name>
+    </fields>
+    <fields>
+        <label><!-- WPageLinkName --></label>
+        <name>WPageLinkName__c</name>
+    </fields>
+    <fields>
+        <label><!-- WPageLink --></label>
+        <name>WPageLink__c</name>
+    </fields>
+    <gender>Masculine</gender>
+    <nameFieldLabel>WebActivityCache Name</nameFieldLabel>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,4 @@
+<aura:documentation>
+	<aura:description>This component displays Tier picklist values and used to fire whenever its value is changed.</aura:description>
+	
+</aura:documentation>

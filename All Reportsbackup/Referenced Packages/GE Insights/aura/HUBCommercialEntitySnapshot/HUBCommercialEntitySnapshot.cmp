@@ -1,0 +1,81 @@
+<aura:component access="global" controller="geinsights.HubGEAccountTeamController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction">
+    <aura:dependency resource="geinsights:HUB_GE_Account_Owners" />
+    <aura:dependency resource="geinsights:HUB_GE_Opportunity_Owners" />
+    <aura:dependency resource="geinsights:AssociatesitesAndEntities" />
+    <aura:dependency resource="geinsights:HubInsightsSurvey" />
+    <aura:dependency resource="geinsights:Hub_User_feedback" />
+
+    
+    <aura:attribute name="ELComp" type="Object" access="private" description="A component object Loads the HubEntitieslist Component from the Associated Sites and Entities component."/>
+    <aura:attribute name="recordId" type="String" access="global" description="Context Account Id."/>
+    <aura:attribute name="commercialEntityId" type="String" access="global" description="Commercial Entity ID. ID of the commerical Entity from the hub."/>
+    <aura:attribute name="commercialEntityName" type="String" access="private" description="Commercial Entity Name."/>
+    <aura:attribute name="country" type="String" access="global" description="Country filter. Sets the country in filter component."/>
+    <aura:attribute name="searchAccId" type="String" access="global" description="The id of the account associated to the commercial entity in the context."/>
+    <aura:attribute name="isLex" type="boolean" default="false"  access="private" description="Indicates if the user is in Lightning Experience."/>
+    
+    <aura:attribute name="loadComponent" type="boolean" default="false"  access="private" description="This attribute is set true when the commercial Entity Id is retrieved on initoialization"/>
+    <aura:attribute name="componentList" type="Object[]" access="private" description="The list of components that are loaded in the snapshot."/>
+    <aura:attribute name="errors" type="Object[]" access="private" description="List of all error messages."/>
+    <aura:attribute name="showError" type="boolean" default="false"  access="private" description="Indicates if there are any errors in the component."/>
+    
+    <aura:attribute name="AccountOwnerSnapshotOrder" type="Integer" access="global" default="1" description="Sets the order of the AccountOwnerSnapshot."/>
+    <aura:attribute name="OpportunityOwnerSnapshotOrder" type="Integer" access="global" default="2" description="Sets the order of the OpportunityOwnerSnapshot."/>
+    <aura:attribute name="associatedSiteEntityOrder" type="Integer" access="global" default="3" description="Sets the order of the AssociatedSiteEntity."/>
+    <aura:attribute name="layoutType" type="String" access="global" default="Two Column" description="Sets the number of columns in the layout."/>
+    <aura:attribute name="spinner" type="boolean" default="false"  access="private" description="Loads the spinner when the component is loading the contents."/>
+    <aura:attribute name="showAllComps" type="boolean" default="true"  access="private" description="Boolean to indicate whether show all components in snapshot or show one component."/>            
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" description="Loads the component contents on the initial load of the component."/>
+    <aura:handler event="geinsights:changeCommEntity" action="{!c.ChangeCommAccount}" description="Responds to the change in commercial entytity and loads the content related to the new commercial entity."/>
+    <aura:handler name="backToSnapshot" event="geinsights:GE_Back_Button" action="{!c.refreshPage}"  description="Bring back to snapshot view for any of the detail view components namely Opportunity owners, Account team and HubEntitieslist."/>
+    <aura:handler name="filterChange" event="geinsights:HUB_GE_Filter_Change" action="{!c.updateFilter}" description="Filters the snapshot components content based on changes in the filter component."/>
+    <aura:handler event="geinsights:ClearComponentsInSnapshot" action="{!c.toggleComps}" phase="capture" description="Takes the view to more detail data components namely Opportunity owners, Account team and HubEntitieslist."/>
+    
+    <aura:if isTrue="{!v.spinner}">
+        <geinsights:hubGESpinner />
+        <aura:set attribute="else" >
+            <aura:if isTrue="{!v.showError}">
+                
+                <div class="slds-float_left">
+                    <geinsights:HUB_GE_Error errors="{!v.errors}"></geinsights:HUB_GE_Error>
+                </div>
+                <div class="slds-float_right">
+                    <a onclick="{!c.backtoaccount}">Back to Account</a>
+                </div>     
+            </aura:if>
+            <aura:if isTrue="{!not(v.showError)}">
+                <div class="slds-clearfix">
+                    <div class="slds-float_left">
+                        <h1 class="slds-text-heading--medium slds-text-align--left" style="margin-bottom: 10px;">GE Insights</h1>
+                        <h2 class="slds-text-heading--small slds-text-align--left fontbold" style="margin-bottom: 10px;">Account Name: &nbsp; {!v.commercialEntityName}</h2>
+                    </div>
+                    <div class="slds-float_right">
+                        <a onclick="{!c.backtoaccount}">Back to Account</a>
+                    </div>
+                </div>
+                <aura:if isTrue="{!v.showAllComps}">
+                    <aura:if isTrue="{!v.loadComponent}">
+                        <geinsights:HUB_GE_Filter commercialEntityId="{!v.commercialEntityId}" selValue="{!v.country}" selAccValue="{!v.searchAccId}"/>
+                        
+                        <lightning:layout horizontalAlign="spread" verticalAlign="stretch" multipleRows="true" pullToBoundary="small">
+                            <aura:iteration items="{!v.componentList}" var="item" >
+                                <lightning:layoutItem flexibility="auto" padding="around-small" size="12" largeDeviceSize="{!equals(v.layoutType,'One Column')?12:equals(v.layoutType,'Two Column')?6:4}" mediumDeviceSize="{!equals(v.layoutType,'One Column')?12:equals(v.layoutType,'Two Column')?6:4}" smallDeviceSize="12">{!item}</lightning:layoutItem>
+                            </aura:iteration>
+                            <lightning:layoutItem flexibility="auto" padding="around-small" size="12" largeDeviceSize="{!equals(v.layoutType,'One Column')?12:equals(v.layoutType,'Two Column')?6:4}" mediumDeviceSize="{!equals(v.layoutType,'One Column')?12:equals(v.layoutType,'Two Column')?6:4}" smallDeviceSize="12">
+                                <geinsights:Hub_User_feedback componentName="GE Insights SnapShot" />
+                            </lightning:layoutItem>
+                            
+                        </lightning:layout>                        
+                        
+                    </aura:if>
+                    
+                    <aura:set attribute="else" >
+                        {!v.ELComp}
+                    </aura:set>
+                </aura:if>
+            </aura:if>
+        </aura:set>
+    </aura:if>	
+    
+</aura:component>

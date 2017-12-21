@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>EmailActivityCache</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>EmailActivityCache</value>
+    </caseValues>
+    <fields>
+        <label><!-- AccountLinkName --></label>
+        <name>AccountLinkName__c</name>
+    </fields>
+    <fields>
+        <label><!-- AccountLink --></label>
+        <name>AccountLink__c</name>
+    </fields>
+    <fields>
+        <label><!-- ActivityDT --></label>
+        <name>ActivityDT__c</name>
+    </fields>
+    <fields>
+        <label><!-- Campaign --></label>
+        <name>Campaign__c</name>
+    </fields>
+    <fields>
+        <label><!-- ClickCount --></label>
+        <name>ClickCount__c</name>
+    </fields>
+    <fields>
+        <label><!-- ContactLinkName --></label>
+        <name>ContactLinkName__c</name>
+    </fields>
+    <fields>
+        <label><!-- ContactLink --></label>
+        <name>ContactLink__c</name>
+    </fields>
+    <fields>
+        <label><!-- Id --></label>
+        <name>Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- MessageId --></label>
+        <name>MessageId__c</name>
+    </fields>
+    <fields>
+        <label><!-- MessageThreadIndex --></label>
+        <name>MessageThreadIndex__c</name>
+    </fields>
+    <fields>
+        <label><!-- MessageType --></label>
+        <name>MessageType__c</name>
+    </fields>
+    <fields>
+        <label><!-- OpenCount --></label>
+        <name>OpenCount__c</name>
+    </fields>
+    <fields>
+        <label><!-- RowNum --></label>
+        <name>RowNum__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subject --></label>
+        <name>Subject__c</name>
+    </fields>
+    <fields>
+        <label><!-- ThreadNumber --></label>
+        <name>ThreadNumber__c</name>
+    </fields>
+    <fields>
+        <label><!-- ThreadSubject --></label>
+        <name>ThreadSubject__c</name>
+    </fields>
+    <fields>
+        <label><!-- TotalCount --></label>
+        <name>TotalCount__c</name>
+    </fields>
+    <gender>Masculine</gender>
+    <nameFieldLabel>EmailActivityCache Name</nameFieldLabel>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

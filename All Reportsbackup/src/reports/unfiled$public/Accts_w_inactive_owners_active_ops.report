@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>User.Account$CreatedById$Name</field>
+    </columns>
+    <columns>
+        <field>User$IsActive</field>
+    </columns>
+    <columns>
+        <field>User.Account$CreatedById.Opportunities$Owner</field>
+    </columns>
+    <columns>
+        <field>User.Account$CreatedById.Opportunities$Name</field>
+    </columns>
+    <columns>
+        <field>User.Account$CreatedById.Opportunities.Orders$Order_Amount__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>Weekly” send to manage, give them a week to resign. If no response from management resign to management.</description>
+    <filter>
+        <criteriaItems>
+            <column>User$IsActive</column>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User*User$GE_LGT_Business_Division__c</column>
+            <operator>equals</operator>
+            <value>North America</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.Account$CreatedById.Opportunities$StageName</column>
+            <operator>equals</operator>
+            <value>S1 Consult,S2 Audit,S3 Solve,S4 Negotiate,S5 Close</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.Account$CreatedById$RecordType</column>
+            <operator>equals</operator>
+            <value>Account.SAP_Account_Strategic,Account.GE_LGT_Contractor_ESCO,Account.GE_LGT_Distributor,Account.GE_LGT_End_User,Account.GE_LGT_OEM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.Account$CreatedById.Opportunities$Type</column>
+            <operator>equals</operator>
+            <value>Standard</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>User.Account$CreatedById$Owner</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Accts w/ inactive owners active ops</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>USERS_ACC_OPP_ORDERS__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>User$ChatterAdoptionStageModifiedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

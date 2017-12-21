@@ -1,0 +1,13 @@
+<aura:documentation>
+    <aura:description>
+    
+    <p>This is a generic Typeahead/ Auto complete component which searches a SObject displays the details of the SObject.   
+    </p>
+    
+	<p>This example shows how to use the  <code>geinsights:hubGEAutoComplete</code>.</p>
+    <pre>&lt;geinsights:hubGEAutoComplete startsWith="false" objectName="Account__x" searchField="Name__c,BillingPostalCode__c, BillingCountry__c"  fieldLabel="Account"
+                                         selectFields="Name__c, BillingPostalCode__c, BillingCountry__c"
+                                         filterBy='[{"fieldName":"Commercial_Entity_c__c","fieldValue":"123456"}]' lookupVal="selected"/&gt;</pre>
+    </aura:description>
+	
+</aura:documentation>

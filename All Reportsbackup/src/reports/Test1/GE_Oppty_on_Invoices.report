@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>GE_LGT_EM_InvoiceHeader__c.GE_LGT_EM_SAPInvoiceNumber__c</field>
+    </columns>
+    <columns>
+        <field>GE_LGT_EM_InvoiceHeader__c.GE_LGT_EM_Opportunity_ID__c</field>
+    </columns>
+    <columns>
+        <field>CUST_CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>GE_LGT_EM_InvoiceHeader__c.GE_LGT_EM_Sales_Org__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>GE_LGT_EM_InvoiceHeader__c.GE_LGT_EM_Opportunity_ID__c</column>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>GE-Oppty on Invoices</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$GE_LGT_EM_InvoiceHeader__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>CUST_CREATED_DATE</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>GE_LGT_EM_InvoiceHeader__c.GE_LGT_EM_Billing_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

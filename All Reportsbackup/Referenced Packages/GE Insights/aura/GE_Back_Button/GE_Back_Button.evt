@@ -1,0 +1,4 @@
+<aura:event type="COMPONENT" description="This event is used in almost all components in Hub Enitity Snapshot application to know from which screen the event is fired and which screen should be displayed" >
+<aura:attribute name="screenName" type="String" description="Component or screen name of the component navigating to"/>
+<aura:attribute name="entityId" type="String" description="Id of the Commecial Entity or Account"/>
+</aura:event>

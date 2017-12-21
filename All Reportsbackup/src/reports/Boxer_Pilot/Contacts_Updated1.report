@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Contact$LastModifiedBy</field>
+    </columns>
+    <columns>
+        <field>Contact$LastModifiedBy.Id</field>
+    </columns>
+    <columns>
+        <field>Contact$Name</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>(1 AND NOT 2) AND 3</booleanFilter>
+        <criteriaItems>
+            <column>Contact$CreatedBy</column>
+            <operator>notEqual</operator>
+            <value>Neel Kamal Singh</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Contact$CreatedBy</column>
+            <operator>startsWith</operator>
+            <value>User</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Contact$LastModifiedBy.Division</column>
+            <operator>equals</operator>
+            <value>Boxer Enabled</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>Contact$LastModifiedBy.Division</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Contact$Owner.GE_LGT_Business_Division__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Contact$Owner.GE_LGT_Region__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Contacts Updated</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Contacts__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Contact$LastModifiedDate</dateColumn>
+        <endDate>2014-05-04</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2014-04-13</startDate>
+    </timeFrameFilter>
+</Report>

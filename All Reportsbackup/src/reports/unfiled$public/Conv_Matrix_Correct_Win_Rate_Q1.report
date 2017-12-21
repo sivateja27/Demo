@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>(Opportunity.GE_LGT_Amount_PO_Received__c:SUM)/(Opportunity.GE_LGT_Amount_PO_Received__c:SUM + Opportunity.GE_LGT_Amount_of_Closed_Lost__c:SUM)</calculatedFormula>
+        <datatype>percent</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Conversion Rate (Amount)</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>(Opportunity.GE_LGT_Number_PO_Received__c:SUM)/(Opportunity.GE_LGT_Number_PO_Received__c:SUM+Opportunity.GE_LGT_Number_Closed_Lost__c:SUM)</calculatedFormula>
+        <datatype>percent</datatype>
+        <developerName>FORMULA2</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Conversion Rate (Number)</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>IF((
+(Opportunity.GE_LGT_Amount_PO_Received__c:SUM + Opportunity.GE_LGT_Amount_of_Closed_Lost__c:SUM + Opportunity.Lost_Amt_Only__c:SUM)=0), 0, (Opportunity.GE_LGT_Amount_PO_Received__c:SUM)
+/(Opportunity.GE_LGT_Amount_PO_Received__c:SUM + Opportunity.GE_LGT_Amount_of_Closed_Lost__c:SUM + Opportunity.Lost_Amt_Only__c:SUM))</calculatedFormula>
+        <datatype>percent</datatype>
+        <developerName>FORMULA3</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Win Rate (Amount)</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>IF(((Opportunity.GE_LGT_Number_PO_Received__c:SUM+Opportunity.GE_LGT_Number_Closed_Lost__c:SUM+Opportunity.Cancelled_Count__c:SUM)=0), 0, (Opportunity.GE_LGT_Number_PO_Received__c:SUM)/(Opportunity.GE_LGT_Number_PO_Received__c:SUM+Opportunity.GE_LGT_Number_Closed_Lost__c:SUM+Opportunity.Cancelled_Count__c:SUM))</calculatedFormula>
+        <datatype>percent</datatype>
+        <developerName>FORMULA4</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Win Rate (Number)</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_17749765</developerName>
+        <masterLabel>Product Family Buckets</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>FAMILY</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Albeo</sourceValue>
+            </sourceValues>
+            <value>Albeo</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Lamp LED</sourceValue>
+            </sourceValues>
+            <value>Lamp</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Controls LED</sourceValue>
+            </sourceValues>
+            <value>Controls</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Indoor LED</sourceValue>
+            </sourceValues>
+            <value>Indoor</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Outdoor (Non Roadway) LED</sourceValue>
+            </sourceValues>
+            <value>Outdoor</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Roadway LED</sourceValue>
+            </sourceValues>
+            <value>Roadway</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Rail</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>RDL</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Signage</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Traffic</sourceValue>
+            </sourceValues>
+            <value>Specialty</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Indoor Non LED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Lamp / Ballast Non LED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Outdoor (Non Roadway) Non LED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Roadway Non LED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>SERVICE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Unknown</sourceValue>
+            </sourceValues>
+            <value>NON LED</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_9940797</developerName>
+        <masterLabel>Won Lost Cancelled</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Opportunity.GE_LGT_Stage_ReasonWonLost__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Closed Lost;Archived</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Closed Lost;Lost to No Decision</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Closed Lost;No Budget</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Closed Lost;No Current Project</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Closed Lost;Project Cancelled</sourceValue>
+            </sourceValues>
+            <value>Cancelled</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Closed Lost;</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Closed Lost;Customer Satisfaction Ranking</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Closed Lost;Design Application</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Closed Lost;HQ Closed</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Closed Lost;Installed Base</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Closed Lost;Lost to Competition</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Closed Lost;Lost to Local Brand</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Closed Lost;Not Qualified</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Closed Lost;Not Qualified in Spec</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Closed Lost;Not enough information</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Closed Lost;Other</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Closed Lost;Price</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Closed Lost;Product Availability</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Closed Lost;ROI</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Closed Lost;Relationship</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Closed Lost;Track Record</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Closed Lost;Claims</sourceValue>
+            </sourceValues>
+            <value>Lost</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PO Received;Relationship</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PO Received;Price</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PO Received;Other</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PO Received;Track Record</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PO Received;Archived</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PO Received;Product Availability</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PO Received;Design Application</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PO Received;Installed Base</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PO Received;</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PO Received;Customer Satisfaction Ranking</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PO Received;ROI</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PO Received;No Current Project</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PO Received;Terms</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PO Received;Lost to No Decision</sourceValue>
+            </sourceValues>
+            <value>Won</value>
+        </values>
+    </buckets>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>REVENUE_AMOUNT.CONVERT</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Number_Records_Conversion_Rate__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Number_of_Records_Win_Rate__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>User.GE_LGT_Business_Division__c</column>
+            <operator>equals</operator>
+            <value>North America</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.GE_LGT_Closed_Status_Date__c</column>
+            <operator>greaterThan</operator>
+            <value>12/31/2013</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.GE_LGT_Closed_Status_Date__c</column>
+            <operator>lessThan</operator>
+            <value>4/1/2014</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>BucketField_17749765</column>
+            <operator>notEqual</operator>
+            <value>,NON LED</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_17749765</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_9940797</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Conv. Matrix - Correct Win Rate - Q1</name>
+    <params>
+        <name>open</name>
+        <value>closed</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>0</value>
+    </params>
+    <reportType>OpportunitySchedule</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <timeFrameFilter>
+        <dateColumn>REVENUE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>DIVISION</field>
+    </columns>
+    <columns>
+        <field>EMPNO</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <operator>notContain</operator>
+            <value>data integration,marketo,user deployment,sarah blesi,greg hoelzel,neel kamal singh,rambabu,vasanth kumar,sylvester,alicia stone,chris gates,kyle weaver,user datamigration,batch user data laoding,irick</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACTIVE</column>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PROFILE</column>
+            <operator>contains</operator>
+            <value>sales</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PROFILE</column>
+            <operator>notContain</operator>
+            <value>chatter</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>USERNAME</column>
+            <operator>notEqual</operator>
+            <value>Vivek Muchalla,Joe Silk,Solay Alagappan,Kristy Guba,Justin Foster,Jeff Hunter,Wes Brown</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FULL_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Adoption - db; logins most and least</name>
+    <params>
+        <name>active</name>
+        <value>active</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>User</reportType>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>LAST_LOGIN</dateColumn>
+        <interval>INTERVAL_LAST30</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,16 @@
+<aura:documentation>
+	<aura:description>
+        <p>This component displays the top Hub Account Owners. 
+            	<li>If Account Id correspondes to a Legal Entity, Check for corrresponding CE, and it's hub identifier. Display based on CE's Hub Identifier.</li>
+
+                <li>If Account Id corresponds to a Commercial entity, Check for hub Identifier. If exists display the that Hub Identifier snapshot.</li>
+
+			    <li>If hub identifier does not exist, check if CE exists. If yes get the Hub Identifier and display based on CE's hub identifier snapshot.</li>
+            
+            <p>This is an independent component.</p>
+        </p>
+        <p>This example shows how to display top Account owners by providing either commercialEntityId or legalEntityId attribute and showFilter attribute to make use of <code>geinsights:HUB_GE_Filter</code> component <code>geinsights:HUB_GE_Account_Owners</code>.</p>
+    	
+        <p><pre>&lt;geinsights:HUB_GE_Account_Owners commercialEntityId="{!v.id}" legalEntityId ="{!v.legalEntityid}" showFilter="true"/&gt;</pre></p>
+    </aura:description>	
+</aura:documentation>

@@ -1,0 +1,6 @@
+<aura:documentation>
+	<aura:description>This component displays the opportunity owners group by tier1 business and tier2 business</aura:description>
+	<aura:example name="ExampleName" ref="exampleComponentName" label="Label">
+		Example Description
+	</aura:example>
+</aura:documentation>

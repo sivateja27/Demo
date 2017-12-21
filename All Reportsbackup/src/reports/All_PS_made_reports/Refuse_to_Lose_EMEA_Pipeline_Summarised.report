@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_38892178</developerName>
+        <masterLabel>All Type</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>TYPE</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>End User - Retrofit</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>End User - New Construction</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Distributor Share Shift</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>OEM Share Shift</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>MRO Share Shift</sourceValue>
+            </sourceValues>
+            <value>All Type</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_28693503</developerName>
+        <masterLabel>Key Vertical</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Opportunity.GE_LGT_Vertical__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Industrial</sourceValue>
+            </sourceValues>
+            <value>Industrial</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Hospitality</sourceValue>
+            </sourceValues>
+            <value>Hospitality</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Government</sourceValue>
+            </sourceValues>
+            <value>Goverment</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Commercial Property Mgmt/Office Bldg</sourceValue>
+            </sourceValues>
+            <value>Office</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Retail</sourceValue>
+            </sourceValues>
+            <value>Retail</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Utility</sourceValue>
+            </sourceValues>
+            <value>Utility</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_13073980</developerName>
+        <masterLabel>Opp Name Bucket</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>OPPORTUNITY_NAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Hungarian Cities - Balatonfüred II.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hungarian Cities - Hajdúböszörmény</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hungarian Cities - Pécs streetlighting</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hungarian Cities - Sopron</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hungarian cities - Rapid KEOP</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hungarian Cities - Gomba</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hungarian Cities - Miskolc</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hungarian Cities - Ostoros</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hungarian Cities - Páty</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hungarian Cities - Sárospatak</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hungarian Cities - Debrecen</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hungarian Cities - Hédervár</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hungarian Cities - Szigetszentmiklós</sourceValue>
+            </sourceValues>
+            <value>Hungarian Cities</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Opportunity.GE_LGT_Vertical__c</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.GE_LGT_Expected_PO_Receipt_Date__c</field>
+    </columns>
+    <columns>
+        <field>REVENUE_DATE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>REVENUE_AMOUNT.CONVERT</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_NAME</field>
+    </columns>
+    <columns>
+        <field>QUANTITY</field>
+    </columns>
+    <columns>
+        <field>SERVICE_DATE</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>User.GE_LGT_Business_Division__c</column>
+            <operator>equals</operator>
+            <value>Europe,MEAT</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_38892178</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_13073980</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Refuse to Lose EMEA Pipeline Summarised</name>
+    <params>
+        <name>open</name>
+        <value>open</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunitySchedule</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <timeFrameFilter>
+        <dateColumn>REVENUE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

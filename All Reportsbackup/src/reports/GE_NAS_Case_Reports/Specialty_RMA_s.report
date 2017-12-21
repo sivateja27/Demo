@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>RMA__c$Name</field>
+    </columns>
+    <columns>
+        <field>RMA__c$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>RMA__c$Owner</field>
+    </columns>
+    <columns>
+        <field>RMA__c$RMA_Comments__c</field>
+    </columns>
+    <columns>
+        <field>RMA__c$RMA_Status__c</field>
+    </columns>
+    <columns>
+        <field>RMA__c$Case__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>RMA__c$RecordType</column>
+            <operator>equals</operator>
+            <value>RMA__c.Specialty_RMA</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Specialty RMA&apos;s</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Specialty_RMAs__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>RMA__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>User.GE_LGT_EM_ComplaintLineItem__c$LastModifiedById$Name</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>User*User$GE_LGT_Sub_Region__c</column>
+            <operator>equals</operator>
+            <value>CSC</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>User.GE_LGT_EM_ComplaintLineItem__c$LastModifiedById$CreatedBy</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Owned compl</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Complaint_User__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>User.GE_LGT_EM_ComplaintLineItem__c$LastModifiedById$CreatedDate</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
+    </timeFrameFilter>
+</Report>

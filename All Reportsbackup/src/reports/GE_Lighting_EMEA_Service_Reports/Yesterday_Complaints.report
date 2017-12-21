@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>User.Account$LastModifiedById$Name</field>
+    </columns>
+    <columns>
+        <field>User.Account$LastModifiedById.Cases$GE_LGT_EM_CaseID__c</field>
+    </columns>
+    <columns>
+        <field>User.Account$LastModifiedById.Cases.GE_LGT_EM_InvoiceHeaders__r$Name</field>
+    </columns>
+    <columns>
+        <field>User.Account$LastModifiedById.Cases.GE_LGT_EM_InvoiceHeaders__r$GE_LGT_EM_CM_DM_RO_Number__c</field>
+    </columns>
+    <columns>
+        <field>User.Account$LastModifiedById.Cases.GE_LGT_EM_InvoiceHeaders__r$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>User.Account$LastModifiedById.Cases.GE_LGT_EM_InvoiceHeaders__r$GE_LGT_EM_Integration_Status__c</field>
+    </columns>
+    <columns>
+        <field>User.Account$LastModifiedById.Cases.GE_LGT_EM_InvoiceHeaders__r$GE_LGT_EM_Status__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>User.Account$LastModifiedById.Cases.GE_LGT_EM_InvoiceHeaders__r$CreatedDate</column>
+            <operator>equals</operator>
+            <value>8/4/2014 12:00 AM</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Yesterday Complaints</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>GE_LGT_EM_OpenComplaints__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>User$ChatterAdoptionStageModifiedDate</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
+    </timeFrameFilter>
+</Report>

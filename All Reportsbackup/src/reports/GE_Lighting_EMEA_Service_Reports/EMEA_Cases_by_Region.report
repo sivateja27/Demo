@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_65079631</developerName>
+        <masterLabel>Region</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Case.GE_LGT_EM_Case_Owner_Team__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Export DEE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Export EE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Export Hungary</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Export MEA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Export Polish</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Export Turkey</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Export ROW</sourceValue>
+            </sourceValues>
+            <value>Export</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Central Strategic</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Central Credit</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Central Contact</sourceValue>
+            </sourceValues>
+            <value>Central</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>France Contact</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>France Credit</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>France Strategic</sourceValue>
+            </sourceValues>
+            <value>France</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Spanish Contact</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Spanish Order</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Spanish Strategic</sourceValue>
+            </sourceValues>
+            <value>Spain</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>UK Contact</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>UK Credit</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>UK Order</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>UK Strategic</sourceValue>
+            </sourceValues>
+            <value>UK</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Italy Contact</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Italy Strategic</sourceValue>
+            </sourceValues>
+            <value>Italy</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <columns>
+        <field>Case.GE_LGT_EM_Case_Owner_Team__c</field>
+    </columns>
+    <currency>HUF</currency>
+    <filter>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <operator>equals</operator>
+            <value>Case.GEEMEA</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_65079631</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>EMEA Cases by Region</name>
+    <params>
+        <name>units</name>
+        <value>h</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <interval>INTERVAL_LAST7</interval>
+    </timeFrameFilter>
+</Report>

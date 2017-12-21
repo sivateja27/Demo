@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Request__c$Request_Category__c</field>
+    </columns>
+    <columns>
+        <field>Request__c$Name</field>
+    </columns>
+    <columns>
+        <field>Request__c$Request_Sponsor__c</field>
+    </columns>
+    <columns>
+        <field>Request__c$Request_Submitter__c</field>
+    </columns>
+    <columns>
+        <field>Request__c$Request_Stage__c</field>
+    </columns>
+    <columns>
+        <field>Request__c$Request_No__c</field>
+    </columns>
+    <columns>
+        <field>Request__c.Delivery_Tasks__r$Name</field>
+    </columns>
+    <columns>
+        <field>Request__c.Delivery_Tasks__r$Status__c</field>
+    </columns>
+    <columns>
+        <field>Request__c$Deployed_On__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>after deployment QA team tests those in production and send update before daily standup</description>
+    <filter>
+        <criteriaItems>
+            <column>Request__c$Release_Name__c</column>
+            <operator>equals</operator>
+            <value>2017 JUL 20</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Request__c.Delivery_Tasks__r$Assigned_To__c</column>
+            <operator>contains</operator>
+            <value>Deepika,Bhagyashri</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Request__c.Delivery_Tasks__r$Assigned_To__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>20 July QA -production testing</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Requests_and_Delivery_Tasks__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Request__c.Delivery_Tasks__r$Status__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Request__c$Submitted_On__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Country__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This field is added as part of Hub Insights projects for the country drop down values.</description>
+        <externalId>false</externalId>
+        <label>Country</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <webLinks>
+        <fullName>GE_Insights</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>GE Insights</masterLabel>
+        <openType>sidebar</openType>
+        <page>HubInsightsPage</page>
+        <protected>false</protected>
+    </webLinks>
+</CustomObject>

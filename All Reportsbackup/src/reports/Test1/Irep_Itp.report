@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Distributor__c$Name</field>
+    </columns>
+    <columns>
+        <field>Distributor__c$Channel_Contact_Name__c</field>
+    </columns>
+    <columns>
+        <field>Distributor__c$Channel_Country__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Distributor__c$RecordType</column>
+            <operator>equals</operator>
+            <value>Distributor__c.EME_Channel_Onboarding</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Irep Itp</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Account_Setup_Reports__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Distributor__c$GE_LGT_Completed_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

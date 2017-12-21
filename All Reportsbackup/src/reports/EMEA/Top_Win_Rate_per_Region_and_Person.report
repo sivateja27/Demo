@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <acrossGroupingContext>FULL_NAME</acrossGroupingContext>
+        <calculatedFormula>Opportunity.GE_LGT_Amount_PO_Received__c.CONVERT:SUM /  ( Opportunity.GE_LGT_Amount_PO_Received__c.CONVERT:SUM + Opportunity.GE_LGT_Amount_of_Closed_Lost__c.CONVERT:SUM )</calculatedFormula>
+        <datatype>percent</datatype>
+        <developerName>FORMULA1</developerName>
+        <downGroupingContext>GRAND_SUMMARY</downGroupingContext>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Win Rate (revenue)</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <aggregates>
+        <acrossGroupingContext>FULL_NAME</acrossGroupingContext>
+        <calculatedFormula>Opportunity.GE_LGT_Number_PO_Received__c:SUM /  ( Opportunity.GE_LGT_Number_PO_Received__c:SUM + Opportunity.GE_LGT_Number_Closed_Lost__c:SUM )</calculatedFormula>
+        <datatype>percent</datatype>
+        <developerName>FORMULA2</developerName>
+        <downGroupingContext>GRAND_SUMMARY</downGroupingContext>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Win Rate (item)</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_13055695</developerName>
+        <masterLabel>Key Vertical</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>OpportunityLineItem.Vertical_ProductGroup__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Retail</sourceValue>
+            </sourceValues>
+            <value>Retail</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Hospitality</sourceValue>
+            </sourceValues>
+            <value>Hospitality</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Commercial Property Mgmt/Office Bldg</sourceValue>
+            </sourceValues>
+            <value>Office</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Utility--ROADWAY COBRAHEAD</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Utility--ROADWAY COBRAHEAD LED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Government--ROADWAY COBRAHEAD</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Government--ROADWAY COBRAHEAD LED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Government--ROADWAY HI MAST</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Government--ROADWAY TUNNEL LED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Government--ROADWAY TURNPIKE</sourceValue>
+            </sourceValues>
+            <value>Roadway</value>
+        </values>
+    </buckets>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AMOUNT.CONVERT</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <operator>equals</operator>
+            <value>Closed Lost,PO Received</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.GE_LGT_Business_Division__c</column>
+            <operator>equals</operator>
+            <value>Europe</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.GE_LGT_Region__c</column>
+            <operator>equals</operator>
+            <value>Central,France and Benelux,Italy,Nordic,North EE,South EE,Spain,UK</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>User.GE_LGT_Region__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>FULL_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>STAGE_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Top Win Rate per Region and Person</name>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityProduct</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_PREVCURFY</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,5 @@
+<design:component label="Opportunity Owners">
+    <design:attribute name="numOfRecords" label="Num Of Records" description="Number of records to be displayed on the snapshot component" />
+    <design:attribute name="country" label="Country" description="Specify the country to display Top Opportunity Owners of that Country"/>
+    <design:attribute name="business" label="Business" description="Specify the Tier 1 Business to display Top Opportunity Owners of that Business"/>
+</design:component>

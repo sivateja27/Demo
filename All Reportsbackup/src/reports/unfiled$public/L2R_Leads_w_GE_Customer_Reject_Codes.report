@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>COMPANY</field>
+    </columns>
+    <columns>
+        <field>TITLE</field>
+    </columns>
+    <columns>
+        <field>Lead.GE_LGT_Vertical__c</field>
+    </columns>
+    <columns>
+        <field>Lead.GE_LGT_Sub_Vertical__c</field>
+    </columns>
+    <columns>
+        <field>Lead.GE_LGT_Reject_Code__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>L2R Leads with reject code &quot;Already Owns Product&quot; or &quot;Oppty in Progress&quot;</description>
+    <filter>
+        <criteriaItems>
+            <column>STATUS</column>
+            <operator>equals</operator>
+            <value>Rejected</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Lead.GE_LGT_Reject_Code__c</column>
+            <operator>equals</operator>
+            <value>Opportunity in Progress,Already Owns Product</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <operator>equals</operator>
+            <value>Magezi Mukandala</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>L2R - Leads w/ GE Customer Reject Codes</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>LeadList</reportType>
+    <scope>org</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

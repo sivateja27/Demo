@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Agent_EDI__c</field>
+    </columns>
+    <columns>
+        <field>TYPE</field>
+    </columns>
+    <columns>
+        <field>Account.GE_LGT_C_I__c</field>
+    </columns>
+    <columns>
+        <field>Account.GE_LGT_Controls__c</field>
+    </columns>
+    <columns>
+        <field>Account.GE_LGT_Architecture__c</field>
+    </columns>
+    <columns>
+        <field>Account.GE_LGT_Sports__c</field>
+    </columns>
+    <columns>
+        <field>Account.GE_LGT_Utility__c</field>
+    </columns>
+    <columns>
+        <field>Account.GE_LGT_DOT__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>GE current agents inclusive of EDI Platform Details (where field is populated). Converted to CR</description>
+    <filter>
+        <criteriaItems>
+            <column>TYPE</column>
+            <operator>equals</operator>
+            <value>Agency - Fixtures / Lamp &amp; Ballast,Agent</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.GE_LGT_Current_Authorized_GE_Mfg_Rep__c</column>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>GE Current Agents- EDI Platform</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Account.Agent_EDI__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>
